@@ -90,7 +90,9 @@ Failure patterns in the final run (see the hand check below):
 | Final | subway-0.3 | 10 (`tasks/final`) | 5/10 (50%) | 8/10 (80%) | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
 
 Reasoning-effort sweep on the final 10 (Claude Haiku 5.5, temperature 0): **low 4/10, medium 5/10, high 5/10**
-(`results/final_haiku_low`, `results/final_haiku_medium`, `results/final`).
+(`results/final_haiku_low`, `results/final_haiku_medium`, `results/final`). Exact commands:
+`scripts/haiku_effort_sweep.sh`; the effort is sent as `reasoning.effort` in `eval/openrouter.py` (`build_body`) and
+recorded in each folder's `run_config.json`.
 
 ## Key findings
 
