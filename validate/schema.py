@@ -21,7 +21,12 @@ def check_record(rec: dict, task_dir: Path) -> dict:
         problems.append("integer answer is not an int")
     if t == "sequence" and not isinstance(a, list):
         problems.append("sequence answer is not a list")
-    if t == "number" and not float(a).is_integer():
+    try:
+        non_integer = t == "number" and not float(a).is_integer()
+    except (TypeError, ValueError):
+        problems.append("number answer is not numeric")
+        non_integer = False
+    if non_integer:
         tol = [k for k in ("tolerance_rel", "tolerance_abs") if k in rec]
         if len(tol) != 1:
             problems.append("non-integer number needs exactly one tolerance")

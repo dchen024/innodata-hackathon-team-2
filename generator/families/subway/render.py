@@ -24,7 +24,7 @@ from generator.families.subway.layout import (idw_warp, octi_path, octilinear_re
 
 ROOT = Path(__file__).resolve().parents[3]
 GRAPH = ROOT / "data" / "subway_graph.json"
-LAND = ROOT / "data" / "raw" / "nyc_boroughs.geojson"
+LAND = ROOT / "data" / "nyc_boroughs.geojson"   # NYC Open Data borough boundaries, shoreline-clipped
 
 REGIONS = {
     "lower_manhattan_downtown_brooklyn": dict(lat=(40.684, 40.734), lon=(-74.020, -73.972),

@@ -64,8 +64,14 @@ def is_correct(parsed, task: dict) -> int:
     if at == "multiple_choice":
         return int(str(parsed).strip().upper()[:1] == str(ref).strip().upper()[:1])
     if at == "sequence":
-        got, want = _as_list(parsed), _as_list(ref)
-        if got is None or want is None or len(got) != len(want):
+        got = _as_list(parsed)
+        if got is None:
             return 0
-        return int(all(norm_label(a) == norm_label(b) for a, b in zip(got, want)))
+        # any accepted equivalent (same legs, another service between the same two stations) also counts
+        for want in [ref] + list(task.get("accepted_answers") or []):
+            want = _as_list(want)
+            if want is not None and len(got) == len(want) and all(
+                    norm_label(a) == norm_label(b) for a, b in zip(got, want)):
+                return 1
+        return 0
     return int(norm_label(parsed) == norm_label(ref))

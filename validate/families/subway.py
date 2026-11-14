@@ -59,6 +59,8 @@ def _walk(g, in_view):
 
 
 def min_stops_01bfs(g, in_view, sc, o, d):
+    """Fewest stops: 0-1 BFS over (station, route, arrived_by_train). Changing trains or walking between joined
+    stations costs 0 stops; the trip starts at the named origin and must END with a train arriving at d."""
     stops, ride = network(g, in_view, sc)
     nbr = defaultdict(set)
     for r, es in ride.items():
@@ -66,28 +68,29 @@ def min_stops_01bfs(g, in_view, sc, o, d):
             nbr[(a, r)].add((b, r))
             nbr[(b, r)].add((a, r))
     walk = _walk(g, in_view)
+    nm = lambda x: g["stations"][x]["name"]
+    O = sorted(m for m in {o} | walk[o] if nm(m) == nm(o))
+    D = sorted(m for m in {d} | walk[d] if nm(m) == nm(d))
     dist = {}
     dq = deque()
-    W_ = _walk(g, in_view)
-    O = sorted({o} | W_[o])
-    D = sorted({d} | W_[d])
     for o_ in O:
         for r in stops[o_]:
-            dist[(o_, r)] = 0
-            dq.append((o_, r))
+            dist[(o_, r, 0)] = 0
+            dq.append((o_, r, 0))
     while dq:
-        s, r = dq.popleft()
-        k = dist[(s, r)]
-        free = [(s, r2) for r2 in stops[s] if r2 != r] + [(s2, r2) for s2 in walk[s] for r2 in stops[s2]]
+        s, r, f = dq.popleft()
+        k = dist[(s, r, f)]
+        free = [(s, r2, 0) for r2 in stops[s] if r2 != r] + [(s2, r2, 0) for s2 in walk[s] for r2 in stops[s2]]
         for n in free:
             if dist.get(n, 1e9) > k:
                 dist[n] = k
                 dq.appendleft(n)
-        for n in nbr[(s, r)]:
+        for (s2, r2) in nbr[(s, r)]:
+            n = (s2, r2, 1)
             if dist.get(n, 1e9) > k + 1:
                 dist[n] = k + 1
                 dq.append(n)
-    vals = [dist[(d_, r)] for d_ in D for r in stops[d_] if (d_, r) in dist]
+    vals = [dist[(d_, r, 1)] for d_ in D for r in stops[d_] if (d_, r, 1) in dist]
     return min(vals) if vals else None
 
 
@@ -114,9 +117,9 @@ def enumerate_trips(g, in_view, sc, o, d, max_legs=3, access=None):
 
     out = set()
     R = g["routes"]
-    D = {d} | walk[d]
+    D = {m for m in {d} | walk[d] if g["stations"][m]["name"] == g["stations"][d]["name"]}
 
-    def go(s, legs, xfers, nst, used):
+    def go(s, legs, xfers, nst, used, xt=0):
         if len(legs) >= max_legs:
             return
         for r in sorted(stops[s]):
@@ -127,17 +130,20 @@ def enumerate_trips(g, in_view, sc, o, d, max_legs=3, access=None):
                     continue
                 L = legs + [R[r]["name"]]
                 if t in D and (access is None or t in access):
-                    out.add((len(L) - 1, nst + n, tuple(L), tuple(xfers)))
+                    out.add((len(L) - 1 + xt, nst + n, tuple(L), tuple(xfers)))
                 if access is not None and t not in access:
                     continue
                 for t2 in [t] + sorted(walk[t]):
                     if access is not None and t2 not in access:
                         continue
-                    go(t2, L, xfers + [t], nst + n, used | {r})
+                    go(t2, L, xfers + [t], nst + n, used | {r}, xt)
 
-    for o_ in sorted({o} | walk[o]):
+    for o_ in sorted(m for m in {o} | walk[o] if g["stations"][m]["name"] == g["stations"][o]["name"]):
         if access is None or o_ in access:
             go(o_, [], [], 0, frozenset())
+            for w_ in sorted(walk[o_]):              # walk to a joined station first: one transfer
+                if access is None or w_ in access:
+                    go(w_, [], [], 0, frozenset(), 1)
     return out
 
 
@@ -203,7 +209,7 @@ def check(task: dict, data: dict, png_path: str) -> dict:
         need.append(task["answer"])
         if task["answer"] not in texts:
             missing.append(task["answer"])
-    in_q = all(labels.get(s) in task["question"] for s in named if s)
+    in_q = all(labels.get(s) is not None and labels[s] in task["question"] for s in named if s)
     res["names_visible"] = dict(passed=not missing and in_q, missing=missing)
 
     # 4 OCR: read each needed label at the position the renderer reported, compare with the expected text
@@ -244,6 +250,22 @@ def check(task: dict, data: dict, png_path: str) -> dict:
     res["no_part_time_stops"] = dict(passed=not pt_, part_time=pt_)
 
     # 5 uniqueness (stored by generator), 6 memory trap
+    # accepted equivalents: every one must be a real trip on this map with the minimum number of transfers
+    acc_ans = task.get("accepted_answers") or q["meta"].get("accepted_answers")
+    if acc_ans:
+        try:
+            acc_ = None
+            if qt == "accessible_route":
+                acc_ = {s_ for s_, v in data["layout"]["labels"].items() if v.get("accessible")}
+            tr_ = enumerate_trips(g, in_view, sc, meta["origin"], meta["dest"], access=acc_)
+            mt = min(t_[0] for t_ in tr_)
+            real = {t_[2] for t_ in tr_ if t_[0] == mt}
+            bad_acc = [a_ for a_ in acc_ans if tuple(a_) not in real]
+            res["accepted_answers_valid"] = dict(passed=not bad_acc and task["answer"] in acc_ans,
+                                                 not_min_transfer_trips=bad_acc)
+        except Exception as e:
+            res["accepted_answers_valid"] = dict(passed=False, error=repr(e))
+
     # every named station's label must be unambiguous (closer to its own markers than to any other station's)
     amb = [labels.get(s_) for s_ in named if s_ and data["layout"]["labels"].get(s_, {}).get("ambiguous")]
     if qt == "transfer_station":

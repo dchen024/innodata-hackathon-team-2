@@ -16,7 +16,7 @@ import numpy as np
 from generator.base import Family, NoValidQuestion, Question
 from generator.families.subway.render import complex_groups, complex_head, load_graph, render_map
 
-VERSION = "subway-0.2.0"
+VERSION = "subway-0.3.0"
 
 # task windows: centre (lat, lon), half-size in degrees (lat, lon), rotation (Manhattan grid upright)
 WINDOWS = {
@@ -125,8 +125,8 @@ def plan(graph, in_view, sc, origin, dest, objective="transfers", access=None):
     Returns (best cost, list of all optimal trips); a trip is a list of (route, board station, alight station)."""
     stops, ride = network(graph, in_view, sc)
     adj = defaultdict(list)                          # (station, route) -> [(station', route', dT, dS)]
-    for r, es in ride.items():
-        for a, b in es:
+    for r, es in sorted(ride.items()):
+        for a, b in sorted(es):
             adj[(a, r)].append((b, r, 0, 1))
             adj[(b, r)].append((a, r, 0, 1))
     complex_of = {s: graph["stations"][s]["complex_id"] for s in in_view}
@@ -134,46 +134,50 @@ def plan(graph, in_view, sc, origin, dest, objective="transfers", access=None):
     for g_ in complex_groups(graph, set(in_view)).values():
         for a_ in g_:
             walk[a_] |= g_ - {a_}
-    for s in in_view:
+    for s in sorted(in_view):
         if access is not None and s not in access:      # cannot change trains at an inaccessible station
             continue
-        for r1 in stops[s]:
-            for r2 in stops[s]:
+        for r1 in sorted(stops[s]):
+            for r2 in sorted(stops[s]):
                 if r1 != r2:
                     adj[(s, r1)].append((s, r2, 1, 0))
-            for s2 in walk[s]:
+            for s2 in sorted(walk[s]):
                 if access is not None and s2 not in access:
                     continue
-                for r2 in stops[s2]:
+                for r2 in sorted(stops[s2]):
                     adj[(s, r1)].append((s2, r2, 1, 0))
     key = (lambda t, n: (t, n)) if objective == "transfers" else (lambda t, n: (n, t))
     # origin and destination are station COMPLEXES (a rider "at Herald Sq" can board any of its platforms)
-    cx = lambda s: sorted({s} | walk[s])
+    # origin/destination = the named station (all same-name platforms), not other names in its complex
+    cx = lambda s: sorted(m for m in ({s} | walk[s]) if graph["stations"][m]["name"] == graph["stations"][s]["name"])
     origins, dests = cx(origin), set(cx(dest))
     if access is not None:
         origins = [o_ for o_ in origins if o_ in access]
         dests = {d_ for d_ in dests if d_ in access}
+    # state = (station, route, arrived_by_ride). Every non-ride step (change at a station, or a walk between
+    # joined stations) costs one transfer; the trip must END with a ride into the destination.
     dist, preds = {}, defaultdict(list)
     pq = []
     for o_ in origins:
         for r in sorted(stops[o_]):
-            dist[(o_, r)] = key(0, 0)
-            heapq.heappush(pq, (key(0, 0), o_, r))
+            dist[(o_, r, 0)] = key(0, 0)
+            heapq.heappush(pq, (key(0, 0), o_, r, 0))
     while pq:
-        d, s, r = heapq.heappop(pq)
-        if d > dist.get((s, r), (9e9, 9e9)):
+        d, s, r, f = heapq.heappop(pq)
+        if d > dist.get((s, r, f), (9e9, 9e9)):
             continue
         t, n = (d if objective == "transfers" else (d[1], d[0]))
         for s2, r2, dt, dn in adj[(s, r)]:
+            f2 = 1 if dn else 0
             nd = key(t + dt, n + dn)
-            old = dist.get((s2, r2))
+            old = dist.get((s2, r2, f2))
             if old is None or nd < old:
-                dist[(s2, r2)] = nd
-                preds[(s2, r2)] = [(s, r)]
-                heapq.heappush(pq, (nd, s2, r2))
+                dist[(s2, r2, f2)] = nd
+                preds[(s2, r2, f2)] = [(s, r, f)]
+                heapq.heappush(pq, (nd, s2, r2, f2))
             elif nd == old:
-                preds[(s2, r2)].append((s, r))
-    ends = [(dist[(d_, r)], (d_, r)) for d_ in sorted(dests) for r in stops[d_] if (d_, r) in dist]
+                preds[(s2, r2, f2)].append((s, r, f))
+    ends = [(dist[(d_, r, 1)], (d_, r, 1)) for d_ in sorted(dests) for r in sorted(stops[d_]) if (d_, r, 1) in dist]
     if not ends:
         return None, []
     best = min(e[0] for e in ends)
@@ -182,7 +186,7 @@ def plan(graph, in_view, sc, origin, dest, objective="transfers", access=None):
     def walk_back(node, acc, depth=0):
         if depth > 80 or len(trips) > 200:
             return
-        if node[0] in origins and dist[node] == key(0, 0):
+        if node[0] in origins and node[2] == 0 and dist[node] == key(0, 0):
             trips.append(acc[::-1])
             return
         for p in preds[node]:
@@ -191,28 +195,55 @@ def plan(graph, in_view, sc, origin, dest, objective="transfers", access=None):
     for d, node in ends:
         if d == best:
             walk_back(node, [node])
-    # compress node paths into legs (route, board, alight); score each trip by what a rider experiences
-    # (a walk inside the origin/destination complex is not a transfer), keep only the best
-    scored = []
+    # legs = the rides only: (route, board station, alight station)
+    out = []
     for path in trips:
-        legs, n_stops = [], 0
-        for i, (s, r) in enumerate(path):
-            if i and path[i - 1][1] == r and path[i - 1][0] != s:
-                n_stops += 1
-            if legs and legs[-1][0] == r:
-                legs[-1][2] = s
+        legs = []
+        for (s, r, f), (s2, r2, f2) in zip(path, path[1:]):
+            if f2 != 1:
+                continue                             # transfer step
+            if legs and legs[-1][0] == r2 and legs[-1][2] == s and (s, r, f) == (legs[-1][2], r2, f):
+                legs[-1][2] = s2
+            elif legs and legs[-1][0] == r2 and legs[-1][2] == s:
+                legs[-1][2] = s2
             else:
-                legs.append([r, s, s])
-        legs = [tuple(l) for l in legs if l[1] != l[2]]
-        if not legs:
+                legs.append([r2, s, s2])
+        legs = [tuple(l) for l in legs]
+        visited = [st_ for (st_, _, _) in path]
+        ridden = [st_ for i_, (st_, _, f_) in enumerate(path) if f_ == 1 or i_ == 0]
+        # no U-turns / revisits (riding out and back to "arrive by train" is not a real trip), at most 3 rides
+        if (not legs or any(l[1] == l[2] for l in legs) or len(set(ridden)) != len(ridden) or len(legs) > 3
+                or len({l[0] for l in legs}) != len(legs)):   # never ride the same service twice
             continue
-        k = key(len(legs) - 1, n_stops)
-        if (k, legs) not in scored:
-            scored.append((k, legs))
-    if not scored:
+        if legs not in out:
+            out.append(legs)
+    if not out:
         return None, []
-    best = min(k for k, _ in scored)
-    return best, [l for k, l in scored if k == best]
+    return best, out
+
+
+def equivalent_sequences(graph, in_view, sc, trips, access=None):
+    """All service sequences that ride the SAME legs (same boarding and alighting stations) as an optimal trip,
+    with any service that runs between those two stations on the map (e.g. A, C or E from 59 St to 42 St).
+    These are accepted as correct answers alongside the canonical one."""
+    import itertools
+    _, ride = network(graph, in_view, sc)
+    R = graph["routes"]
+    adj = {r: defaultdict(set) for r in ride}
+    for r, es in ride.items():
+        for a, b in es:
+            adj[r][a].add(b)
+            adj[r][b].add(a)
+    out = set()
+    for trip in trips:
+        options = []
+        for (r0, a, b) in trip:
+            alts = sorted(r for r in ride if a in adj[r] and _bfs_path(adj[r], a, b))
+            options.append(sorted({R[r]["name"] for r in alts}))
+        for combo in itertools.product(*options):
+            if len(set(combo)) == len(combo):
+                out.add(tuple(combo))
+    return sorted(out)
 
 
 # ---------------------------------------------------------------------------------------------- family
@@ -329,7 +360,10 @@ class SubwayFamily(Family):
         R = g["routes"]
         label, counts, groups = self._names(in_view)
         # endpoints: complexes whose label is unique in view (no "which 23 St?" ambiguity)
-        heads = sorted(m[0] for m in groups.values() if counts[label[m[0]]] == 1)
+        # endpoints: uniquely named, and still served under the service change (never a closed station)
+        stops_sc_, _ = network(g, in_view, sc)
+        served = lambda m: any(stops_sc_[x] for x in m if label[x] == label[m[0]])
+        heads = sorted(m[0] for m in groups.values() if counts[label[m[0]]] == 1 and served(m))
         if len(heads) < 4:
             raise NoValidQuestion
         rn = lambda r: R[r]["name"]
@@ -384,7 +418,8 @@ class SubwayFamily(Family):
                 raise NoValidQuestion
             return (Question("min_stops",
                              f"A rider travels {when} from {label[o]} to {label[d]} using only the services and "
-                             f"free transfers shown on this map. What is the fewest number of station stops the "
+                             f"free transfers shown on this map. Walking between stations joined on the map counts "
+                             f"as a transfer, and the trip ends when a train arrives at {label[d]} itself. What is the fewest number of station stops the "
                              f"trip can take? Count every station where the rider's train stops after leaving "
                              f"{label[o]}, including {label[d]}; transfers are allowed and do not add stops. "
                              f"Answer with an integer.",
@@ -405,11 +440,14 @@ class SubwayFamily(Family):
                 raise NoValidQuestion
             return (Question("reroute_lines",
                              f"A rider travels {when} from {label[o]} to {label[d]} using only the services and "
-                             f"free transfers shown on this map. They want the fewest transfers and, among those "
-                             f"trips, the fewest station stops. Which services do they ride, in order? Answer as "
+                             f"free transfers shown on this map. Walking between stations joined on the map counts "
+                             f"as a transfer, and the trip ends when a train arrives at {label[d]} itself. They want the fewest transfers and, among those "
+                             f"trips, the fewest station stops. Which services do they ride, in order? If more than one "
+                             f"service runs between the same two stations on a leg, any of them is accepted. Answer as "
                              f"a JSON list of route letters or numbers, for example [\"A\", \"7\"].",
                              ans, "sequence"),
-                    dict(origin=o, dest=d, trips=trips[:10], normal_answer=sorted(seqs0)))
+                    dict(origin=o, dest=d, trips=trips[:10], normal_answer=sorted(seqs0),
+                         accepted_answers=[list(x) for x in equivalent_sequences(g, in_view, sc, trips)]))
         if qtype == "transfer_station":
             if best[0] != 1:
                 raise NoValidQuestion
@@ -417,7 +455,7 @@ class SubwayFamily(Family):
             for t in trips:
                 # transfer must happen inside ONE named station (alight and board under the same label);
                 # a walk between two differently named stations makes "which station?" ambiguous
-                if label[t[0][2]] != label[t[1][1]]:
+                if len(t) != 2 or label[t[0][2]] != label[t[1][1]]:   # the one transfer must be between rides
                     raise NoValidQuestion
                 xs.add(label[t[0][2]])
             if len(xs) != 1:
@@ -428,7 +466,8 @@ class SubwayFamily(Family):
                 raise NoValidQuestion
             return (Question("transfer_station",
                              f"A rider travels {when} from {label[o]} to {label[d]} using only the services and "
-                             f"free transfers shown on this map, with exactly one transfer and, among such trips, "
+                             f"free transfers shown on this map (walking between stations joined on the map counts as "
+                             f"a transfer; the trip ends when a train arrives at {label[d]} itself), with exactly one transfer and, among such trips, "
                              f"the fewest station stops. At which station do they transfer? Answer with the "
                              f"station name exactly as printed on the map.",
                              ans, "label"),
@@ -447,16 +486,25 @@ class SubwayFamily(Family):
             # the accessibility symbols must matter: the unrestricted best trips differ
             if tuple(ans) in seqs:
                 raise NoValidQuestion
+            # and the service change must matter: the accessible answer under NORMAL service differs
+            _, trips_n = plan(g, in_view, None, o, d, objective="transfers", access=acc)
+            seqs_n = {tuple(rn(l[0]) for l in t) for t in trips_n}
+            if level >= 2 and tuple(ans) in seqs_n:
+                raise NoValidQuestion
             return (Question("accessible_route",
                              f"A rider who uses a wheelchair travels {when} from {label[o]} to {label[d]} using only "
-                             f"the services and free transfers shown on this map. They can only enter, leave or "
+                             f"the services and free transfers shown on this map. Walking between stations joined on "
+                             f"the map counts as a transfer, and the trip ends when a train arrives at {label[d]} "
+                             f"itself. They can only enter, leave or "
                              f"change trains at stations marked with the accessibility symbol. They want the fewest "
                              f"transfers and, among those trips, the fewest station stops. Which services do they "
-                             f"ride, in order? Answer as a JSON list of route letters or numbers, for example "
+                             f"ride, in order? If more than one service runs between the same two stations on a leg, "
+                             f"any of them is accepted. Answer as a JSON list of route letters or numbers, for example "
                              f"[\"A\", \"7\"].",
                              ans, "sequence"),
                     dict(origin=o, dest=d, trips=trips_a[:10], unrestricted_answer=sorted(seqs),
-                         normal_answer=sorted(seqs)))
+                         normal_answer=sorted(seqs_n),
+                         accepted_answers=[list(x) for x in equivalent_sequences(g, in_view, sc, trips_a, acc)]))
         raise ValueError(qtype)
 
     def render(self, data, png_path):

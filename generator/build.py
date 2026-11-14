@@ -33,6 +33,8 @@ def build_task(spec: dict, out_dir: Path) -> dict:
                level=spec["level"], style=spec["style"], seed=spec["seed"], generator_version=fam.version,
                data=f"data/{data_path.name}", image_sha256=hashlib.sha256(img.read_bytes()).hexdigest(),
                references=data.get("references", []))
+    if q.meta.get("accepted_answers"):
+        rec["accepted_answers"] = q.meta["accepted_answers"]      # equivalent services on the same legs
     for k in ("tolerance_rel", "tolerance_abs", "options"):
         v = getattr(q, k)
         if v is not None:
