@@ -165,16 +165,22 @@ We sorted every wrong answer on a valid pilot task (13 in all: 5 Haiku, 8 GPT-6 
 | Pilot 2 | subway-0.2.0 | 11 evaluated of 12 (`tasks/pilot2`) | 8/11 (73%) | 5/11 (45%) | `accessible_route` hardest (1/3 each). Test audit found the planner did not follow the stated walking/arrival rules and the accessible memory trap compared against the wrong baseline → planner rewritten on (station, route, arrived-by-train) states, rules stated in every question, closed stations never used as endpoints, U-turn trips rejected, max 3 rides |
 | Final | subway-0.3.0 | 10 (`tasks/final`) | 5/10 (50%) | 8/10 (80%) | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
 
-Reasoning-effort sweep on the final 10 (Claude Haiku 5.5, temperature 0): **low 4/10, medium 5/10, high 5/10**
-(`results/final_haiku_low`, `results/final_haiku_medium`, `results/final`). Exact commands:
-`scripts/haiku_effort_sweep.sh`; the effort is sent as `reasoning.effort` in `eval/openrouter.py` (`build_body`) and
+Reasoning-effort sweep on the final 10 (temperature 0 requested, same submitted images):
+
+| Model | low | medium | high |
+|---|---|---|---|
+| Claude Haiku 5.5 | 4/10 | 5/10 | 5/10 |
+| GPT-6 Luna | 5/10 | 6/10 | 8/10 |
+
+Folders: `results/final_{haiku,luna}_{low,medium}` and `results/final` (high, the reported run). Exact commands:
+`scripts/effort_sweep.sh`; the effort is sent as `reasoning.effort` in `eval/openrouter.py` (`build_body`) and
 recorded in each folder's `run_config.json`.
 
 ## Key findings
 
 - Generation yield (generator v0.3, 20 fresh seeds at level 3): 17 tasks built (3 seeds found no scenario meeting
   every rule within 400 attempts) and 16 passed every automatic check (1 map showed a part-time stop).
-- Final accuracy at high reasoning: Haiku 5.5 5/10, GPT-6 Luna 8/10; all 40 replies in the reported runs complete
+- Final accuracy at high reasoning: Haiku 5.5 5/10, GPT-6 Luna 8/10; all 60 replies across the reported run and the effort sweep complete
   (`finish_reason=stop`, no API errors). Cost of the reported run: $0.062.
 - By question type (Haiku low / medium / high / Luna high): `accessible_route` 1/2/1/3 of 3, `reroute_lines`
   2/2/2/3 of 3, `transfer_station` 1/0/2/1 of 2, `min_stops` 0/1/0/1 of 2.
@@ -182,7 +188,9 @@ recorded in each folder's `run_config.json`.
   needs a one-stop hop onto an express).
 - Wheelchair routes separate the models: Haiku fails 2 of 3 at low and high effort (on t08 by changing trains at
   stations without the symbol, on t07 by choosing a legal but longer route); Luna solves all 3.
-- More reasoning helps Haiku only a little here (low 4, medium 5, high 5).
+- More reasoning helps GPT-6 Luna clearly (low 5, medium 6, high 8) and Claude Haiku 5.5 barely (4, 5, 5). At low
+  and medium effort Luna also misses t05 (fewest stops) and t08 (wheelchair route), and on t02 answers 2 → Q, a legal
+  trip but one stop longer than 4 → Q because the 4 runs express; at high effort it gets t02 and t08 right.
 - Run-to-run variance: before the reported run, the same 10 tasks built on macOS (8 of 10 images byte-identical to
   the submitted ones, the other 2 differing only in marker layout) gave Haiku 6/10 and Luna 7/10. That run was
   discarded and everything re-run on the submitted Docker-built images, so the reported numbers come from one
