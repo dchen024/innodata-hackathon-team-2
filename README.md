@@ -143,7 +143,7 @@ Failure patterns in the final run (see the hand check below):
   59 St-Columbus Circle.
 - **Illegal transfer** — t03: Haiku low J → A → 1 (no free transfer from the A to the 1 on this map).
 
-### Pilot failure analysis (pilots 1 and 2)
+### Failure analysis of the first two rounds
 
 We sorted every wrong answer on a valid pilot task (13 in all: 5 Haiku, 8 GPT-6 Luna). For each one we compared the model's answer with alternative answers computed by code: the answer under normal service, and the answer without the accessibility constraint.
 
