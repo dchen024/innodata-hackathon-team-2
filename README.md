@@ -340,4 +340,4 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 |---|---|
 | Daniel Chen | Pipeline design, subway map renderer and task generator, validation, hand check of all 10 tasks |
 | Iana Grytsenko | Evaluation module and tests (PR #1, `eval/tests/`), README evaluation docs, project structure and pilot failure analysis, clean-copy submission check (format checker on the git-archived ZIP, Docker rebuild and evaluation), slides |
-| Ankith Nagabandi | TODO |
+| Ankith Nagabandi | Checked and evaluated the generated diagrams and the pipeline flow |
