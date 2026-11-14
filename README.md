@@ -191,7 +191,7 @@ Folders: run 1 `results/final` (high) and `results/final_{haiku,luna}_{low,mediu
 in `eval/openrouter.py` (`build_body`) and recorded in each folder's `run_config.json`. 1,200 replies in all, every
 one complete (status ok, finish reason stop); total OpenRouter cost about $2.42.
 
-## Key findings
+## Our Key findings
 
 - Generation yield (generator v0.3, 20 fresh seeds at level 3): 17 tasks built (3 seeds found no scenario meeting
   every rule within 400 attempts) and 16 passed every automatic check (1 map showed a part-time stop).
@@ -217,10 +217,28 @@ one complete (status ok, finish reason stop); total OpenRouter cost about $2.42.
   An earlier run on the same 10 tasks built on macOS (8 of 10 images byte-identical) gave Haiku 6/10 and Luna 7/10 at
   high effort, and the judges' Docker `reproduce` check gave Haiku 7/10 and Luna 6/10; the macOS run was discarded so
   reported numbers come from complete runs on exactly the submitted images, and the Docker check ran outside the
-  repository. Pilot and candidate runs are kept in `results/pilot1`, `results/pilot2` and `results/cand_*`.
+  repository. An independent reproduction from a clean copy of the repository (`git archive` of the submission,
+  `docker build`, then the `reproduce` command) rebuilt all 10 tasks identical to `tasks/final` (image hash,
+  question, answer), all valid, with a clean evaluation: Haiku 5/10, GPT-6 Luna 6/10. Pilot and candidate runs are
+  kept in `results/pilot1`, `results/pilot2` and `results/cand_*`.
 - Adversarial review (Claude Opus 5.5 solving each task blind, then auditing the reference): all 10 final tasks
   valid; during development it caught real bugs (an ambiguous walk-transfer, a closed station used as a destination,
   an unstated arrival rule), each fixed in the generator.
+
+### Charts
+
+Run 1 in detail: correct answers on the final 10 tasks by model and reasoning effort (the reported run in
+`results/final`, the run-1 effort sweep, and the clean-copy Docker reproduction, whose `run_config.json` is in
+`docs/charts/`). The twenty-run graph is `docs/performance.png` above.
+
+![Final 10 tasks: correct answers by model, effort and run](docs/charts/model_accuracy.png)
+
+Test suite (`tests/` and `eval/tests/`): 94 passed, 0 failed, 16 expected failures (`xfail`, listed with reasons in
+the test files):
+
+![Test suite results by file](docs/charts/tests_by_file.png)
+
+Regenerate both: `python -m pytest tests eval/tests --junitxml=docs/charts/junit.xml && python scripts/make_charts.py`.
 
 ## Hand check
 
@@ -396,5 +414,5 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 | Member | Contribution |
 |---|---|
 | Daniel Chen | Pipeline design, subway map renderer and task generator, validation, hand check of all 10 tasks |
-| Iana Grytsenko | Evaluation module and tests (`eval/tests/`, PR #1), README project structure and pilot failure analysis |
-| Ankith Nagabandi | TODO (contribution) |
+| Iana Grytsenko | Evaluation module and tests (PR #1, `eval/tests/`), README evaluation docs, project structure and pilot failure analysis, clean-copy submission check (format checker on the git-archived ZIP, Docker rebuild and evaluation), slides |
+| Ankith Nagabandi | Checked and evaluated the generated diagrams and the pipeline flow |
