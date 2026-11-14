@@ -36,6 +36,20 @@ CSV_CELL_LIMIT = 100_000
 TRUNC_NOTE = "\n...[truncated in CSV; full response in responses.jsonl and raw/{slug}/{task_id}.json]"
 
 
+ENCRYPTED_NOTE = "[omitted: provider-encrypted reasoning, not readable]"
+
+
+def drop_encrypted(obj):
+    """Replace opaque `reasoning.encrypted` blobs with a note (unreadable, and they can trip secret scanners)."""
+    if isinstance(obj, dict):
+        if obj.get("type") == "reasoning.encrypted" and "data" in obj:
+            obj = {**obj, "data": ENCRYPTED_NOTE}
+        return {k: drop_encrypted(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [drop_encrypted(v) for v in obj]
+    return obj
+
+
 def model_slug(model: str) -> str:
     return model.replace("/", "__").replace(":", "_")
 
@@ -100,7 +114,7 @@ def run_one(model: str, task: dict, task_dir: Path, out_dir: Path, max_tokens: i
         "parsed": parsed, "ref_answer": task.get("answer"), "correct": correct,
         "usage": res.get("usage"), "cost": res.get("cost"), "error": res.get("error"),
         "attempts": res.get("attempts"), "retry_log": res.get("retry_log"), "latency_s": res.get("latency_s"),
-        "response": res.get("raw"),
+        "response": drop_encrypted(res.get("raw")),
     }, indent=2, ensure_ascii=False))
 
     return {

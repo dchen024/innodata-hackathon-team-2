@@ -273,6 +273,8 @@ FINAL ANSWER: <answer>
 | `sequence` | give the answer as a JSON list of names exactly as written on the map, in order, e.g. ["A", "7"]. |
 
 Every task's exact prompt is saved with its raw response (`results/<set>/raw/<model>/<task_id>.json`).
+GPT-6 Luna's provider-encrypted reasoning blobs (`reasoning.encrypted`) are replaced by a note when saved: they
+cannot be read, and their random text tripped the format checker's key scanner.
 
 ### Extraction and scoring
 
