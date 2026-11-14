@@ -89,8 +89,7 @@ TODO.
 
 TODO.
 
-## Team contributions
-
+## Team contribution 
 | Member | Contribution |
 |---|---|
 | TODO | |
