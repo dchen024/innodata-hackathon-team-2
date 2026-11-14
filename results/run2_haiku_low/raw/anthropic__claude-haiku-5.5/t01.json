@@ -1,0 +1,114 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t01",
+  "time": "2026-11-14T19:32:04+00:00",
+  "request": {
+    "prompt": "A rider who uses a wheelchair travels this weekend from 59 St-Columbus Circle to 23 St-Baruch College using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 23 St-Baruch College itself. They can only enter, leave or change trains at stations marked with the accessibility symbol. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t01.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The fewest-transfer trip needs two transfers. No single service from 59 St-Columbus Circle reaches the 6 line at an accessible station (51 St or 23 St-Baruch), and Grand Central-42 St is closed, so the 6 cannot be reached there.\n\nThe route with the fewest stops:\n1. **D** from 59 St-Columbus Circle to 7 Av (accessible), one stop.\n2. Transfer within 7 Av to the **E**, then ride it to Lexington Av/53 St (accessible), passing 5 Av/53 St.\n3. Transfer (joined, free) to the **6** at 51 St (accessible), then ride it through the closed Grand Central-42 St (no stop) to 33 St, 28 St and 23 St-Baruch College.\n\nThe alternative through 42 St-Port Authority with A/E needs more stops.\n\nFINAL ANSWER: [\"D\", \"E\", \"6\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "D",
+    "E",
+    "6"
+  ],
+  "ref_answer": [
+    "A",
+    "E",
+    "6"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5054,
+    "completion_tokens": 3922,
+    "total_tokens": 8976,
+    "cost": 0.0024664,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0024664,
+      "upstream_inference_prompt_cost": 0.0005054,
+      "upstream_inference_completions_cost": 0.001961
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3615,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0024664,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 18.37,
+  "response": {
+    "id": "gen-1794684706-abbrpKMBX9tpE00eMHkV",
+    "object": "chat.completion",
+    "created": 1794684706,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The fewest-transfer trip needs two transfers. No single service from 59 St-Columbus Circle reaches the 6 line at an accessible station (51 St or 23 St-Baruch), and Grand Central-42 St is closed, so the 6 cannot be reached there.\n\nThe route with the fewest stops:\n1. **D** from 59 St-Columbus Circle to 7 Av (accessible), one stop.\n2. Transfer within 7 Av to the **E**, then ride it to Lexington Av/53 St (accessible), passing 5 Av/53 St.\n3. Transfer (joined, free) to the **6** at 51 St (accessible), then ride it through the closed Grand Central-42 St (no stop) to 33 St, 28 St and 23 St-Baruch College.\n\nThe alternative through 42 St-Port Authority with A/E needs more stops.\n\nFINAL ANSWER: [\"D\", \"E\", \"6\"]",
+          "refusal": null,
+          "reasoning": "I'm working out the route from 59 St-Columbus Circle to 23 St-Baruch College, since both are accessible, and I'm looking at which lines serve each one.\n\nI'm checking which accessible 6-line station can be reached from 59 St-Columbus Circle with a single transfer, since none of its services go directly to 23 St-Baruch. The 51 St stop looks like the likely transfer point, and I'm weighing that against the other options.\n\nI'm checking whether the E line could serve as the transfer, since the 6 and E are joined near Lexington Av/53 St and 51 St, which is accessible. But none of my lines from 59 St reach the E, so I'm weighing other transfer options, like one at Times Sq.\n\nI'm now checking whether a D train from 59 St could work, since it stops at 47-50 Sts-Rockefeller and 34 St-Herald Sq, but neither of those has a 6 line. I'm weighing whether the 1 line to 23 St might serve as a route after all.\n\nI'm weighing whether the E line could connect through 51 St to the 6, but I'm not sure the E from 59 St gets there. I'm also considering whether a transfer at Times Sq or Herald Sq would lead onto the 6, though neither seems to.\n\nI'm checking the 7 Av stop next, since both the D and E run through it. From there the E could carry me east toward Lexington Av/53 St, which is accessible, and that may be a way onto the 6.\n\nI'm testing the D-to-E route through 7 Av, then the E-to-6 transfer at Lexington Av/53 St and 51 St, and I'm counting that as two transfers.\n\nI'm settling on two transfers as the count, since D to E at 7 Av and then E to the 6 at Lexington Av/53 St both involve switching trains. I'm also checking whether a single transfer could work from 59 St through A or C to 42 St-Port Authority, and I'm weighing whether E from there reaches the 6.\n\nI'm checking whether a single train from 59 St could land me on the 6 line at an accessible station, and the D's route toward 7 Av is the one I'm tracing now.\n\nI'm now weighing the 2-transfer routes and checking how many stops each one takes, starting with the D from 59 St to 7 Av as Option A, and I'm not yet sure whether that leg is a single stop.\n\nI'm checking the D line's stops from 59 St, and it seems to reach 7 Av, which is one stop away. From 7 Av, the E would run through 5 Av/53 St to Lexington Av/53 St, and the 6 connects from there at 51 St.\n\nI'm counting the stops on the route through the 6 at 51 St, which makes three stops from 51 St down to 23 St-Baruch. Then I'm weighing Option B, the A from 59 St to 42 St-Port Authority, and whether that A ride stops at 50 St on the way.\n\nI'm comparing the A from 59 St to 42 St-Port Authority with the E from there, and I'm not sure whether the A skips 50 St. The E from Port Authority would take more stops to reach Lexington, so the first option still looks shorter.\n\nI'm estimating the stop counts for the D-then-E-then-6 route, and it comes to roughly six stops in total. Since the 6 at 51 St passes Grand Central and then runs through 33 St and 28 St to 23 St, that leg is three stops. This route looks like the best fit, so I'll go with D, E, and 6.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out the route from 59 St-Columbus Circle to 23 St-Baruch College, since both are accessible, and I'm looking at which lines serve each one.\n\nI'm checking which accessible 6-line station can be reached from 59 St-Columbus Circle with a single transfer, since none of its services go directly to 23 St-Baruch. The 51 St stop looks like the likely transfer point, and I'm weighing that against the other options.\n\nI'm checking whether the E line could serve as the transfer, since the 6 and E are joined near Lexington Av/53 St and 51 St, which is accessible. But none of my lines from 59 St reach the E, so I'm weighing other transfer options, like one at Times Sq.\n\nI'm now checking whether a D train from 59 St could work, since it stops at 47-50 Sts-Rockefeller and 34 St-Herald Sq, but neither of those has a 6 line. I'm weighing whether the 1 line to 23 St might serve as a route after all.\n\nI'm weighing whether the E line could connect through 51 St to the 6, but I'm not sure the E from 59 St gets there. I'm also considering whether a transfer at Times Sq or Herald Sq would lead onto the 6, though neither seems to.\n\nI'm checking the 7 Av stop next, since both the D and E run through it. From there the E could carry me east toward Lexington Av/53 St, which is accessible, and that may be a way onto the 6.\n\nI'm testing the D-to-E route through 7 Av, then the E-to-6 transfer at Lexington Av/53 St and 51 St, and I'm counting that as two transfers.\n\nI'm settling on two transfers as the count, since D to E at 7 Av and then E to the 6 at Lexington Av/53 St both involve switching trains. I'm also checking whether a single transfer could work from 59 St through A or C to 42 St-Port Authority, and I'm weighing whether E from there reaches the 6.\n\nI'm checking whether a single train from 59 St could land me on the 6 line at an accessible station, and the D's route toward 7 Av is the one I'm tracing now.\n\nI'm now weighing the 2-transfer routes and checking how many stops each one takes, starting with the D from 59 St to 7 Av as Option A, and I'm not yet sure whether that leg is a single stop.\n\nI'm checking the D line's stops from 59 St, and it seems to reach 7 Av, which is one stop away. From 7 Av, the E would run through 5 Av/53 St to Lexington Av/53 St, and the 6 connects from there at 51 St.\n\nI'm counting the stops on the route through the 6 at 51 St, which makes three stops from 51 St down to 23 St-Baruch. Then I'm weighing Option B, the A from 59 St to 42 St-Port Authority, and whether that A ride stops at 50 St on the way.\n\nI'm comparing the A from 59 St to 42 St-Port Authority with the E from there, and I'm not sure whether the A skips 50 St. The E from Port Authority would take more stops to reach Lexington, so the first option still looks shorter.\n\nI'm estimating the stop counts for the D-then-E-then-6 route, and it comes to roughly six stops in total. Since the 6 at 51 St passes Grand Central and then runs through 33 St and 28 St to 23 St, that leg is three stops. This route looks like the best fit, so I'll go with D, E, and 6.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5054,
+      "completion_tokens": 3922,
+      "total_tokens": 8976,
+      "cost": 0.0024664,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0024664,
+        "upstream_inference_prompt_cost": 0.0005054,
+        "upstream_inference_completions_cost": 0.001961
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3615,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

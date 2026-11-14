@@ -1,0 +1,112 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t02",
+  "time": "2026-11-14T19:32:01+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Borough Hall to DeKalb Av using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at DeKalb Av itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t02.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "medium"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The trip needs one transfer. Borough Hall is served by the 2, 3 and 4 trains, and DeKalb Av is served only by the Q. The Q also stops at Atlantic Av-Barclays Ctr, so the plan is to ride a 2/3/4 train to Atlantic Av, then change to the Q.\n\nTaking the 4 from Borough Hall, the stops are Nevins St and then Atlantic Av-Barclays Ctr, which is 2 station stops. The 2 and 3 would make the same transfer but pass Hoyt St first, so they stop more often. From Atlantic Av the Q runs north to DeKalb Av. No zero-transfer trip exists, because no single service serves both Borough Hall and DeKalb Av.\n\nFINAL ANSWER: [\"4\", \"Q\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "4",
+    "Q"
+  ],
+  "ref_answer": [
+    "4",
+    "Q"
+  ],
+  "correct": 1,
+  "usage": {
+    "prompt_tokens": 4951,
+    "completion_tokens": 2846,
+    "total_tokens": 7797,
+    "cost": 0.0019181,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0019181,
+      "upstream_inference_prompt_cost": 0.0004951,
+      "upstream_inference_completions_cost": 0.001423
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2575,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0019181,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 15.44,
+  "response": {
+    "id": "gen-1794684706-0Ot3sUpH41CeOhVr4TvC",
+    "object": "chat.completion",
+    "created": 1794684706,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The trip needs one transfer. Borough Hall is served by the 2, 3 and 4 trains, and DeKalb Av is served only by the Q. The Q also stops at Atlantic Av-Barclays Ctr, so the plan is to ride a 2/3/4 train to Atlantic Av, then change to the Q.\n\nTaking the 4 from Borough Hall, the stops are Nevins St and then Atlantic Av-Barclays Ctr, which is 2 station stops. The 2 and 3 would make the same transfer but pass Hoyt St first, so they stop more often. From Atlantic Av the Q runs north to DeKalb Av. No zero-transfer trip exists, because no single service serves both Borough Hall and DeKalb Av.\n\nFINAL ANSWER: [\"4\", \"Q\"]",
+          "refusal": null,
+          "reasoning": "I'm working out which subway line reaches DeKalb Av, and it looks like only the Q serves that station. I'm now tracing the yellow line on the map from DeKalb Av toward Atlantic Av to see how the route runs.\n\nI'm checking the yellow line's path from DeKalb Av up toward the top, where the N, Q, and D meet. The dashed cream segment near Jay St looks unserved, so I'm weighing whether the Q really reaches DeKalb Av along the solid yellow track.\n\nI'm still tracing the yellow line from DeKalb Av down past Fulton toward Atlantic Av, and it seems to run toward the R line near Union St. I'm comparing that against the Borough Hall connection near Court St to see whether it actually gets me there.\n\nI'm checking where the Borough Hall marker sits relative to the cream dashed line and the Court St label, since the 2/3/4/R cluster near Court St might be the station I'm after.\n\nI'm checking which stop Borough Hall is, and it looks like the 2/3/4 cluster near Court St, which also joins the R. From there I'm weighing how to get to DeKalb Av, since only the Q serves it.\n\nI'm checking whether the Q really gets me to DeKalb Av from Atlantic Av, since the yellow line seems to continue north from there. I'm now weighing whether the Q's route from Atlantic actually runs up to DeKalb.\n\nI'm checking whether the Atlantic Av stop lets me ride the Q straight up to DeKalb Av, since the yellow line seems to climb from there to that station without a transfer.\n\nI'm settling on a route that goes from Borough Hall to Atlantic Av on the 2/3/4, then switches to the Q for the ride up to DeKalb Av. Since Borough Hall has no Q service, I'll need at least one transfer, and riding the 2/3/4 to Atlantic and changing there looks like the minimum.\n\nI'm weighing whether riding the 4 from Borough Hall to Nevins and then Atlantic is the shortest option, since the 2 or 3 would take the same route with an extra stop at Hoyt St.\n\nI'm settling on riding the 4 from Borough Hall to Atlantic Av, since its stops there make it a direct option, and then switching to the Q for the trip up to DeKalb Av.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out which subway line reaches DeKalb Av, and it looks like only the Q serves that station. I'm now tracing the yellow line on the map from DeKalb Av toward Atlantic Av to see how the route runs.\n\nI'm checking the yellow line's path from DeKalb Av up toward the top, where the N, Q, and D meet. The dashed cream segment near Jay St looks unserved, so I'm weighing whether the Q really reaches DeKalb Av along the solid yellow track.\n\nI'm still tracing the yellow line from DeKalb Av down past Fulton toward Atlantic Av, and it seems to run toward the R line near Union St. I'm comparing that against the Borough Hall connection near Court St to see whether it actually gets me there.\n\nI'm checking where the Borough Hall marker sits relative to the cream dashed line and the Court St label, since the 2/3/4/R cluster near Court St might be the station I'm after.\n\nI'm checking which stop Borough Hall is, and it looks like the 2/3/4 cluster near Court St, which also joins the R. From there I'm weighing how to get to DeKalb Av, since only the Q serves it.\n\nI'm checking whether the Q really gets me to DeKalb Av from Atlantic Av, since the yellow line seems to continue north from there. I'm now weighing whether the Q's route from Atlantic actually runs up to DeKalb.\n\nI'm checking whether the Atlantic Av stop lets me ride the Q straight up to DeKalb Av, since the yellow line seems to climb from there to that station without a transfer.\n\nI'm settling on a route that goes from Borough Hall to Atlantic Av on the 2/3/4, then switches to the Q for the ride up to DeKalb Av. Since Borough Hall has no Q service, I'll need at least one transfer, and riding the 2/3/4 to Atlantic and changing there looks like the minimum.\n\nI'm weighing whether riding the 4 from Borough Hall to Nevins and then Atlantic is the shortest option, since the 2 or 3 would take the same route with an extra stop at Hoyt St.\n\nI'm settling on riding the 4 from Borough Hall to Atlantic Av, since its stops there make it a direct option, and then switching to the Q for the trip up to DeKalb Av.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4951,
+      "completion_tokens": 2846,
+      "total_tokens": 7797,
+      "cost": 0.0019181,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0019181,
+        "upstream_inference_prompt_cost": 0.0004951,
+        "upstream_inference_completions_cost": 0.001423
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2575,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}
