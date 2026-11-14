@@ -30,6 +30,56 @@ seed + spec ─► generator (structured data JSON) ─► renderer (PNG) ─►
 | `results/<set>/` | `responses.csv`, `run_config.json`, `raw/` |
 | `tools/` | organizer-provided `check_submission.py` |
 
+## Project structure
+
+Current status: ✅ working, 🟡 placeholder (stub or empty).
+
+```
+innodata-hackathon-team-2-1/
+├── README.md                 ✅ project description
+├── Dockerfile                ✅ container setup (Python + OCR + fonts)
+├── requirements.txt          ✅ numpy, matplotlib, pillow, pytesseract, requests
+├── .env.example              ✅ template for OPENROUTER_API_KEY (copy to .env, never committed)
+│
+├── configs/                  which tasks to build
+│   ├── pilot.json            🟡 empty task list
+│   └── final.json            🟡 empty task list
+│
+├── generator/                makes the images and questions
+│   ├── base.py               ✅ Family interface every diagram type implements
+│   ├── build.py              🟡 turns a config into a task set
+│   └── families/             🟡 one module per diagram type
+│
+├── validate/                 checks the tasks are correct and readable
+│   ├── run.py                🟡
+│   ├── schema.py             🟡
+│   └── families/             🟡 per-diagram render/answer checks
+│
+├── eval/                     evaluates the models
+│   ├── prompt.py             ✅ builds the prompt sent to the model
+│   ├── openrouter.py         ✅ calls OpenRouter, retries on errors
+│   ├── extract.py            ✅ pulls out the FINAL ANSWER
+│   ├── score.py              ✅ marks each answer right or wrong
+│   ├── run.py                ✅ runs every model × task, writes the results files
+│   └── tests/                ✅ 42 tests (API faked)
+│
+├── factory/
+│   └── __main__.py           🟡 command line: `eval` works; build, validate, reproduce, fresh to do
+│
+├── tasks/                    🟡 built task sets (tasks/<set>/)
+├── results/                  🟡 evaluation results (results/<set>/)
+├── slides/                   🟡 presentation
+└── tools/
+    └── check_submission.py   ✅ organizers' format checker
+```
+
+How the pieces connect:
+
+```
+configs → generator → tasks/ → validate → eval → results/
+          (draw + ask)          (check)    (test models)
+```
+
 ## How the tasks were made hard and why the models failed
 
 TODO after the pilot.
