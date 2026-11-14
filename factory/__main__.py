@@ -20,6 +20,8 @@ def main():
     e.add_argument("--out", required=True)
     e.add_argument("--models", default=DEFAULT_MODELS)
     e.add_argument("--max-tokens", type=int, default=32000)
+    e.add_argument("--effort", default="high", choices=["minimal", "low", "medium", "high"])
+    e.add_argument("--workers", type=int, default=4)
 
     r = sub.add_parser("reproduce", help="rebuild tasks from a spec's seeds, validate, evaluate and score")
     r.add_argument("--spec", required=True)
@@ -38,6 +40,11 @@ def main():
     f.add_argument("--max-tokens", type=int, default=32000)
 
     args = ap.parse_args()
+    if args.cmd == "eval":
+        from eval.run import evaluate
+        models = [m.strip() for m in args.models.split(",") if m.strip()]
+        evaluate(args.tasks, args.out, models, args.max_tokens, effort=args.effort, workers=args.workers)
+        return
     raise SystemExit(f"`{args.cmd}` is not implemented yet")
 
 
