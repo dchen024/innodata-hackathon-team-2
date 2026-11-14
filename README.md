@@ -183,7 +183,10 @@ recorded in each folder's `run_config.json`.
   the submitted ones, the other 2 differing only in marker layout) gave Haiku 6/10 and Luna 7/10. That run was
   discarded and everything re-run on the submitted Docker-built images, so the reported numbers come from one
   complete run on exactly the submitted files. Single-run scores therefore move by one or two tasks even at
-  `temperature=0`, consistent with the providers ignoring that parameter. Pilot and candidate runs are kept in
+  `temperature=0`, consistent with the providers ignoring that parameter. An independent reproduction from a clean
+  copy of the repository (`git archive` of the submission, `docker build`, then the `reproduce` command above)
+  rebuilt all 10 tasks identical to `tasks/final` (image hash, question, answer), all valid, with a clean evaluation:
+  Haiku 5/10 (same score), GPT-6 Luna 6/10 instead of 8/10 (t06, t07 and t08 wrong; t09 now right). Pilot and candidate runs are kept in
   `results/pilot1`, `results/pilot2` and `results/cand_*`.
 - Adversarial review (Claude Opus 5.5 solving each task blind, then auditing the reference): all 10 final tasks
   valid; during development it caught real bugs (an ambiguous walk-transfer, a closed station used as a destination,
@@ -335,6 +338,6 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 
 | Member | Contribution |
 |---|---|
-| TODO (name) | Pipeline design, subway map renderer and task generator, validation, hand check of all 10 tasks |
-| Teammate (PR #1) | Evaluation module and tests (`eval/tests/`), README project structure and pilot failure analysis |
-| TODO | Fill in the other team members |
+| Daniel Chen | Pipeline design, subway map renderer and task generator, validation, hand check of all 10 tasks |
+| Iana Grytsenko | Evaluation module and tests (PR #1, `eval/tests/`), README evaluation docs, project structure and pilot failure analysis, clean-copy submission check (format checker on the git-archived ZIP, Docker rebuild and evaluation), slides |
+| Jo Zhu | TODO |
