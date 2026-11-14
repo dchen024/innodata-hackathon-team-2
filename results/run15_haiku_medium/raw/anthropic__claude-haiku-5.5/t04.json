@@ -1,0 +1,106 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t04",
+  "time": "2026-11-14T19:55:46+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from 47-50 Sts-Rockefeller Ctr to Times Sq-42 St using only the services and free transfers shown on this map (walking between stations joined on the map counts as a transfer; the trip ends when a train arrives at Times Sq-42 St itself), with exactly one transfer and, among such trips, the fewest station stops. At which station do they transfer? Answer with the station name exactly as printed on the map.\n\nAnswer the question using the image. Think it through, then give the answer exactly as written on the map (just the name, nothing else).\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t04.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "medium"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "**Answer: 34 St-Herald Sq**\n\nFrom 47-50 Sts-Rockefeller Ctr, the D and F run south (stopping at 42 St-Bryant Pk) to 34 St-Herald Sq. There the D/F and N/Q/R are joined in an outlined transfer, so the rider changes to the N/Q/R. That line runs north through 49 St to Times Sq-42 St.\n\nOther single-transfer routes, such as switching at Lexington Av/59 St, need more stops. The Herald Sq route has the fewest.\n\nFINAL ANSWER: 34 St-Herald Sq",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": "34 St-Herald Sq",
+  "ref_answer": "34 St-Herald Sq",
+  "correct": 1,
+  "usage": {
+    "prompt_tokens": 4958,
+    "completion_tokens": 2543,
+    "total_tokens": 7501,
+    "cost": 0.0017673,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0017673,
+      "upstream_inference_prompt_cost": 0.0004958,
+      "upstream_inference_completions_cost": 0.0012715
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2337,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0017673,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 12.98,
+  "response": {
+    "id": "gen-1794686133-KOAoPuP2KVJ6nXKpzkp3",
+    "object": "chat.completion",
+    "created": 1794686133,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "**Answer: 34 St-Herald Sq**\n\nFrom 47-50 Sts-Rockefeller Ctr, the D and F run south (stopping at 42 St-Bryant Pk) to 34 St-Herald Sq. There the D/F and N/Q/R are joined in an outlined transfer, so the rider changes to the N/Q/R. That line runs north through 49 St to Times Sq-42 St.\n\nOther single-transfer routes, such as switching at Lexington Av/59 St, need more stops. The Herald Sq route has the fewest.\n\nFINAL ANSWER: 34 St-Herald Sq",
+          "refusal": null,
+          "reasoning": "I'm working out the route from the 47-50 Sts-Rockefeller Center stop, where the D and F run, to Times Square-42 St, which the 1, 2, 3, N, Q, R, and S all serve. I'm also checking which lines leave the orange line at that stop and where the F heads from 57 St.\n\nI'm checking whether the D and F pass through Times Square, and it looks like they don't, since the orange line stops at 42 St-Bryant Park without serving Times Square. Times Square is served by the 1, 2, 3, N, Q, R, and S, so I'm weighing a transfer at 34 St-Herald Square onto the yellow line northbound, which would get me there in one stop.\n\nI'm checking the yellow line's stops around Times Square, and it seems I could also transfer at 42 St-Bryant Pk, though I'm not sure the orange line connects there the way I first assumed.\n\nI'm trying to pin down which marker on the D and F line is actually 42 St-Bryant Pk. The label sits near the N, Q, and R stop, but the D and F marker is unlabeled, and the nearby 5 Av label has an X over it, so I'm not sure which station that marker is.\n\nI'm now checking the transfer options within the Times Sq block, where the 1, 2, 3, S, N, Q, and R all connect. The Herald Sq stop is an in-station transfer for the N, Q, R, D, and F, and the Times Sq block also has a walking connection to 42 St-Port Authority.\n\nI'm comparing a route through 34 St-Herald Sq, going D/F from 47-50 Sts two stops and then switching to the N, Q, or R toward Times Sq, which looks like roughly three to four stops in total. I'm also weighing a second option that transfers at 42 St-Bryant Pk instead.\n\nI'm weighing a route up the orange line to 57 St and then over to Lexington Av/59 St, where the F, Q, N, and R share an in-station transfer. From there I'd need to see whether the N or R heads back west toward Times Sq.\n\nI'm weighing the Herald Sq route once more: from 47-50 Sts the D and F run through 42 St-Bryant Pk to 34 St-Herald Sq, and I'm trying to judge whether the yellow line northbound from there reaches Times Sq with no intermediate stops.\n\nI'm counting the stops on the Herald Sq route: 42 St-Bryant Pk, then 34 St-Herald Sq where I'd transfer, then 49 St before Times Sq, which is about one intermediate stop past the transfer. I'm settling on 34 St-Herald Sq as the transfer point.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out the route from the 47-50 Sts-Rockefeller Center stop, where the D and F run, to Times Square-42 St, which the 1, 2, 3, N, Q, R, and S all serve. I'm also checking which lines leave the orange line at that stop and where the F heads from 57 St.\n\nI'm checking whether the D and F pass through Times Square, and it looks like they don't, since the orange line stops at 42 St-Bryant Park without serving Times Square. Times Square is served by the 1, 2, 3, N, Q, R, and S, so I'm weighing a transfer at 34 St-Herald Square onto the yellow line northbound, which would get me there in one stop.\n\nI'm checking the yellow line's stops around Times Square, and it seems I could also transfer at 42 St-Bryant Pk, though I'm not sure the orange line connects there the way I first assumed.\n\nI'm trying to pin down which marker on the D and F line is actually 42 St-Bryant Pk. The label sits near the N, Q, and R stop, but the D and F marker is unlabeled, and the nearby 5 Av label has an X over it, so I'm not sure which station that marker is.\n\nI'm now checking the transfer options within the Times Sq block, where the 1, 2, 3, S, N, Q, and R all connect. The Herald Sq stop is an in-station transfer for the N, Q, R, D, and F, and the Times Sq block also has a walking connection to 42 St-Port Authority.\n\nI'm comparing a route through 34 St-Herald Sq, going D/F from 47-50 Sts two stops and then switching to the N, Q, or R toward Times Sq, which looks like roughly three to four stops in total. I'm also weighing a second option that transfers at 42 St-Bryant Pk instead.\n\nI'm weighing a route up the orange line to 57 St and then over to Lexington Av/59 St, where the F, Q, N, and R share an in-station transfer. From there I'd need to see whether the N or R heads back west toward Times Sq.\n\nI'm weighing the Herald Sq route once more: from 47-50 Sts the D and F run through 42 St-Bryant Pk to 34 St-Herald Sq, and I'm trying to judge whether the yellow line northbound from there reaches Times Sq with no intermediate stops.\n\nI'm counting the stops on the Herald Sq route: 42 St-Bryant Pk, then 34 St-Herald Sq where I'd transfer, then 49 St before Times Sq, which is about one intermediate stop past the transfer. I'm settling on 34 St-Herald Sq as the transfer point.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4958,
+      "completion_tokens": 2543,
+      "total_tokens": 7501,
+      "cost": 0.0017673,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0017673,
+        "upstream_inference_prompt_cost": 0.0004958,
+        "upstream_inference_completions_cost": 0.0012715
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2337,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

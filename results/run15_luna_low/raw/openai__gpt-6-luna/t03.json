@@ -1,0 +1,127 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t03",
+  "time": "2026-11-14T19:58:00+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Delancey St-Essex St to Franklin St using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at Franklin St itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t03.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "FINAL ANSWER: [\"F\", \"A\", \"1\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "F",
+    "A",
+    "1"
+  ],
+  "ref_answer": [
+    "J",
+    "R",
+    "1"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5214,
+    "completion_tokens": 672,
+    "total_tokens": 5886,
+    "cost": 0.00038841,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 5211,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00038841,
+      "upstream_inference_prompt_cost": 5.241e-05,
+      "upstream_inference_completions_cost": 0.000336
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 653,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.00038841,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 10.44,
+  "response": {
+    "id": "gen-1794686270-FrsrYQaOPBpE3L1iFyVn",
+    "object": "chat.completion",
+    "created": 1794686270,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "FINAL ANSWER: [\"F\", \"A\", \"1\"]",
+          "refusal": null,
+          "reasoning": "**Planning subway route**\n\nI need to plan a route from Delancey Essex to Franklin St. I know Delancey serves the F, M, and J lines, and I want to minimize transfers since Franklin is on just the 1 line. I think I can transfer at Fulton St to the A/C lines. From there, I could ride uptown to Chambers, where I can catch the 1 line. Maybe I should check the map for those connections, especially at Chambers.**Mapping subway transfers**\n\nIt seems there's a free transfer highlighted in pink between Chambers St and Park Place. I want to figure out the route from Delancey to Franklin St. The F line could take me to Broadway-Lafayette, where I might switch to the B/D lines, but that seems longer. \n\nAnother option is to use the A/C lines at West 4th after transferring at Chambers, which involves a total of two transfers. I'll need to count the stops carefully to make sure it's the best route.**Confirming route letters**\n\nI need to ensure that I'm using the exact route letters for the subway. The routes I’m considering are [\"F\",\"A\",\"1\"], and I think the C line is also accepted. On weekends, the A and C lines operate at West 4th and go to Chambers. It's important to keep track of which lines are running, especially since the schedule can change on weekends. I'll double-check these details before confirming my route!",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Planning subway route**\n\nI need to plan a route from Delancey Essex to Franklin St. I know Delancey serves the F, M, and J lines, and I want to minimize transfers since Franklin is on just the 1 line. I think I can transfer at Fulton St to the A/C lines. From there, I could ride uptown to Chambers, where I can catch the 1 line. Maybe I should check the map for those connections, especially at Chambers.**Mapping subway transfers**\n\nIt seems there's a free transfer highlighted in pink between Chambers St and Park Place. I want to figure out the route from Delancey to Franklin St. The F line could take me to Broadway-Lafayette, where I might switch to the B/D lines, but that seems longer. \n\nAnother option is to use the A/C lines at West 4th after transferring at Chambers, which involves a total of two transfers. I'll need to count the stops carefully to make sure it's the best route.**Confirming route letters**\n\nI need to ensure that I'm using the exact route letters for the subway. The routes I’m considering are [\"F\",\"A\",\"1\"], and I think the C line is also accepted. On weekends, the A and C lines operate at West 4th and go to Chambers. It's important to keep track of which lines are running, especially since the schedule can change on weekends. I'll double-check these details before confirming my route!",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L1IHbFBJ_8unEIPHoTtXl8hnD4dI0Q6o9uiXbmtQvvU3FMXgMMsbkwpPUIbXXAHygJYTL_D23729JAX3BoWKvgqUwrxCj9EXKDPuBqPmYNTie3rnZiL1iFYqpYvbQMNJSXENrY8ykAQBtIRXtrNTJkBQlrKPuwGEgewD-AvM94BnX7OY-1qnDaUPruzFgswr2ycyGDCUpTdebZtpeNYa7Y-P6G6gJYlK6BRuvSPXx2_rpMYQbtCrJaBUglrGBmkj6bKkTdAQSp4f-e40ijDE9LEc9mAA4lY2xL2bSofg0H1ZV0907MgPiGDNyn2job4DqWEDNmpzmRmOZVElia80pYAQLqD2IMKQGHHOp3Xi3tS_xby2eubUio5MA8amKQ8O0GRtb__A3Ua82hKELv08cnYMmZcxEzTR7BzTOsI9WOx8GeoWGTFU-c-q7di76CxsLwJnRwcph2kQszqC5JoPcQ1MkvzMuOiwaNYmisLwUoV7SWlvlRv8v5WX_ysoPmP0xXqLeyCjkn_BcIxibUM674vcTrNJXzaUNmra7rkUS4P-a5pDz-NYRohZFZWGnkYdlN7zhGnogxqnSExIt5GHh_GJLU8_G65iJldiZjVapQOvxcTbGQHZP0uf5KBBvflLObSgY9TtArjBAj_GtAzuJKHGKMTIslRbFkWHXUlazoGLe7hu8zcGulAObAZM6Wg9LKkvVrZg62ptZRuGUR8zWKwQSmKtJwGjfu1i9hl-SPD2XXRRMvzqne6FM3wMAA2FSS8dpyCeYaI5HBdmSydAE8uhxg_uHV0-EBpmG2u7tYQ8SrgDDL5NFLRVGdwOFNZsp3HCYKZDxYdeHXuiF8bAXO7wopH5NoY26HtlCJcGF6uqjqeINDlywpJf6vYkxMqDKimJgCXgg-h9_rtuI0pzw7JrbR4e-wTuVSGKLxODo6R73GU35by6GmCIzEj5KlUrnMlZlyFpch8W7_r3ihCvRQ24ftaPfp32XfyCVQgrSumZla-jrGSuFqj_3pK3oEwvvaOXNpG1iidXhPTgDD3ZspMG8J4q0ghJHie0iNIob6ERjUWU3y4h0EIYTT1NzrSp9Aymaqe4Cnhci3AR8YF5gQ7c7wxS4RYhg_05kmlzTCIpBQ5Vtt8B3eNWw3IkyLU5iDKZlEdz0we515pUr31i9ywByxr0oyXRnHk3HlOcoGnmpRDf-kEl-P5oRtKFtlJ4WWcneVLyXSegnFyukxvGuAwxju0X-r5XShWWh2Q0E--1L5v9wZWDWaCQSNNJA-aXJbLq-t6TJjkLlRpRLD-kvN3-iUtW0dXE4VR1_h2JtBZoFhQYty8NjXKKdlQwcdCF0odm_lyOYrykwjDKBy5OP49HXbibUCoBOLl8pSZoiog8_Yw52htS0AtRSOE-MdQ9eeNKavw73Qdgkqj-zR53IMnoZsgpMABTOt3iWwvPomATP3mx01td_vv4u6ICE8XZgPMdrLfcrjZ78gz0st7uJzsxDrn9ZR0udqeWuChi2Ic45UDexDbaglu7CqtBrmC4KJGiV3kKGf2n6iS6yHWv2MB0WZyWsh7gLQsmEjIbnxXpBl60YiWLKDjdYElXiLHSLwd0rPltRqvG0sgE34SZuitQVUpIZu2TY_9xQ08EQ5FHx58I7yBOuqZNUakBWEkFd4xBxPG09cDJl3Ov4eYpM2RO2ccjTOABQA7UxVQPrW_DgA3enNtqeGRdryYWN9jjjJNhslM5wX_PwnhJU2-MCHdrUn29zXd87nXQeqaflzQpx-W-QFf5NpcUhUkQ0TKIhY_aOg4jFACHA2i-eVsN5SRb1so00puPL9J7UXarZcB91rBP0NQhWd88BvDrhDxBWk9GhN_jOxed8cJKJSuRhrmjrs1ROT1mkkQmn1pa4lzEIB7ijcr02TEDRl8HDMc0m6AaGGAoSFke-aehCV9ukzFk70SNKgorDrs1hePIq6gYcGRg-cxm4jguUJ50jJTTZT2EnRzePIZduYMrHiDcQjIfQUOHomYKeS8T-eskh4P4loNG1i6t5t2ahTVLeKa6IRWoD3OQITkHk-gmRV3jQv6XRyJmfltOOMnvbW1kEAhdccpAky5ZSKit9soRA9upfmIvRKRjAwNP61Omwtn0AS25LoUHLztbZL89eH0yVVJxzGSOAj_ckD1lj5Jlmhg6CKAAOnM7LaM6GP3iJnu3qoDVtsMwMEQOr0CDKhNfVbNEHvGO13NVyS6qz5tt4d_jJzp70-kX_zPA1usfu6Oyt_Ubi7db4qOj2R6wpCvdmsQGOlWRN3ttR4_QADpOGgB_iaRHLwtMxpT4pvq5uTrZaUknNIJub_1abgkSWvdSKF2Ft13xiqMpjIojtUX66ZKb-HXpsHaBa6M_XcYF7Tmq3rRnllO9zxWJqYhKbWsrcn3YFj0NhcQonxZlIFWl_nM3G6f4DyRsJ025qjnTh-2k6G_iczUO69bJJtxPxyou2PFcDSdyUkuzLKUrZSuDcaxo7ChOHB8og3Q6zhECWXfFswsF9FNdV5FnmaCxA_qSMi4m4z-BtlQO6kaWl7KOn9UYUalSe77J3t_-u93fo8DygwJCTiKlDC8-1v2rDxxD7RhhXt-va7tY5w6fj-EHS8oSXh-JsIuZrFsgE_c7-Rfduthpwb9SN8zdmV4wBIZwm0WMT4DoplMjWcnq0X5ILnfKU_yJMFz0q1RcBXkevOo2AyshQ30H0ozJHWEOc-xwTJLVxdXhYWmLKCudwXy5gNZmqZ09TgHRvidXw6RtKti_XqGZpeI9XNQ98I-KJ1FrECOJUDxydoLRkrL5WYD4_I2XjuHxJ5Mcui9ze-Ghf9pdBvvMcbSpjHFu3iwDnk1LqUbtPKSgfouowXpxKyOW1nFI1zRGrJi1rp_JKCbDAIs-xJBQq3d49Ca8qvlPAW4CT6ghw3yYR7aJDuznQ5VYccMq5jS0h2WbMSkAVPWCQnqWJFPMS-ogcQuQ82xX0JjJ7gWC6twmMvXxUaNH4mXGFgwRLAN3YtFU5DjMBL5Ik3VIhGvVveyHsNO_2itKegAmOy5GLKn67_A20j-5oPdTxK-1GWKDAVEwZBTfLv3-eF29FKmD-Lk8BAcHt6urq2t6Yutp9OxmmVhhZ9zUxcoN9UwhNuSO2NO4VZmnds0X1fD2J7DWagvZRm4cTo7zEmp1s1oD7A41t8v7PQ5dSY1Ee6L_ALuAGVdyaAPXEw4KLJ34Q7W0oTaXtxWFCHPyIh9cFLatXVda1IYeUu04pih0W4J4s28cBZAXsungK5Ol1STAUBoyaX7PKcQdmNTMdA2wFnxCMQUdhvtQVhN4wisBvwUbGppJwlm3flNqbfM18XiXaThzAsw4c1CCQO4l91zhgK8yfPmebTOKntQz8wHA2qHXY5HCuFqf5chPm32jdsZq-9_ORJa92BPyZ401GIvjVrKtXiuqNzfqK-Nd4P_rvj0IPyyB1AIQAZ6tlqkdzZAuXyPjfXH4kd8cwtoK5oEUI4aFkavWJr7LwpTPwUpmcxjqnm22kvmYfYz8cmb5ZMe_jIBN3gJC3uGSMe7YlXSIjFDVHqt4Yr6f2bCT7zJ9glMYyLgvjR4fkVD8iaV-2FmrhqPeK0BPCRHbrJgUn08VUqjM6ywgz67w5BQCIpC4q_Scy1OCD_Z64icO0_Fo4c519cTSeiFXrL4lGIeAdpNid3GVLjs7cprSSxeoj4ofZCxDtKEHob5pRc6SmilyPwWar9hW-bUDasmLgUV-lnYFqZOOhk9i0XOu88CfF4Q_fuf4T-gKNIvxEEovX3bkAtUTZW5GFiozo9fqIjUIBJMHZc9Eno1bwXn5fFrsm0U26JqMIePaVt71MWdPqd9dxfrvXIVG3KBbrJut7kDLSbYINxB0Mh4YwDVChtqUNQslOq3WUz7gIEO61S--Fu_PtUSy5k2I9SfFq8YGjXQs8NHOWLMA_b9GiNAFepVOjbH2h0RITU1T_G_3SzjPBV3nz9LQ2hOfWSnT9fwc9-Q4F7wE_VNhDUDUEePGzVF4myyDr3BOqYuAdwzf2bwPA2VZWxsxu7BGQzcfa0j6YXj6gFMzIhV1bd9St0aXu0drbQF4u8Kl5KP7ESqxw15u1FYHEnrbEE0MWWLnclwuWGsfKkl2vdPx5DdUE9r3oYW8ks_pc51aB7bVOxo0DfhxH9L8QcoKja3Wo6lVOdEoXfk6gHlcmZlYOc8GOFQdN8-G-u1vtGCnLvQD-eoH0DHK6oyX4R2fpn1ssUuMJmUKtoIOrldDh6Z_lt6S-gLqSdHuMKgrs8yu_PuKy2RwtcFzgzm6SC14tgg98WyK3sMkZgLPemJvX53z6ScSjmVmSyxtsjop5NbXhddBRZDyaC4NjZRaf5Iz15EkGTLcijnNJWR7doJ6jzTyI-EXOpldyDdzeMTt24Tp89tqA-n8xSbVYidMBzU8Ac0EQtBB14Xs10JpyGer0i6Sb59uuZlbEeayl508u0flWGd-N_tr22bOVdnoPBTsbW11lG0azYO5jiHBCRVTFQbCqjFrY6vO_BSLBGHDAyLhTKwRyH6dv1PgKL1ZP9BzBx5qF2Eww9JykPEyIjDobVvFm4AiYyXlkrWpB5-wk0WJqHqL3hQdEOMKMBaBxU0uSeV7KRcuGUmnQKZezJg_6nZnxc7AyX9M-7aDkpL_SA2xcSU74SgVpIgdMcd0He0ImcFI67CHUjyQ-9mOeTHg1XnvrAAI7LwI3MTAowGrWIMnj0GH29BJFjS9FhWRAqHgZS-6c4nuD84tFjzX37K-4LWxh4tx0rlI2RMDhCE_8fxaGAS2PskZzEMAF70JTe4Lvn6vrv0WmSX-2gcNl4JIzZTQekxJ06w8MlZiesVNAdmXCjn1c88yMMPejWqBZF3Py2ZQi3hJ43WEkhdHipT196wVAOyFNtdoYYc-iCmmUZnvA8ZiEwguXBcAjjrHDlHI80rOMKD0AKdQPgWnvlWhJ4_lRaD9bCrN5i8AI5Xhnt_Fo7Ze1CQt6ncoCH4EY2kgzoRPeueaUFV9QGAP68jBKRlC2LK_41FbTijddoFaDsazvA5VVbYTYulRWqgCITHp5XIIMqFNXWCRecF2mLMNvBbWejfTdT1MKY4YO4jJ0eN3xnrXiTvFo5M5VgTyfooqmF5QVZvucFEZcwfotOJS0ktzjT3vjr_b4ahqhNlAgB2ZGHtXY2CGrWTlXLV1mPp4YuTGa2ASKq1JM-_yrF30fYbiTfFEwrt_JC8XZT508-T3OljAHNA9arwGV9wlAsGfrX565olHM85Wu5hsCkU27SL6j0j9XmDo0hJ5l1WkZuA_8teE_7WrY6K3PoO1atz4x0i-BgNgum8NERrYfxteOw9yaaBytODIweq8qsc8fvcYkC-yrYSZkdio4tAX0Jrr0dndB_fiR4ZG441UWBlDzK53CsQoRShgvCs7okUohMc9v5zjT1s61g7dnJAciAs6xk798yXrQgvtaZx8KZfgwDcvKQaLjQTppWpnBV3HwEtFc6sxCujl63Y4AlswuO8zD9wOA716hiKuCeaOTTLP5JALOJNj4TmT-rdDbvFzC0thXYfOUED0KlBtMPOTUZYyKe7dMb-8hW-gTsSWFDBIXdfbK82rW2be3I_qT5dB66igRL-V6yjqU7kyVTrfQz-ZURqyWTZlWkdDug7G9R7C9sQ-1vYP8qnrPv9wUIf489nDT19cI14ouG_0xD2MDVgdpyV-NIROiZHH65EspcvanYaG20cpJwlPGr4BERC3puESy0lqIyLdcTUV_GV9ebpgM_K0t6a9TJGM_lzen-Jt4IsW_R4Ote2eiZ46jsuDkb4xvTr63Igl05oDC4JKZecdBXFXWqlsfJPi6ZNwurUxOn7sUZbDTyN3Edcrm5TN_QWIx7XWyxpTLnS6FA02iZvy_BxRJkSSxU5qyM3AUVvCPHtNGvraVGTg8D33oLu7YcRfp60dJVODkpDpUnmgn1QbEBCK93B5MM0pYiC7KHSrT6DADkzMRnC6DQpov_MwH-A0ywzbr4LFVaMrpwS-t4sRWsxJQk8l_imehsVL-4s1SxjbdUJlcSGwaom716wu_QRSXEANOvpeikaGEBYYaarrJaFK3PDdNr9TKkYx0d8wu_rps367Ti_bjpXBobYyu-CxQsA8d751nWV_B6Bg1DbRKEOt7HU85vcLpxTBw7fBlulJNbFY8YKkKKsrzq_JKezxjU7hV1n8aNvZClvBGarcXwEFl9PUR_LSJaMA7CEHgBCIGDlFx6_YDzh1e-i0_0BgdvUcyK4o9dSsB4UQbk46FDc_m6nPjcx9AzhMKXB2Vq40V4dyivsXDadsBWUxMarkMHfsmAD1BTPMEFTHDyi3KVrwTq-KLi94byd0sEBUDzMlfer0kXF-aAzzd_HMO8IeolZlpnrhvb-S8WrYj_7ALXu7jwhpquknXErGKqrVVpylMbxfF69NnATAVHezAUx-v6xfqxWJD82sJvh78IfNZ9MWfC7otIoOb6FggXoVX38BjRYL6vhPFxwpmn7W_4WXt-f66xuh4ydQ5YMSZImKwSQceFNUldhrjidhycXWU_royAxC0x4C0v34ULfIAPXVRd3NuvZKgO2uiR03NUZ-y5ENib0aYCwNuvxasfWrmT4eCZfrEMIs8QOewA6dl3Vt-CWRv9i-6vSJe9iWCsKyyLYO8E8O4fc8mVSulQ25fGyLSOsnjNBe8o0TMfPSssQmjFQLvT7Egb6gYBEnfXetU-RPsFiyq3jnddBAqRX1EYoTh9JJ64vsdllkPXsw24SFZhDA_pue5TGLFtgAustyer8n93Hz9CJ7Ket0SbLy1V15HkqA2sVVMNDx5D37wzZQpizNjKc_qoXz_hxWWJxSiUI0ceMg2o_Bmglu8AvW-b1mVism-mSM_5ZA4VGmh45nUzTHyt4T95u_E_DQ-zSYCCM23wdrcvXPPJ690bC65LahFlNV637fgFNbxASMZhnV1OEDQqE9SWsPJ6tNQvgpoHlAuxxuLDz1TCpiZ7hP1FAHLwJwqCEQjhf2HLcTJz10EpFDPjh1Wgpt5bIQwr4zOF7nZH2SyIVYSwpd3uowzwdm78_bYe6ymzC49DNvr_S17N2BMoXv88UaydK9SXcoeoZefO5kH6vhQEoLmkBIwndGDF4SSkEcA7mVwGg5TljQ0Jbq7nPp3lYqy3LnBKEKbW1hSzVolDMyh85ab2u4CWbK9QL1_5uGdfDL_x5TqzlpvPhnFp_HjGUjj867PNJKzQUtQiGZYZ1xh7YwpctEnC4115lEHRwuog4XQG9TN-Cix3tDGfYGBYKIDxCSUed4fOcCGfWs00TeBzF9zjyAOaWkHCNgAz7b_MuZAK2la84bxjpT2GfxvaD3JD_51OUMU_PAQAJbYV8FPR8QxohwV8N0XM=.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_064c1cec1bad356c016af8bd3fc00c87d19b348382e6d91c86",
+              "index": 1
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L1It5xwnIPg_ayflULdFBpToXutVpbKPbdR2nT7tMk3tini9Dgxs3WAWApS1CzvwCr4emp3ptOEv3Z4wRL-xGcr69aSxkvTu8KPvz8HzF90BgExYRSZyj555DmlbM0Ox4o8ItgWcT52vfOlBRgiLiSOgcHuREw9adETbnIwHGECrBHqOEE94uXUeaubrT-TxQSCrFo7Lter1LlecgwAMklIVbtxpJW0bMCXTgESY-dJgJPCqaMhZBSBXmj0YUSZQntcgeco8yyCYmzan_apSXnT5SXHjvp1PFKtCRFebnXsP5_spHC5dn2D8CzcMKn_soF-y3UoikyuVpYp_o5HmQBW10HHjDdbLehlKemiPTT9Rblo8pyit0DxSa7kKa33QGG7pARahGH9kEN0yuiCJ_2bBQMPULHpBaF8HDVisVddlf_GNd0WMT5uyKKDkN1EXfb5gG0nzde6cwTSwtsDyZJE7bDCRqTD68kgXK7Hddua2a9KFpPzd2BmxTqe9O22D20vbTSFT06upFfqHLz_eLQxyyo8sP0uh8FvY08BtY8d2s8S2L1K1HxdAwCRajRs3R5O3510SigQRrYMu2F9O4OtHlLXvU5xwVzw0prjfWxl7NUYvXkPO9FZf2a6SBoXfXIhrtp3B3A0lulH_M-9NLiIkt6lTa0OoouHFu6kifkxBZ9UxnMDrihWP3gGWnLgL5iCZPudij_xppP6sxqUAes2N1dh2E4Nj4VGKBF43VG30l55TrcQy63Mtw8LttHovmacRcPW_kQHDUYHyqKf4ug3YrCcVpxq7HvPoKng0Ms2IPj01thU1WGs28oKp04_fJT3FS-_4LeFKV0Vq9JCohQPJ-cp2YWRj-nTRvE0eDz6ktJNCs6ihL4p3niLgzMrpIs0dVNi1m13MapBrwzF7HNM9n7KG7mTFl-kIp_d_0MwR9BUTeMCPQxp3Sc2lFVKk9rsJY0_wUKMAKGz7IxU-1s0AdMqbWeXGLObTwOFmOfKqHJyoE7F5Hw7eyjc4wDquC-E0r7KxIomwGSggxykfvlEnjjsK7Yucme2ookxRCjcWsN1y0EGWMZL2SewFMqvYEjoZiwU5yVPtYDET1a7qToVytsXiXnzY-DqfEHgeGlLg_QOvwKatf0kHKZw1tK2zPRhHNu3zCXlNVlj_7jgfDBU3qGpQUsZiCwhnjq_6ghnrG7DTZeCU8piSFA4WR00WEJKP0WLNSF5nVukBPZPgNYrfoDOLK9umYcXw_gAmmFrEbItgsvJtJHqSXUo2cfIz-KD7pqiyui8OOaSByOhCgDxHo-lgeCekTJyJ-oa96Xm4PPTM28sdmrfdzpQ3ksudzwiTQqhrNoJX0TyNlRUuJJQHulMdiK_xT2Zg4F90gRlqT6qZ_ItFOsT2TkUP_a2g8Fkd8B94zF8i3qsvJwlRAC4OBRM4Ezdp0iKCcziY26o-gdqK-kBSZH4_MKRLzZjYMAoos7j5Rr-UzicVhU4fdT5tQECaT_JbPcxgk8WUWTUZZS3SBXOt2h27xQQnoGKyidwgEboArzHYNhkEK3SjaLMCSLVPkOy840r-EFxwEJK7UwlXXi8yl66Tfxne-kVsP7YtILmgPoleD6dPWhzF7EmDmUpv3sNaZYJWCT-j3ZXroH1PEFouSdv7G9el4n6MJm-nrNynMRkI1KPFCP36vGdi1qbvEbth0rjda4aRo9NVMdxGY3_6o8Nl6kQzYrFC6ssNIQ86Xz-IKVRXGclbhcYeKDFXg7xOzka54yyhrIWC6q_a2HQXWpVrCCzqTyvRsC3zWqlYTcBoejvEceVIc-n0ZVmbRKCl5pAT562rzrclcfdN_YBaB0EOSkdLm11CpqrDyq3Pa98vuzKnRVyCO-W3bWJRYF1BMSuoiZTCrMF0W0Gp3cGAwrRf3YP4JsLh1m8zb-a5W2V2syYESwOVRNaHRjycgxQXSH7rGXfh2YiB_ZfWR8eZtOS6Wcu-NO70HbP0wp9zRa7uARqxR3GPwkHbkcoBw2fhh27ghklpXr4LwDCsWeRa9jB3LzmMIO-6yAsB10C2N1gYINdVk1XrYd5GOYek47p_K0Pv7ChVlCowCw1fzgH-FVogTmbgaARzKCfK7vTDtq-XJFeSwIiRkTfPAgfp_YCZbQkkQr5Q4sAIkUKSryiuG_Bo6o1rQUHxGRas47BsygDu-VOqLTI89Shsu1BHPCKPdIeRF2FIirWJjKvlrSH8pguMBp-NUEZ0wscdofP1g8X-Ea033xvUW1hk6sZRPugUuEZexiZNJaCYXWObBiqMTR1os2a-lfrRwGzsXmEyU8u93_Y91o3YwpM4NCb2NdtrRTaF6PArbRFebP2h8HYFmjGicuiaDncG89GeREIwr6SOfir5HhFovX0tWSEpTd3j1aKM9FD4vuxH40JZsF2vXPBR589aWhud9xMMwtqcHeO0yZJc_VClGLd3NglKwOgo7AifTH57pN-_Zgk5mHI3BchITUaLhS7sBEHsir_pCiSd1nJHEpDhbVIMN7o7N6E2Uni1B9DBJJGt4jB8r_x1YpUd4V_Y1TZuCajIweNXEek2dPJiUAxzMuLqDF8IBKq6RGw8E5zhGDR4ggmr7NABWbMop49fvotEsUWjZyQ-WoEpRsaVLjy8rsZOAplAxqnKXt1AKhNtf8_bGXv74dOIXbtcQ9f3WqxH5jPGz87PQnTBPIvg9kqifh5l6jafgZURVqChD6A6FbAKoKNUTvaTAn6EL9Qd2owrF1LpNEDaHNJvIMRDTsbpj-EFK77h9YuQKdMmN77BceAQXrzl3vJDYSZSYsGF00GlUK0op_TakR_RwOdwc_6j4QVCXsqcOJYYNDKrW-YAPR0gQ2Y-eeF1lsVf94K78eGMhWUUoq9B2Pxc8ipWqvsw7m2HDARWoW15qt-cF1vGncKoqRiWFdRXIlOL7CQv6yocjwF-FpwCaKeXJ9kMzf5JIKByMloBYk9hBztF5ZD3pD_twWzJ64tXfngERfmuV9uGqcfm49HeMZHRtnrcyOz0tT8DIjEtLlmmJ32SxMAOKT7qon9NMCbzKgAlElSHQt2tw9rHR0cBN2a7VQsGIU-bH7sHHNYEkssOp17J-53av8I_v40PX0XHVwvgVhn87yw86lhpDoym6ijCQNy_rtVApLgD2kGxV9Ww1xfvuqgSZtcI3bD1e2Haefo0jP4O7q0dAZcBICCyCxrPeMeLyN8RY868kgEAzYEKl0iHcTJRVRLWG68NM8yfbcDylIbe9OLak-R.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_064c1cec1bad356c016af8bd48086887d1beb54c4f4c457288",
+              "index": 2
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5214,
+      "completion_tokens": 672,
+      "total_tokens": 5886,
+      "cost": 0.00038841,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 5211,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00038841,
+        "upstream_inference_prompt_cost": 5.241e-05,
+        "upstream_inference_completions_cost": 0.000336
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 653,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

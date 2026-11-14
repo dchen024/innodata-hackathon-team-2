@@ -1,0 +1,133 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t01",
+  "time": "2026-11-14T19:57:53+00:00",
+  "request": {
+    "prompt": "A rider who uses a wheelchair travels this weekend from 59 St-Columbus Circle to 23 St-Baruch College using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 23 St-Baruch College itself. They can only enter, leave or change trains at stations marked with the accessibility symbol. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t01.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "FINAL ANSWER: [\"A\", \"E\", \"6\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "A",
+    "E",
+    "6"
+  ],
+  "ref_answer": [
+    "A",
+    "E",
+    "6"
+  ],
+  "correct": 1,
+  "usage": {
+    "prompt_tokens": 4958,
+    "completion_tokens": 1041,
+    "total_tokens": 5999,
+    "cost": 0.00057035,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 4955,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00057035,
+      "upstream_inference_prompt_cost": 4.985e-05,
+      "upstream_inference_completions_cost": 0.0005205
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1022,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.00057035,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 14.87,
+  "response": {
+    "id": "gen-1794686258-TQceihvCGz2k3bc8kgzn",
+    "object": "chat.completion",
+    "created": 1794686258,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "FINAL ANSWER: [\"A\", \"E\", \"6\"]",
+          "refusal": null,
+          "reasoning": "**Determining accessible routes**\n\nI need to figure out which marked stations are accessible. Starting with 59 St-Columbus Circle, which is serviced by A, D, C, and 1 lines. I'm headed to 23 St-Baruch College on the 6 line. I want to minimize transfers while ensuring accessibility. If I start at 59 Columbus and take A or C to 50 St, I'm uncertain about 50 St's accessibility. I might have to transfer at 42 Port Authority, where C/E is accessible. I'll explore if the E train to Lexington/53 connects to 6 at 51 St.**Navigating accessible transfers**\n\nIt seems there isn't a clear transfer marker on the map for walking between stations, which is a bit confusing. I see Lexington Av/53 St E and 51 St on the 6 line; walking between them looks feasible, but the map doesn’t show their connection. I’ll consider that I might need to transfer at 42 St-Port Authority to get to the 7 line, but Grand Central is closed for the 6. Another option could be taking the 1 from 59 to 34 Penn, transferring to the F at Herald, but I’m not sure that connects directly to 23.**Exploring transfer options**\n\nI'm considering how to transfer from 59 to 47-50 Rockefeller, which is accessible. I might take the D line and then switch to the F to get to 42. From there, I could reach 7 at Bryant Park or Grand Central, but the 6 is closed. There's also the option to reach the 6 at 51 St via the N/R lines. The R line seems accessible at 57-7, allowing me to ride to 49, but it looks like there's no direct connection to the 6 except at 34 Herald.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Determining accessible routes**\n\nI need to figure out which marked stations are accessible. Starting with 59 St-Columbus Circle, which is serviced by A, D, C, and 1 lines. I'm headed to 23 St-Baruch College on the 6 line. I want to minimize transfers while ensuring accessibility. If I start at 59 Columbus and take A or C to 50 St, I'm uncertain about 50 St's accessibility. I might have to transfer at 42 Port Authority, where C/E is accessible. I'll explore if the E train to Lexington/53 connects to 6 at 51 St.**Navigating accessible transfers**\n\nIt seems there isn't a clear transfer marker on the map for walking between stations, which is a bit confusing. I see Lexington Av/53 St E and 51 St on the 6 line; walking between them looks feasible, but the map doesn’t show their connection. I’ll consider that I might need to transfer at 42 St-Port Authority to get to the 7 line, but Grand Central is closed for the 6. Another option could be taking the 1 from 59 to 34 Penn, transferring to the F at Herald, but I’m not sure that connects directly to 23.**Exploring transfer options**\n\nI'm considering how to transfer from 59 to 47-50 Rockefeller, which is accessible. I might take the D line and then switch to the F to get to 42. From there, I could reach 7 at Bryant Park or Grand Central, but the 6 is closed. There's also the option to reach the 6 at 51 St via the N/R lines. The R line seems accessible at 57-7, allowing me to ride to 49, but it looks like there's no direct connection to the 6 except at 34 Herald.",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L087C0KMWemlLnM8fEWOrYWXErESVNJ9AzTp3_UWFAT4slTPoTTkLg8tNiobv_P2dWFbHz8kPw-cWANr39reMsqo2Fj6Y7SFIBIdqFsoHE5iZhV6WH4sUydLPEvvra8sAzt1WL-DF1RghtT57PfvHmYOtBhHVGU3KtNJz7sT_loTk0ZR3QZMUoJTPaoEebkyZyoicBi-ZfLlr6UQ85zVzxEHjOeVg873roPBodlXLk6UupMbT_P5S9OMN1Oh2LDFHejOF1oG5T8BZI3qGZ9VyzqfyuwkyCeyjV_s7hPIhdSxpDDjdFrf6UlR7RUg_kzspClbelTY4HJ-lEQ5q2qeMYcLMD5ckQ7e1I9RnwqNDpAkyo3MQdj9LhgKWTmr-QuiHfbsxpKUyvaWsM-o9TTBxpEf0iLZVpFD21gpdsAxSDldMxHb7gA-y4j6RzAi1roXKH4XgCm6h_myqIaHgGYb78qrNq0oQq8I9D1_68k_nlNZyZ59aGi_smoMLitkEGroBIBQcUwYylbyTNJO-O5BVLAQDl0wC3rckUL3hD-bhRKg6McW-JFbFKN8juAHzwdMw-aBWwzPc8e0EzUhvb7nos6nQAUkBRYeEbNm74KgW7E5pwGPzZHOfCeHm4F74UIDqaYPU2YvS9XV5r-I7uuxZJHpV6efwwgGkDvMUi6MDotFeup2ZYDx_lMeC78G8nwi1K9axg8csK7fYkcWndbmIkEfU5U2I4hruWGdGRJlufi0LD54hvJi31FdDwB-5K2DD3E8VC1PVs9BD0VNXcbhDx9ADIMs-eENyD8Q0NxkodJ7fktKKf9kvM7WgGc3iFA3xForWGa8rm75YBlTtpepsDFm49mwW0Xr2CrWqT45T8as-dDmALxxSldKhIsp-lqzdUCGncWl2xwr6fAJxBJEBSNcz2W_6mRw3JczCksdweEufU76eBTfIq1dd7FmY5bHkbX7yW3L7KNsm799Co_BAu-HMhx98eKDHgHOMmY4ppPBvA50ODPrlLGQcsC7az3kFMUwWIOICGOhbvHVzVT2wrSX6vgJ44ktRvbbMtYOwvKV9zdSJLD_PShz9Z8YEpQyWHPBUfkuZuyUwZ85cqI8lawwxBV5PvQIGIIkB-xa0AYTysOREio8C8BnFuGNCFtFZq-fr7XO2A7HdAD_riEUU3m4T6EUt152IbnvdnBJw6l8dromZ0MISEQV3aNDfmrY390ydSzhIPH8XeiP7eJGDf9Lg-YSpcRVy3okWK3I43Rz-Jw-bBFE-IK-SQ59Judw7oLalfp_oByLeKP9m5YIaa8tc1hvSzT_vgUUz4u4xfIt4NBhde3azAJ27oiH9FKqPVxWBnQEjmpvb2t2sTa-trFxWTjwiXEJSLH9XjzS-lc32focue11u4aPd6jhajx2FCKhyQ-TBzOtcu92ZLauPL5yiQ6Ne_z9o2iUkLnUsWlR6-LhDDKYhkVC2gjs3VmsCcV09FNg-x-KwXlRMTNFD22tLYrhru3OHV46i8h6ba56Zmlw2BEbsy_o_xcIPwWd77NsWDsc7kUn_Pad9-g_wSIRDB62W0NSkbQrzKKUjChWEuP5zAKoh74KKSYv1oj8t2ch-1LqqsHiS3svleyv-84RD0gcKijYgBLjcPpVpUYLVYHKRukubUSG7VkCzyqWiKB-IEDdTnv1bB0aWg9oFH_dDRjUjccAzDWMf5Tj93ZoSbQy_ibWUtrwFU0DR-kEa5Zjm8xnd98bP8MuKJ5uGXMPVY9-UB3CpA_O95TFlG88VnF9rXea5AOhBGBVZTUi-vXzP1T-IU6kCs8BpPfuYgcbpW7XwGkev4iV4Gp5r0PpVfUCPl6Fmvx5Y53JX9XHU_7YdznfdLGJSnliWBf2U2hwt4AHcyZti29DynV9D_FAt_ztDtMpAHTdygIWzzAVLnfpHwdfzhK-ddOyCpI1wF1i8Hc2UbVbtodlIhuU8e_jdqF4dZUxH_nmFBitxCvvIzNV-MhNyGnWMdrtO0wooetjljJldgJaXosrNGA-_Yrs4hn6RrRUta-r9nRo7iL-35TLtjgLVGivmSLZnWdgOqKYAPfVh80pYKirRf5WjErrPKPXT9vbbhbbXWsF3GUtK2YSwJdpCMXtQhr7Jrk0za84-n_SptNZID2xdnZhCq6X-p6gJ7nDgeG27YehWfk-vkDbP5iOYlUVfxds5dWSOcjcmJs5PUls6OuDN0o33a9q2vPYqYCffFQY6h8DhQjbDpbEbN3howfWy27qXltbqOvSCz5CRDW9EWpEIoqyAoJr4mcX2EzVCvzaGelOBUPEOlR8MfEDt-qPvBNrizuiQfa04GLP5G_a2des9EZrqZh3z8l_6Tuawk4nINKVYz0Wu8sEaD5sGzu-ZtiRiU6bBP7QUKhLjKz8ZXRldHkWhlnfCkNwb6m-UXZCXB6meMLwq1pNCKnck1ZTbSbiQ0lncTpzWvJu2VOVNV5nAM8XLWWIiym-EgCyqAcWx3RQNrbT6ZkCqPVc9dGOeVFrXnzUgW1lUB6bpOkLglHqY0mKKf7TlKl0MCv3Avb-3g8jfB_txp-UGFgeIvChqq-x1AeVhhNBTthyegjEc6aMTILNoDNLjsPW8FM2ugXo8CQWWAm5Y6_rq9kTlmtoH3-mEMOQJxruDiAKZriP6Od4k-VllgSZhyp4_11UUZ6KdYTd0meqAtBwOgUUcU8u2W9AY-ImU0qPYPggpz5qRw5XBO5WnIgs8aYnO_MUDe3PV3cKCIRc9JrkQ3WkzJZYrpptt9MSXVM47rWDLAC4VjrLnUVRtzYghTHp0W_dd7s7ogQmmwxowoUp6bRec41XJusB_IZLuAXKfTdeEXL5BiNtuC9XpM60hLbdz17iteSlR0EgnbizUQTTZ7ZVAa-8qfJwrm4LoeTAToKVqeRlAc3iTMI17CVQeHfZlm0h8yFtpsg1EBWexU0aJ0EPlyBRNRIedLle90iEDE1YBTZkkJ9ew4jLNlgpVx_1dovWI4m2Kta4VgEl3oUtg8CcqGKFATc9jybAz9Y60JVnxKNyq3J6JJiWt4YKX7YGOPzUwpKICPiCvKrM6XrryXFVrOVocxc6D1Ojr0EY2cTg8vMey98YBd2IKVQ7OCO1DN5BbKqZJ1WYL4u_bvVe0kbb-ttj7DCOYSf7y5nxwVoxc2FCJlANZ0-u-8qUDCp6_7Y1n0_vYf65FyKKzrS5W99Vsjb2d_Z_67YR1wqm60mnT6rKpSIZ5yva5YC32LCTzrCxBfnq5xJaoaMagCc8RlqK78zoc6osG7_R91FjW7d4OdKDI3AD1tjlOYC7qS8udhGeGBaWJxDbR1BeRAAPjHzZyXsGDOZ3bCYsWj6XY9VK63A01bCFYsrl-E-7EaydKfuNqosCr7mYC9tgzpMY4BbFHPNvd7ZLzCe7GgO8qV2v0NU3VZnR41d6ltp2ijs0n_mOLyl9C0pWoS_-gUjnBzUyp3nDllDp7lDLjfpskP3mFTIbG_9bb_Op54VXzktkwY-SKb_c8w3FjwTZHPn6qqySC1MWhU6-zLcjhahux4J8qbWp2TwxqwJge4g13NVjpuUDulCAj838JKNE2-BaDHKYoV0bQCiFRLWjlBdgCYKv3tq1Ei9rIrGxiT5qr5FStFpbx-tJofpMOND7214ibW0XCYjhFy4OgmRF0fjWOByio1y8597sEKdSHHagQHpScc7T0SIn23jl9dpOVxRxW72jdrEB6IJ5JqAl8jcn6g5vIEdbDTYNRERyOOVWrSbXmxhHANn7UE0tlhK2MH0f59O1VHdozaStIRh4cYATinaBhqXpT9yh6LpoPRngDNIwniqFCIH7CukogJ5KYiB665vu889Yidn4eetah80vt6Duma4OzBvAx8p7G-WCFohQTbxdr0YNqo2nNL08-vdMxUTK_W4wXvRQesGYClnCq6rrtWuPypqnVThhx4saM7CZxPbZf4-DrLTEV-zZ85BivjwLfRXTvk4vvCwE1LS9XycSMcp-CZwEnXHTZKg5GqrxoM11v1MDeaFAmtOzBTTUQYV-bPg-D5W9HuLHOf7P9Lwt95CHtQv2IEqemEIR-eL5Kyw9M60J2plcsvjRcTMWNDiTp9TOeE7LEKdFIk9sZsb9exPyQ6MFxjz5_fwSAJKJPRn5MJpPfEujcXj5uSuhzfJdtlA4ZH8LApUsXF0CjddZncZ_zrv2FHQL-75zDVqoWqnVgqXU7j1bkjwj4fUI-eiu6Y457S4eYnVz8WSgGk309fVGmMWJPo2ytr3Z2ios8f-KQpLstR-16fb6H_noAnVA3pyaO3VBhF5OjSZfJCg8xkR38UkuGKv8S2VG7uM7cJT7aV-ZSrqZUhHqAN14CZOCh7Pe9yaS8ujcEAKc3amdHHGqXZEOkJqcmOAib3Bn8qXoUzXS-aOTr0-v_XqzcwV-3yf6lS3O9jSQAnIYrR9CRh9NYMf4aPJHe9Hxo8kuFFbHoyAkc9mkM_jisfjcy2os3-Y3vnhkXkDwni2evacYS8_rvadwYqDBIokt9sD0erGw7bWbEL4MmVEwRpgzyfiolkIgDDwpRSUbOZ3ZegORLoSvb1XmDzbBmWvvdIPjrNmKfGR5gHdGMdWkLjWw8c2ID5rSepneYDo-7OvDWHEze5Vl8z1RTdNJzXfFtYMpSJgFoJ5A5ElWjh0cxWmMGBYzup9dTIFRIM0e4dlJvpulPbsqEZIVisl-6Odx-R7kBmibkFMGKgh12_yNbVUCah5c3fOUqVWkuC1V_w7ZJwKBvsxmSmHEYP3YzRNaClkNDyrC1zlc_85_8xLieV2FLVcDwjfkAeoDmSNfrWz0Goang1OfFpI---Xe6syAG5tEve6fIR-HmGJud8ntC64K9uJjIeSyv-y779PWTN1kHn1GkLz-mkQMFQZP8QGu5TfL1hrdM9qqPHJH2NDCDNZUiEgpJq7QhgAd0iFmK--XuMInrYP4B9XE2cAU4uo2K_Rv4c00oNpyKc02rE0iBQc4KIoPMcy6XoKARexWO1Sw5GQxXefZ7kQQllifxE_oKNlPmfDjUMvxDcr6VinHrTw97RtZHPYjJfdzJaNd7mWhS6ECYX6TTUacaAxInbHePK0jRwo4O2i9KgxFnpedVpwrImUlNAZk8vPUcn1iRNNY1iWA5K8nW1dBbPZiGP4Y_Oy0lUcLl_ehakrJe41BNaOlJ9lz9L4SyGjjg9QMZaHOAsQ9uH_e45bplIIkmkpyH7aPlUaIBaQQ--y0r7-BfM0jiOljH0Tc-tj77WRgjCZ3i3PO2mGa9Uiq1pFxl4l1bSd22FZoVgpL9PqXQW7OkOw1vWFIrCUiQ-oH1AP2z559oPH5xRCzd-CroUBFIcfDyxbb56WzR83zn6CDKr_9B-_bzlFxiey7KMnEiWj4snxGKv1VfR7WZ7jPcQFg8b7GeX0sWghuUH1j9hw2tqq1VKL-49G2EtFe_Ao9rMN0mvWcAJZf8_JP2CMWKTFa883WRs_JOPh_XtLNQDwU9X5aGyAMv_Au4P4bHGzvO2HXfUQNJlo5Q0ZDEluPJ-BYr_JPAcZkcyv3g-3FIQsPq5YZ7B9MNvxCMgH_tPKar99ooxMizknczqFvMw2IEOTGQUhqxFD7XBMv3HnjElcFWZmotDDC3pvJ_HCM1J5sHSJXTh1tEYY8GF9ppLP-hDPPED6ZxI0iQyHOjQQtY1xvvHQvk06xP78cgjbbJ0f-q9biq3XBzXHBdvnK2-FcQCfJnw_u1BoWDz8UAH84GrlqdPxdsZF0QE9GDaUgSGu8vA3Fk3vq1LxI1anEpK1T9FjCLoHteAHpS-CdRq5eAglE09XgTLm1-RN_Y6AH8KmUXdG_XknpJxfL0PfqB26dCIDc7olRUB5fQx0yK-YwHnJXuUD66cgYDfEyuHVJIZ7a1R4ifWTkNk90_NbpbcE6OIpnnLQeL65SNRGBaGapI2rxaFu4-8pgW4BsK5jrcnOgVcOzEKIUc-a3ZDGO6-un20LNyOzOeTSaI94G651Bq6S0y8BEs9mxPnc1nXlrlMeUshUT8tQaaLzZec6QCZLM76bN83iMvZNIBDq5oMvWCbL9vo4t0wHPH2bhWiyoEiPQGGZj0fVmGlH4-UgPPJ4g7RsdyfvNzkXWvKyjOhSlPnXD9nRGx87G8AzOsdzekbah0f0EvnLBf4Wn41DGkEUQ9qFRjniGcvyjdm-CfjEn9XA7CyL_0IyRL64G5CEM7ChH5LF-nH3cTNTId1t2voEgJpEc3OawRf9pSWtcR9F5Eiehvn6f9DA6ksi1eRlola6B0oA2vx8KOojed_9KLIh0wzz3CS_p8ZJrpc6b07lLo_7EeO5986wmUElag4c3F9sAWh1vtiQR3iULbDs86_q0gp1yvHbJi_TrSb5e1c3YFK4ubjoXAnOleRL9HPMbw2dtz5AsBLwH4U9kkXi7fyvbwPRihxkePnSdrTu_Ups6I_-fzkhSOcmy0V8jdv3SnI5V42BK37lmXaoXeyhUl1UywswK2_-NrHhF-S5qSm5BWtpJ6mgj7hbn-ESjJsYduQcXn4TM8rFj8r2UtLqYQLG2VqWUsXY3DSeKtifSk04z1xHpptZxm0I-Ly9e1aSFEPaja84vHQyt38UmQLoySuSdFOkvkHrriLioUOGZ0LoIjrX6lM6TSIXhTXDaTpGUJp0loZABVaU8XIAecxJaLAT0B3ngRnFKyiXBOxQ3ydAfVhuNXZWb40wmBRz6IrJuFGKVNEOyjRxnfY4hHVnMc52PaAJknSjgE7GUSoAOqCQpKHb871IOB5iHo7mibcEc_KMt-IzXJpkzCOjWg1vEASIzyM6jTarywSVvCu5UVb5Tg2CCM37QmEy31T9d6i--nf4ST7APexCgCWfcD7zH7b4SqcaO1sCj1YkgmPEk-ufQ9UDdOStV92yUR1A-qDTy8970z6_vd5f8ZY17RcHkpJ4kQ6iPFsgFRRc0ceQcnpkZpchHpM4WE88V5ApbWER_pBAgbms5lFFvilimzkBQ-eAZ8cDCMwzxWah2WH8r_-B9fVKoGO7fxe3F8-0lPvhtg1cI_aUFpwVyBbcGNoaWze13zIp41qKWl5PTdcxDKRkWMjKenaeDpJ1XKLjCOIrZseHyzVLW-kcCnOyEipESRhnvMiY3ivRs5LPQzhYkY9ybtZuG-wJdLUh9Z7ymZiDcVgoAQnmoCYMJGR5GuzGvKZgXPlehalJ5mj407M3P1NgnSOjrgwNlsyBcw3Jktd9oZer3TrfGn1lWMuWhEMZVYGSfDI-pXnS-Dam-LNo-1hNguxIKtc1CveAJznQu_0DPeemu8FI-gn3rdoQNj-rEYPuB4YDI2fgglubn1Ti0_T9iPxxnZv37CmjUN0Me0EyrBlVbUT2sKOMTaSjjGYrmoSwW3qYFjWBdIoudW35VXJmbbADVbUBxjnwm_K6y9kFWohblwPtqFDg8e13kZrCfBC-Jre83gDcNkMgKcAcCgXqLP0HLMmPXBD05BFosGMJYvX1CKM5eEJZT7mKG01E8freBRywhytuAmCq_J6fq4SRkE-n2ZlP3sK7noTVYog-WVCw0e6QYE6I8g==.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_0a624f5dbf5a54a4016af8bd34024487d1932d384b333ae085",
+              "index": 1
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Evaluating transit options**\n\nI’m working through the transfer options for getting to my destination. Starting at 42 PA, I can transfer from the E line to Lexington/53, then walk to the 51 St station for the 6 train. This means two transfers. The C and E share a station, so it's seamless there. Alternatively, I could take the A/C to 42, but if that route is closed, the E is the most reliable option. Overall, my answer would focus on [\"C\", \"E\", \"6\"].**Considering transit options**\n\nI'm analyzing the best route options starting from 42 PA. The A train runs directly to 42 and generally has fewer stops than the C, making it faster. I see that the A passes 50 St, unlike the C/E, which only stop there. I could ride the A to 42, then take the E to Lexington/53, and walk to 51 for the 6 train. There's also the option to change from A to E within the same station. My answer focuses on using these transfers effectively.",
+              "format": "openai-responses-v1",
+              "index": 2
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L1BVBJn0D6F93N5XN7Eez5Mt-9NL01syayTfyfPIdMdiSa03z3kEkrdnOLDNLPNb6CoD3FC0JR3O19qmi5a10hU5x-TlNZRUFkelbSYXESWrWLhwmedo1Orh9eg83jVL15kvi_fcL0WYDTJmWuvEwGSCUA7A1njiuBvQn1ml-Ojc8lOkPSrlst9H8f0aPRhVz7bSXdu_NK4yXgXHYz7UU1vHFlmSJeJPKL-Vu_uwXftscoQOWX8ePqf8YQQGB49JmLgJpENC2SQ21ERWT4zJaz1m6sNg7PJ-1ZqY8prV97bvyL254TyicqhjQwtxAZBeH5EsL4pd45ZwQQu7LyblP4LidPnFs0DLCcxF-mgU8qjFwqUrcYeW05VYt47U-TOLuKvb1xoDK8X1QGNpDeITiiAIkueagFI0kfW26oRdHVnXIbt7COKyBJSExHXoGk6S73C-erZ_i7oufYteuGHk2m_ZP94LdX7bGo1stKabX_RrYBBRGDAZO-B-Gw7_iEqm6viGG-d72q-rvMjOuZF298X4XZTbWQd9GgVjGReaWgZRpW7krTFBkwljgkOVc2e2E4JsoiC-r3WQjpQfz6WpclQHuL8-t5t0q3KD3lSeI4GT_ysmyEYEcDB_Jz5hAoxIpaMxMKQbCzIFhLRP5jSZENY4Y3E8VWuAg1AvJ9khKlq8Ei4PGkVkMTa3GHYU5EeheQ263AUFdn-MDy91P20w6AtF9wdfPBBSjmVWHb94nS36PrN6lyGhnL6_BLQ64tkX7sc3elVzLMV1k93PAOQIxXWA-M5QmM2CUCrzlDsFTTGsG8dq0Un4El9CVP9iOcf2DZxvlxPIwtwB4cWaJ2686EGswN_Uevr9nOkYN-8BJPpWN2_PErEgSg8VXLj4XqyvWZyUbxxhVlLkXALWbJN1-CtySBE9nQweYZa6N7bSCJd_zq0-H5h-YFka0Qcv1vqJegpBULJ97UIOxv68NG2LyBbv3sOOjI1ro4TSsB01-wfUehYY3G5cwkXFkD_vm0Bw18cCqivTfWyJeIDD5eZfnN2nPEbUO9ylNfImQ0pvfGFZ_p2-MAJFuOSqIn_bzcqG5vMsMZYcrcwBJ5z6RctrZdE4Ska1Gct7cC6prQz-x6-hs8qm939cZi4nBRIHxIjdQi8xpsjpfWan2I6P00QPCwOmgIZgfYOnz3cFGG6hz0cdWrdVH2xl3K-PeU-2gKICmDVAl4v-FD2s5HpBja7E9v1FO0YPZFq0H1n4RsjTvlXKuCskEO6odReoR1UjttM_FWB0zCmHlzS03pyYut_4MTEM0ev9L_pPZPil-6NE8JDqdMLC-ejHIFTPYsgZDAET_sR1zymiEEPVLLv332e4BYcPNqGQzeuyQRllXEzRG6cXRYJ9BA4ny0_Va4UXg7pihT1leB8aRHqWcs3F5_nrlwLAmXnsDylwTVejr19RmZDqW7EUcly7fLZM0YJDPiADrIAn_fja7pE03ukxclWrV8cEb6opZEDtrvudLSUUqt2G1dgCqua9yypi-ZaFbWCiBvZg7I8i7L-yz_K4JwfABo-E9Wq7wmTDGB37OO3vD68btP69OCSvvrOTohaVBbNIm7411fCkTWL_BAiQCPkjp5Td-M7Qwgx0RaEi1ATdKnXQw95oU45iIxZZioArQg9RaLCUJtARskmU9hvkjpYr1s5NE7dUxkiDL3jKlmXOu1LhqY__6nu71XzdryeuqtFDM9Bgfyq8lGSOjfzBs4XacNHkZpdR5TNFJzAJ-7MA3HDFwaNoHGfm62bJ020KOq_mneZlcqh8rVfgKQeP6FPpdOZ3mrKMZSExa8aDUohTmpVvGFfS18Xo3lyuazvVmUGXSMOW-3mMkLfDFWMn5dXDGonS5jVU_T9PBsPEkYihTpB-kPoHTEKK7ZTpPZmNpsjnN-ZCtVGACB6RRyJEliG5pn2FBUkd1mKtoW6CkCgdPHHtveSU4ZJYpffStQexsT_u9P2u6ygiBAQZ5kgmgZrIqfIL-ikbpQgrJ-44z2zUqcKgGKi4XiAnsj414ZHr1fy9WWFQINPBDxFBX-BRNb3V3068WH4ovqb1t1GiwzenDNDFK4skPpaNiiInZJnzzqsOO_c0AecpITfWXqZR3JAZdX3nTapEhuZXC6_jVa4mVeMKKrqHXDnyi7pX-LLXPc8hE3n_d6pl7SlwDJ4VYhmcKWYduCjhSkNX1UCs4ylAWv6bjvSSCOn5zexIIX36hQlU1V1n9WS3fYQjI4k_Jmu0cqTRp-sI3CuA9_12QG3bt1lRa9bW9SzmMHibgM4_bsUid27h4vDZWDGfHOu14GhbWPSLvGCgj71J-0SBGijd39_KXRTyvVWShY_-aIZX6xBF763qLyXzQutYTk_RGPVpkyjIA-qbLD9n3gxQIQHizuju4K6TZIYnApax3W9bJpIhLmGBEV5heyKetugkfgDTM64JSSsnNNrKrggBUFTLK6MftBF0gfAHGzB2dO1xZ6lpg2QxbKWlYTnwDMeLUj0DcVuw2Oq9kkH2qjxExQM3mksxyMro0m_iIyG1cof-iF_RR7UWUQqJFj2JHkGDX7kT4GEZUoP8eDZrWaZbTHBHiNoE93lnd3uBOesoqv1-7sf_9DPqeWhVvl2Ox8mX1bQ-p12AOn0LbU6buwAYLs65rp8WanuZaPunD3olkXO7EF626PyPIBVMg7gpf_E9M3zKgPTwDx5VRoeUEGpKycW7Bb-4-T6z34URt86FK7dQoO-mmuMipFTE0Fw7EYcQXTtpamvuwQ-viLNebdSoeATdzz629mjBTfGtS6qJeZC2ErH_jXcXsUjEnTfaR2okxKwaZV6JUS5mXTg_YIgEvNhKxmMXIdCsR9ZykjYK9j7Q5IZLvkEU59tnIWQM1h6QChmdJ6JFQdyqMMlDOyes6Vk2C9Tcfj9lzSpNCdnKpYuQQ7Ozp5l8vPxVujKutfA1nCfmeB6jke00idRD860OTSZrXdqEFJ5m93ZYv2Og3TCeTWggsaKeBxyJDANoFfMEGAbgu1nbs3edIR8Ndz9Xk86BXzfaR0uAWD_AMj_sb10C8mcsiTIFYcAd4Ol6MmZRYQZ5qDqr6TMsTpU7AH7eAL2nF1K_nWz9-igNAohzHEyPJsMgFlbLBzJVGBe5AS84bxpV60A2iXmFNJQ6cAAt-Q6ffspPzStCowAW-98cgfouSUxkaBPrwu_A1aOBpwO1p5dGq72IsKCGbEDcrpEShs2aOkFs-eaOFHSRBftTv64qwWLHx6f7q5SBKN00loCqJsQEyafRi7tYLO3KUlzgmNZfDFkCIvvPR3MAdyLB158xEUf9XiThWUnnTPQIb36shTGnSREtORjlgniAimr3oeZaqHXSskr2kMA1t7e8DgQfOkxRvR5kd53f0FkduXxjNQJc87lP5ylCJ_xrYDmf7C3B32nG4H4mmwDvSqgum7aALhz8WzjgvrIQZVIEjmA86TtjYjjmbyO5nleIlRIC6LDZ_5Wfh3znlNitjMhDMuImtbR_jm_A6jJx-rM1IcxmZf-88_xvZNj-1BA5BYmtF0eOY5eDxMapEvZv4ehnmgJGXi_8knIAmubc0NwMY5oeFo-NAELeDb5hjLBQAP92u2JCprifHpBFBecKrm4EKMsXpU3mxFO_Plea7EWz36NChxxIAGiEMH1nNTFV42IxnniNqpr_m44zo5-SEazuYewt5RhYdzDqMdHle6PRhjj6H6kCkWdUP2oaBx1xoEqbFVkkDLEYBdjjgE8AAO1iNGw2zt_HI5LZy2sVqJymKvA51DiRtFI7usdivRs9kroF229MeLC4G7bKiqLPWe0OZ2sK2RRmzqgufSoDwaK1IHyL6j1PeZ6Tc5veEUAC8sqOeQ0yc4MZO-s2h-pPnICT9CSNB-Z675uJB8MQB0DQFtXR5Ntds1TRT4GwnzYNxr_aEns1Q_W4VurLTmass1sOIO_90SJRM6a5EpoghpZ8MpV6uKmoFxBJMIjWgUhchjhTbEleLD3St4gF0vH86lqh7Uso725JMweePh52wkctJd7BP8zGgVwAnMFZ4AO4mSWCVQH-ewtX6rcnXD61AqMsb4co9r89ntwKFg6bh90s6TItEehqow_nNYlY8OcHWSBxrcNwegWE_V4zAP82tBt4hsaKJhMQrcxhpItkOBNqp9k-0kMs9rEQTIvU1cI2YbzGrBvmGJTXbhEjm854LVyAFx8MOVliFuHO_hwc9FleYGpq18Y37EquJBvMLd8v1mT6UGq9N2XqRDscSA6mSf9OM7qAjxPKkJ5zYsdpBNk2prfHxb9dRMePJY0lmna_8zlLAYxTH0uUW-Pd50463AUySey5Dot6Fca-0HqeWsNR6i64HnQCvBdNOpqITq9ZVc-MF469ENnmVxJHDyzWRMqTEBTqGI6a6FnvX41E5bEfXKs2EpHc4tNPvYPNF7pVe8oOo0tfxfCzlgv_dXyxRZNC56ldd00p3RRocTdPzDK8mGRXsO_eLusQQJJasI64OmIQ03aUrp7DQ43QHSF8hja6tmEJIc2T6TjIryiqNfr6HEi5Fht6pQnlS0Q6FkeyyyjuW5kTErWMxnzWPmY2rv3nMmqnsueS2mumeVTogPN8Jf-LWMigvVQTcTDATRmnucO8wf_6i7kPKwP97k2PFfnHHm4ElCSzqsvMi3SswmO0CASsba4Jwlsb7AlStWoLIORCqN0DCGoAtWkiAe6R63NOARI-XXtNXRWOr7Rw1MTCXBWRlP_w1NpBI0TZhmFYoeK3dOOMpMvz-NLvYaMqLu6WUxOiLGxFzL6TaH24-MQEKanbQ1bZYuMo_O8Wlht-9Pi1aQLnQZDYtt2ilmlc64nrvnz_TbHGxHsF0FYZJlTuAd-Wy07C7i26MMbTUDAzdQAxb5Zia_v4QkAdSqDAFYFwcS-S1ec5iOXv5nK-DZUZipQ80xt6DlEcuDROz9xyqJa9rpyKDToR14ybAPK-4JJm-v5Cp9cWPMNvVaKU-jKKCHP5CYDSFmMq1N3xuUiaA_mxS-XonN3CCt5MIptf4MYvUWuAJ1swzKWxD9Nuy81Mod7GYHaYmykAUgzMWDgTVNwoNcCdlHm1OPp5AIDcqfsf2V8TDD_przEf-JHEIzfs5Z0FM5MYMS6WGT-sflTfd-9JYAFHTiDCiDLRHenia71D9kz4v-U7NqJXSDUlhksQvlc29vFdHy8glCEQs9MmirFqmWub2yuxA255ij7jTkwsPhqAIZltK1d14So3KzxfMHiZH__laLAi7qbyUMXB3IYkrv3hO-MjnKszhFVgeAmTWHbqfFOm2Q80r4FoHFXXhpUm6vHG1cJ3DC8jncf-pUDHW96EqJrbJ7n7p9VAj13-r3Cx45XG_k_qhZ-WApDdXnuFsyohquRv7EqB87Ni5rUr255mjyb0D76xUYOtGiIeVk96qJf4rgY9G-5g1CcMyHTeV2hpeXcQ3qPY9Kjn5OhgdmPB33mQd7ZVcu_GIRskJoYKX6U5fVsORSIwe-ukSOguBvFU54W0bxZdGS3G670ozy8CrtG5XKyD4UTITlqcLH5rK1U7sHB8CIDsSxcLRuTOOm_MKqtjfxWrWWo2yl8PNSWgyDNo0Av6OZ88p5rzrZ0KH_IC4St3acgns8m9yvgWeQVnsWOy1OmTwh05HHt7hvt1ojuYKaJJqHlVX0UhplM5QbaBqyW_kyEqwQYS7j7WP8ZN7u0EoL0JFycA7pKQeagNxPBo5ucsgGtZFIVhy7R-mOACdfB2rz-1HQXQWDF0priB9Cw5iiBKjS3QrgJ0lrmhFkNxqAHlCVTVYHFv0nmKFVNuqjU3P2H9KiWsSLpNQScZRIjRomUkX2qvSfn3U8XX4M4bq9K_bj2SnTNuQtJirDRo3rMddt2MJzSJ7sXySOuil5FkeBMya_XfCfQLq2RMLt5lCtIlXG3BnNgOO-TsVda0O26Gr9Y5G8_wIzP3xpLaRxz2SQHUFnERAZNgnv-fe3FWlFB88uEwfsca9_iLPkFUQzJqGUDQUGU1SjPkozjJbXI0PsG6QgDlwjBMdf_Oi-6NrtDr1qg5KLABSdA37tjyaRheq0wjU4Pp1XB4nMVm8WzW9jfwXT4erqFILvHdj6j7_wQu4YmY4_gtqfC-HWe29HUrApqm5-A2YmDgAnUq-JAqt-hXeIZiKTCd9U9N12ikV8sCMkbyD4ooRsxV_LjvF8znKBIOz29jarSv6La5kCqt7gNHiVFpNLdPR3E0s6CdiGopeOPl_LCiy1aV61HKqNcDuOY_Pa_OHJ7BTaBB3SVChF6P6b_l4IuUjeLpKf3YcIVbydiCiWitFonhLvIJm8bgMsqFNt-qMoJpam7Dpt8GV1wYlTrD2pozDFcNtkf0m2aNjmPAiT6FIH7sMn9dVOI1hUXWiLhtryYSPzLXbBR9e6epIk_ghXTV9xvwmRy13q2hlKwuwob1CmHuMs_-dspRlqd4T0MrhKsP6ZRikOkgbSc2ac2ch0LPwcDSd3FQZhOWbcIKSDVDuQlGDwiYg_kTVrDXyZ_oH9cdljWk0v0R-MY_Jn4AjWvqUD1qTm6ZwLVJnWzG_dSYf4_gvANJDJDTgtppUgf5cDFfjlVpgFU5JUk4jjE6I6GjVWK60P64OGiFm3vnRrC9PThjtNpo0TvddBGtKqDB5RZQXe1WF0FefdDl59HoDTZDjJr-m1yDeukSBBj7XdSREEhZ1dGKTe93rdGX6iZHq_-08XasxW9VI_vxyUuil5SdDrAf_w8AfkfVzhdJx5hllDC7l23IDc5uqQLKLQmpBEYQ2gS9cGZelNY5uYfBC29vEvn5FpEoCGX6NM9iDwRHllRE9nMpaAxAv12Vk27G9v5s7G_Y8kCMRTp_LAGEZxciLusmO6zU6iG9iGCjQmKv0zkj3dhMqS2iT3Kyu9KMkIvCnMyuq3aUoIREOJEiNrKaspk9o2Q8dryvGzpUwsZgRbuCJ3I0OXC1iNv0UD3cHLp3KCEnz--ImVcj5LD6yvZ70hO6IEsyfMJeLJGJLku4cyliQ1bfOaUEetkLhdq2a1Uby2I6iw89ix2HQuj0Jp1dJxJV6RFAGDX0lQ_QLoheX7ZNwkbhAyIQbLMuwe4JvQzeODorrM7s9snr7YrlDdpm5DcCFj-lvUnPbxLD7-dZCTrp7jFQA3P1rFFydrgBe0IHoYRC6RrFEArFEJpOTf_w40kj7j-3VmYxtPazktW6xIMyNbdkw-DTs40aSKdqlcedjBzIdRLcull4XLyIODOdR_XyDjwM7o0Sur5ntrVcduZV2XxOvYww-A4DdzzeqYx31sku50-AC_8_fagnjXdu8eIjHK8uGRzvIjVxazPsiqUUi-dGhh9ruafvbBcmyHoyLZyFezqKQ==.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_0a624f5dbf5a54a4016af8bd3c8f2887d1a16d629553184f68",
+              "index": 3
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4958,
+      "completion_tokens": 1041,
+      "total_tokens": 5999,
+      "cost": 0.00057035,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 4955,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00057035,
+        "upstream_inference_prompt_cost": 4.985e-05,
+        "upstream_inference_completions_cost": 0.0005205
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1022,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

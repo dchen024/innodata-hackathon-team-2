@@ -1,0 +1,112 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t10",
+  "time": "2026-11-14T19:56:10+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Bleecker St to 3 Av using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 3 Av itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t10.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "medium"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "**Route:** Walk from Bleecker St to Broadway-Lafayette St (free transfer), ride the F to 14 St (6 Av), transfer to the L, and ride it to 3 Av.\n\n- **Bleecker St:** only the 6 stops here, and the 6 does not stop at 14 St-Union Sq or any other L station. A single-transfer trip is not possible.\n- **Two transfers:** The walk from Bleecker St to Broadway-Lafayette St is the first. The F runs from Broadway-Lafayette St to 14 St (6 Av), two stops away via W 4 St-Wash Sq. The F to L change at 14 St (6 Av) is the second transfer.\n- **Final leg:** The L goes from 14 St (6 Av) to 14 St-Union Sq and then to 3 Av, which is the only service that stops there.\n\nFINAL ANSWER: [\"F\", \"L\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "F",
+    "L"
+  ],
+  "ref_answer": [
+    "F",
+    "L"
+  ],
+  "correct": 1,
+  "usage": {
+    "prompt_tokens": 4993,
+    "completion_tokens": 3044,
+    "total_tokens": 8037,
+    "cost": 0.0020213,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0020213,
+      "upstream_inference_prompt_cost": 0.0004993,
+      "upstream_inference_completions_cost": 0.001522
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2740,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0020213,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 14.55,
+  "response": {
+    "id": "gen-1794686155-Jx0qf3bQBxB3ctlnFRxM",
+    "object": "chat.completion",
+    "created": 1794686155,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "**Route:** Walk from Bleecker St to Broadway-Lafayette St (free transfer), ride the F to 14 St (6 Av), transfer to the L, and ride it to 3 Av.\n\n- **Bleecker St:** only the 6 stops here, and the 6 does not stop at 14 St-Union Sq or any other L station. A single-transfer trip is not possible.\n- **Two transfers:** The walk from Bleecker St to Broadway-Lafayette St is the first. The F runs from Broadway-Lafayette St to 14 St (6 Av), two stops away via W 4 St-Wash Sq. The F to L change at 14 St (6 Av) is the second transfer.\n- **Final leg:** The L goes from 14 St (6 Av) to 14 St-Union Sq and then to 3 Av, which is the only service that stops there.\n\nFINAL ANSWER: [\"F\", \"L\"]",
+          "refusal": null,
+          "reasoning": "I need to work out a route from Bleecker St to 3 Av. The 6 stops at Bleecker St, and the D and F connect to it nearby, but 3 Av is only served by the L, so I'm checking how the L line runs from there.\n\nI'm working through which L-train transfer gets me to 3 Av, and I've ruled out the 6 at 14 St-Union Sq since it doesn't stop there. The 4 and 5 do stop at 14 St-Union Sq, so I'm checking whether I can reach them from Bleecker St.\n\nI'm checking whether the D and F at Broadway-Lafayette St, which join the 6 at Bleecker St, offer a better way over. I'm also looking at the W 4 St-Wash Sq option.\n\nI'm looking at which L-train station connects toward 3 Av, and I'm checking whether the 14 St complex at 6 Av offers the transfer I need. From there the L runs to 14 St-Union Sq and then on to 3 Av, so I'm working out how to get from Bleecker St to that 6 Av stop.\n\nI'm considering the F train from Broadway-Lafayette St, which runs up the orange line through W 4 St-Wash Sq toward the 6 Av/14 St station, where it stops.\n\nI'm weighing the transfer count for this route: switching from the 6 to the F at Broadway-Lafayette St, then changing to the L at 14 St, comes to two transfers. I'm checking whether any path from Bleecker St reaches the L with fewer, and the 6 doesn't stop at 14 St-Union Sq or Astor Pl, so I'm stuck with this two-transfer route.\n\nI'm checking the 6 at Bleecker St against the L stops, and the 6 doesn't reach any of them, so I'm weighing whether a single transfer could work or whether two are the minimum.\n\nI'm weighing whether a route with fewer transfers than two exists, starting from Bleecker St on the 6. Each option I check, like riding the 6 toward Spring St and switching to the C or E there, doesn't offer a free connection, so I'm still looking at the first leg of the trip.\n\nI'm weighing whether a single transfer could work, since the 6 at Bleecker St might let me reach an L stop directly. I'm checking the stations along the 6 for anything joined to the L, and the 2-transfer route via F and L still looks like the one to beat.\n\nI'm settling on the route through Broadway-Lafayette St: from Bleecker St I walk over to the D and F, and the F runs two stops up to 14 St at 6 Av, where I can switch to the L. The D doesn't stop at that 14 St station, so it's the F either way, and that makes two transfers. Before I settle on that, I'm asking whether the 6 itself could be part of the trip.\n\nI'm counting the transfers now: walking to Broadway-Lafayette is the first, and switching from the F to the L at 14 St is the second, so the answer comes out to F then L.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I need to work out a route from Bleecker St to 3 Av. The 6 stops at Bleecker St, and the D and F connect to it nearby, but 3 Av is only served by the L, so I'm checking how the L line runs from there.\n\nI'm working through which L-train transfer gets me to 3 Av, and I've ruled out the 6 at 14 St-Union Sq since it doesn't stop there. The 4 and 5 do stop at 14 St-Union Sq, so I'm checking whether I can reach them from Bleecker St.\n\nI'm checking whether the D and F at Broadway-Lafayette St, which join the 6 at Bleecker St, offer a better way over. I'm also looking at the W 4 St-Wash Sq option.\n\nI'm looking at which L-train station connects toward 3 Av, and I'm checking whether the 14 St complex at 6 Av offers the transfer I need. From there the L runs to 14 St-Union Sq and then on to 3 Av, so I'm working out how to get from Bleecker St to that 6 Av stop.\n\nI'm considering the F train from Broadway-Lafayette St, which runs up the orange line through W 4 St-Wash Sq toward the 6 Av/14 St station, where it stops.\n\nI'm weighing the transfer count for this route: switching from the 6 to the F at Broadway-Lafayette St, then changing to the L at 14 St, comes to two transfers. I'm checking whether any path from Bleecker St reaches the L with fewer, and the 6 doesn't stop at 14 St-Union Sq or Astor Pl, so I'm stuck with this two-transfer route.\n\nI'm checking the 6 at Bleecker St against the L stops, and the 6 doesn't reach any of them, so I'm weighing whether a single transfer could work or whether two are the minimum.\n\nI'm weighing whether a route with fewer transfers than two exists, starting from Bleecker St on the 6. Each option I check, like riding the 6 toward Spring St and switching to the C or E there, doesn't offer a free connection, so I'm still looking at the first leg of the trip.\n\nI'm weighing whether a single transfer could work, since the 6 at Bleecker St might let me reach an L stop directly. I'm checking the stations along the 6 for anything joined to the L, and the 2-transfer route via F and L still looks like the one to beat.\n\nI'm settling on the route through Broadway-Lafayette St: from Bleecker St I walk over to the D and F, and the F runs two stops up to 14 St at 6 Av, where I can switch to the L. The D doesn't stop at that 14 St station, so it's the F either way, and that makes two transfers. Before I settle on that, I'm asking whether the 6 itself could be part of the trip.\n\nI'm counting the transfers now: walking to Broadway-Lafayette is the first, and switching from the F to the L at 14 St is the second, so the answer comes out to F then L.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4993,
+      "completion_tokens": 3044,
+      "total_tokens": 8037,
+      "cost": 0.0020213,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0020213,
+        "upstream_inference_prompt_cost": 0.0004993,
+        "upstream_inference_completions_cost": 0.001522
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2740,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

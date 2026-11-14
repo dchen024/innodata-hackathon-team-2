@@ -1,0 +1,114 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t07",
+  "time": "2026-11-14T19:55:16+00:00",
+  "request": {
+    "prompt": "A rider who uses a wheelchair travels this weekend from 59 St-Columbus Circle to 34 St-Hudson Yards using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 34 St-Hudson Yards itself. They can only enter, leave or change trains at stations marked with the accessibility symbol. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t07.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The trip needs the 7 for its final leg, since only the 7 serves 34 St-Hudson Yards. With Times Sq-42 St closed to the 7, the 7 has to be boarded at Grand Central-42 St, the only accessible 7 station reachable from the Columbus Circle side. The S shuttle connects Times Sq-42 St to Grand Central-42 St, and the 1 runs directly from 59 St-Columbus Circle to Times Sq-42 St.\n\nThe route is therefore 1 to Times Sq-42 St, transfer to the S to Grand Central-42 St, then transfer to the 7 to 34 St-Hudson Yards. That is two transfers, which I found no route beating.\n\nFINAL ANSWER: [\"1\", \"S\", \"7\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "1",
+    "S",
+    "7"
+  ],
+  "ref_answer": [
+    "A",
+    "S",
+    "7"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5049,
+    "completion_tokens": 3127,
+    "total_tokens": 8176,
+    "cost": 0.0020684,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0020684,
+      "upstream_inference_prompt_cost": 0.0005049,
+      "upstream_inference_completions_cost": 0.0015635
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2869,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0020684,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 15.08,
+  "response": {
+    "id": "gen-1794686101-G8BXEhFs7fLGoBsJvoD2",
+    "object": "chat.completion",
+    "created": 1794686101,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The trip needs the 7 for its final leg, since only the 7 serves 34 St-Hudson Yards. With Times Sq-42 St closed to the 7, the 7 has to be boarded at Grand Central-42 St, the only accessible 7 station reachable from the Columbus Circle side. The S shuttle connects Times Sq-42 St to Grand Central-42 St, and the 1 runs directly from 59 St-Columbus Circle to Times Sq-42 St.\n\nThe route is therefore 1 to Times Sq-42 St, transfer to the S to Grand Central-42 St, then transfer to the 7 to 34 St-Hudson Yards. That is two transfers, which I found no route beating.\n\nFINAL ANSWER: [\"1\", \"S\", \"7\"]",
+          "refusal": null,
+          "reasoning": "I'm working out a route from 59 St-Columbus Circle to 34 St-Hudson Yards, which is only on the 7 line. Times Sq is closed, so the 7 runs through there without stopping, and I'm checking the stops between Hudson Yards and 42 St.\n\nI'm checking whether the 7 actually stops at Port Authority, since the map's X symbol there is ambiguous. Port Authority doesn't show a 7 marker, so I'm weighing that against the 7's stops at Times Sq, 5 Av, Bryant Park, and Grand Central, and I'll route from Grand Central-42 St since it's accessible and has 7 service.\n\nI'm checking whether a direct 7 from Grand Central would work, but I still need a way to get there from 59 St-Columbus Circle. The 1 doesn't seem to connect that way, and Port Authority is joined to Times Sq, which is accessible, so I'm looking at that transfer as a possible path.\n\nI'm weighing the 1 train from Columbus Circle down to Times Sq, but 7 is skipped there, so I'd need another way to reach a 7 station. I'm also looking at the D, which might stop at Rockefeller Center and offer a different transfer.\n\nI'm checking whether the D from Columbus Circle to Rockefeller Center leads anywhere useful, since Rockefeller doesn't have a 7. I'm also testing a path through Times Sq on the 1, but that just lands me where the 7 is closed. Next I'm considering N or R service at 5 Av as another way in.\n\nI'm checking the A and C lines from Columbus Circle down to Port Authority, which is accessible and joins Times Sq, but I still need a station that the 7 actually serves. That leaves 5 Av-42 St-Bryant Pk, which isn't accessible, and Grand Central-42 St, which is.\n\nI'm noting that the S shuttle links Times Sq-42 St and Grand Central-42 St, so I could take the A to Times Sq, then the S over to Grand Central, and the 7 from there. That's two transfers, though, and riding the 1 from Columbus Circle straight to Times Sq might cut one out.\n\nI'm weighing whether a single line could cover the trip, but no 7 station is reachable from Columbus Circle without a change. So the best option so far is a 1 to Times Sq, the S to Grand Central, then the 7, which means one transfer.\n\nI'm checking the transfer count again: going 1 to Times Sq, then the S to Grand Central, then the 7 means two transfers, not one. I'm also looking at whether the D from Columbus Circle to Rockefeller Center opens another way to reach a 7 station.\n\nI'm still going through the transfer options, and the 4, 5, and 6 lines from Lexington are the only other way into Grand Central. Columbus Circle reaches Times Sq most directly on the 1, so that's the leg I'm checking next.\n\nI'm settling on the 1 to Times Sq, then the S to Grand Central, then the 7, which comes to two transfers. I don't see a way to do it with one, so that's the route I'll go with.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out a route from 59 St-Columbus Circle to 34 St-Hudson Yards, which is only on the 7 line. Times Sq is closed, so the 7 runs through there without stopping, and I'm checking the stops between Hudson Yards and 42 St.\n\nI'm checking whether the 7 actually stops at Port Authority, since the map's X symbol there is ambiguous. Port Authority doesn't show a 7 marker, so I'm weighing that against the 7's stops at Times Sq, 5 Av, Bryant Park, and Grand Central, and I'll route from Grand Central-42 St since it's accessible and has 7 service.\n\nI'm checking whether a direct 7 from Grand Central would work, but I still need a way to get there from 59 St-Columbus Circle. The 1 doesn't seem to connect that way, and Port Authority is joined to Times Sq, which is accessible, so I'm looking at that transfer as a possible path.\n\nI'm weighing the 1 train from Columbus Circle down to Times Sq, but 7 is skipped there, so I'd need another way to reach a 7 station. I'm also looking at the D, which might stop at Rockefeller Center and offer a different transfer.\n\nI'm checking whether the D from Columbus Circle to Rockefeller Center leads anywhere useful, since Rockefeller doesn't have a 7. I'm also testing a path through Times Sq on the 1, but that just lands me where the 7 is closed. Next I'm considering N or R service at 5 Av as another way in.\n\nI'm checking the A and C lines from Columbus Circle down to Port Authority, which is accessible and joins Times Sq, but I still need a station that the 7 actually serves. That leaves 5 Av-42 St-Bryant Pk, which isn't accessible, and Grand Central-42 St, which is.\n\nI'm noting that the S shuttle links Times Sq-42 St and Grand Central-42 St, so I could take the A to Times Sq, then the S over to Grand Central, and the 7 from there. That's two transfers, though, and riding the 1 from Columbus Circle straight to Times Sq might cut one out.\n\nI'm weighing whether a single line could cover the trip, but no 7 station is reachable from Columbus Circle without a change. So the best option so far is a 1 to Times Sq, the S to Grand Central, then the 7, which means one transfer.\n\nI'm checking the transfer count again: going 1 to Times Sq, then the S to Grand Central, then the 7 means two transfers, not one. I'm also looking at whether the D from Columbus Circle to Rockefeller Center opens another way to reach a 7 station.\n\nI'm still going through the transfer options, and the 4, 5, and 6 lines from Lexington are the only other way into Grand Central. Columbus Circle reaches Times Sq most directly on the 1, so that's the leg I'm checking next.\n\nI'm settling on the 1 to Times Sq, then the S to Grand Central, then the 7, which comes to two transfers. I don't see a way to do it with one, so that's the route I'll go with.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5049,
+      "completion_tokens": 3127,
+      "total_tokens": 8176,
+      "cost": 0.0020684,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0020684,
+        "upstream_inference_prompt_cost": 0.0005049,
+        "upstream_inference_completions_cost": 0.0015635
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2869,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

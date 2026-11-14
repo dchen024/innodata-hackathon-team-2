@@ -1,0 +1,144 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t10",
+  "time": "2026-11-14T19:59:35+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Bleecker St to 3 Av using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 3 Av itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t10.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "medium"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "FINAL ANSWER: [\"6\", \"L\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "6",
+    "L"
+  ],
+  "ref_answer": [
+    "F",
+    "L"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5071,
+    "completion_tokens": 1145,
+    "total_tokens": 6216,
+    "cost": 0.00062348,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 5068,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00062348,
+      "upstream_inference_prompt_cost": 5.098e-05,
+      "upstream_inference_completions_cost": 0.0005725
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1129,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.00062348,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 15.54,
+  "response": {
+    "id": "gen-1794686360-83oZ9PZIEtxAn5A7MhVM",
+    "object": "chat.completion",
+    "created": 1794686360,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "FINAL ANSWER: [\"6\", \"L\"]",
+          "refusal": null,
+          "reasoning": "**Mapping subway routes**\n\nI need to identify the best route from Bleecker St to 3 Av with the fewest transfers and stops. On weekends, the 6 is suspended between 28 and Bleecker in both directions. At Bleecker St, there’s the 6 train as well as the D/F line. I’m examining map connectivity and transfer options, particularly between Bleecker St and Broadway-Lafayette. I need to keep in mind that 3 Av is on the L line, so I’ll plan accordingly!**Exploring subway routes**\n\nI’m thinking through the potential subway routes starting from Bleecker St. Since the 6 is unavailable between 28 and Bleecker, I can take the 6 downtown to Brooklyn Bridge, but it doesn’t connect to the L line. The quickest route to 3 Av seems to be transferring to the D/F line at Broadway-Lafayette, then taking the F to 14 St and switching to the L. I need to check if the D service stops at Bleecker or runs directly to W 4.**Clarifying subway transfers**\n\nI’m trying to ensure I minimize transfers when planning the route. It looks like both the F and L lines can be accessed at the same station, but I want the fewest total transfers. The map indicates F service operates at Broadway-Lafayette and 14 St, with the orange F line running up to 14 St via 6 Av. I see markers for both the orange F and gray L at 14 St, so I could also consider using the 6 to get to 14 St.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Mapping subway routes**\n\nI need to identify the best route from Bleecker St to 3 Av with the fewest transfers and stops. On weekends, the 6 is suspended between 28 and Bleecker in both directions. At Bleecker St, there’s the 6 train as well as the D/F line. I’m examining map connectivity and transfer options, particularly between Bleecker St and Broadway-Lafayette. I need to keep in mind that 3 Av is on the L line, so I’ll plan accordingly!**Exploring subway routes**\n\nI’m thinking through the potential subway routes starting from Bleecker St. Since the 6 is unavailable between 28 and Bleecker, I can take the 6 downtown to Brooklyn Bridge, but it doesn’t connect to the L line. The quickest route to 3 Av seems to be transferring to the D/F line at Broadway-Lafayette, then taking the F to 14 St and switching to the L. I need to check if the D service stops at Bleecker or runs directly to W 4.**Clarifying subway transfers**\n\nI’m trying to ensure I minimize transfers when planning the route. It looks like both the F and L lines can be accessed at the same station, but I want the fewest total transfers. The map indicates F service operates at Broadway-Lafayette and 14 St, with the orange F line running up to 14 St via 6 Av. I see markers for both the orange F and gray L at 14 St, so I could also consider using the 6 to get to 14 St.",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L2gw2ohm8OlIl82EqL4PteSNL6hcFFLAVKEjn0KBOr8fi54VvwTSTK26etnusyJVmxKoeuMLbCrazhY4r8QQXvxk4yBcldWBBMIW0albglV9eME61fepmmgGcEqF9SXQ4NeEuSm2uac1lEZmGk0pMbYtNmpOOWv-TypgeRX9yiV2_Llmbm2FXLCmDuDyAUVigoRshc7_GRQZ5lL7GyAPMySzsLp_VlVIl132MbQDSe5XG2BrhMATsnFWSVxcWoqnlUCtpKWaWo_P2tPN8gCu_jx_R5NmJySTfle20qL9WIhDEzdvpoWtHP1Vuy_1WHTgM51tjioxB7FkhDL1I4VjZXAY2T9KWr2sJtsXyIJ7PRqYlx3jt94Yd5sIa5gEec8wwLIJicJwDuCHJK81zveFso5vDEy-Iz4FjDZ-pzY_8FJlL04EErMLTRloeUj_MjEbBI3cJWC4tJ0rnfQi_4CE28lTXHm7ho-OcEFRou_CGnz8wPdUDoEE0DtCTYWOOYKa-etTDhDKe2mupXwg8ZWfTDDmzVuwxMdHgyk4m1Q0lBcDKiAcs9qmTfy06OBXJ3KFv_N0nnxCwCXfwav0KQJWorVGmQT7jYs18NCDMu_soFoDfGZuSNflEoL7GMShFx9oLw7c_rE5zwD1uC0WuF9knaUaYEu_9mTguWtSWfBsuF91-O1RKzxRdQQplIteUME5ksJUOA2gyrLi9tq0eWlkjweL86SXPdY4bOpJiZnweqyb8r_rcQokhcLGjXeIn40CsPP9PyyTQoG5K2ly9mT0U6552MMQmFpUM5qPBtLAnslV8Cv8u3Fi-pzqsLyEMHMtU8uF62wCsncjAk4oZYVwKgkhslcDw7mvGAVQFqJ4YsASWSVrUONNvyy8A-4rYAmV8rqwwRonvXbvpeTIl4-ufUfE6V0VEf9WDikP2l1vUufksipk6bDy5uF-mXvAGOJKPDElmDiXz_rjmgAJKeRhq2rGGuHtofOrj8HOuiY1OAccLKplSMyqM0_yn7nkvCyPAEHEICuOfIVtl-vBJajHDTk_i_krtqlW5ss1ZfzNrlsDFlfxfF54FXhQ6ZqPw8HnZ316D7U5m6v4pkAkR7ZZcsbCc9sDrKFWsXn4Ngc_zt0vq9D290TW03C7WAoIqNHuW72lFq7VSMssXBpCjRlHe0ODguRoyBNTfaEQFGkzJvgLKr4NW1wLDa6n4FXRhEjEtZEvDYCkSy-yhomAeyivNKlaef-50-ZtO9hzTmV_xWrPkEpcZtyUTyGzoj010k31YSL_9EPnjEJ0wK2WFGJow63hYGRHRwM4PrOfQvfPRTO8Pkl84VmrbhMNVl_vaI6y4hoq7T6C4sw8mVvvRoOqIRm35Ur8g4GcTRwBeYOKfobDNyrHeBfKNAwrbq1w1_9tONCHbcoIoesAfdqKKYtoeVK2xSlvknp5yM6GAvo4ffRGs9aChu3tkB8a2hkbFvUwA0HCcEsexQYVT6DZXAAEIws67j4QJtzgLrifA_QpzgRueWcxiKcjOV1SltO6lkU5_XZC62Y2mDkZusbHwwFEbCmBB8l9Q8XMpL_2_1dCBIp8kGqUKZYdHAVbuhyKT7A35_0TfpoYJj07lp5fcO086I8-_uWPM9Mjz2295f2LO5hAltRjb0sGcaWHsqsUzlMvg4F8qJaeSIA0xVXcioF4uXxjJS0ZCW0pA6t8bBIO5UI-zJ1LN32NgYWhqqLuJ7Oy8TThFQMFP7EB8mMYUJoTPAPMKdzSJvuRFfZOqgb1VZtfmnFI2fJyoSCjHDx29vd21HqxeQs-Hyy-E6yr27ydN4513_tgfATvTLoy7bCMbENIIVEqkWC_tnRPIwdsyrZfsUGPtaC6nwEqACjZMS51_L9Iod5fexyrBa3NDSzJ7XCCvYZkoPYSYD9EugsSEop0Vq1TbI81fPvSauutoeMuyAxcVWl-WJwzKKrdRqZZPxjQ7zNMvfbY-koJW_zoo8df73leFQRNNIonf0Tk_EHvdAyK7gzTtIFAoTKOrA6TUynmW1GummQmMMt-fioixziIXTuJ7RowzeYiBN3R4LlsDdSAZuV1mHJLPcNZMd4ACdeKIl7nnYjYE-FVBdJJ--DEBeO2RShxcUExHOWdaaADAAnvdQ0o8cJsICMiMOGkwwnGnj9ayoDzN56IqCI7tNS-RxAPEUGylcD1s5Y8FgTo9gu1ZP1bpLOmFrWBW3h8tWtlBdfnhAEPWuY0WPF_mi9h5j202x48pbxFyiP0jxnKpdPgu6cp4XRIfQ3h8scRG3Z8cuKESbuT2XsFzyQIIs7fPazoaiDSr1s5ZK1zoDUuSMOmipy0QALb_x_1ieVWdoOZEltYgU28VQyM-g-WhMwybzxCRujCxbjZjtdNwgmbsNhdSC_Hs5gqg8hWbFFiBg4W64tfFGFKS3aaKHZKuL5geyHh7HMT5D1z5uQ4aHtDaYIrOpmN1mkKDZ7uimT9GkwmYi-Ea_P4DZTHtDMiAK-dxIxmHehOM4whI-V852jIbRcHJbJIZLAUfsT52qz2g5lUb6338mFQkrk77oe73mx3OpC5UOz6iNgKoTddbD1A92LD46pr7UVsj1pLM5GVxGlUo66g5KMPvYB4H-Y2iGHiw0WA18xj0sNidanSKrs0W-TYKdKqUxegzucgDMdnOdKYNdVTQT1qdyIqs4p3DbpmQmMAyqoRij10BqDSXBWN_2x6RHXP68fUJOYbBVAGbZj8g1kgPxVxPoBKKEagaiF6XZ6-vsnMYTTBnzG4QJSp1pNsvKH1uQSiNJZXclflnJlsIUOX8w08rlHsqU4UsXO7jHUT5UfdBbjvrvPKFRyMJNTt1T7bdEZg43QTzM2G7tgZpF56JlqpfJvvd6w1EA81TkUNA6O_D0TSEVCQmVvGYSyf7jinbZ2gdVVXn05igpDE0fei7C1gOlsUDJloZ2_8gsjuRFGSzRdthBS9ViRNZj6LQodituIkpPs2KBVKxDope678RBumNQHiaD2GtE6IE1NZeZ8XKhzWGDJMB6cIhUHUN6QLMT1fkUyZFGyiQTAzZTvj8CZMbXlBA5tfpkb4td2XC2Zb0AADER4uvyO9UHu-FSUw_gx8mYULtbTmmwObMcYQs2GaGH7bYkfzBiOu3er0HFMH-jdihRqV2Q6V25ev5jHgDcmp8Pjwnqnbgw5EygXx8ToU-cAX9X52kPa0PUKt5XvihXINU4YZNgCjRo2ePUZrl2k4Y7rCNc6Abg1LeFOIfpVs8kROhGJLmilZS1H0s1h81gvO-W-olh5ewxK4-OFV19GyIEvfjRfQgHwxPbTj6VF8FPcDuUF1sYwpbm9Yhpgrz4bBUAATcjBgz0oHtWQ17idH1nc2qlxh_FlaEms4uBFC7V1qU6uvyKbapmI2R184zihpAVeHNUro4GBL9fFWVXTiDj9hsS2gF860SblToJXB0O47qqK1CMWpmaz-NeGeQKE6voDxHyK4XPP1yFcbvXRX0ltf8N74lvDCvoOaS8j3mhduFueiM1bOkHr1fa84G-jph2lBTRv5PzQZQFT6RrcQ6Yu-POoCxAQPo8YdKLI_xeBqdbCkTBvLdhq2h54EipzgE6YqfWMpFmm1qLe0NFm1AmBXfRidxnTy05g1EbfKs82FKPl6jC-pydjUs52IFon3lNY6UZhvCEKdMDssE6bNWvnYs_99XEVqtNjMdcrT8rm7o5ZGW_xlJVSHAjDKO065hhc_yLs3ONIgEgvYiKAB9uZPHeaIkNkGnV-EhZggo8tncK48gtUS49OfByGcotR-JmJ4ySM4JRT8GKp_0IV8xWFUrYfepMHRHXJYZkaGmWTJcRH8AwssUWhzgsszX0hD8isMjRhnHUPihXN0wpGW_lBKw4DiHrgjz-SwGwNPukkdgEvPgMqvfySb9rKCO1B68TwvODQ1420cGkssxmGH2s_B00xgQs_Jd4FCprDZUz8kH6-EnUR1RsORu4vixHkZRwrjmtbzV_0aP2DeJDF52Zb3QSZYJCJDikAwk-mhdJkMrR_AYseWaH99U1ujUyL2UJMk3Nk60LYXRw0blL9IxtXHfDND89L4WmwINFU2Afjls2UMhAkUYkMvw1UcTUzrUFO0rujp77QONux75lUBYE7wxMHeojF19wUjOZe8GwdweI7Tdb0Bp4lP94ZXfxcRXpu5-BtqdkdcrVJwQLEJVlkvZUim0QBkrlafAJTdtepoQpJlwkeGosKMkVKB2YSg8brfqiWB6NkJdVdgN6hw4NRxwHwzSYdLFslpKEFPbLcmiuMVMTABXM1uVSAO1LZwIItVeV3CymGt6G__XZA5zD-xtRM6xXZwrWti_njqMBtetfjolvj6NDrFvuNrLWwaxM0oO6ZCIm-HLXnSEolztVNFD8GvhiXoz4b0nLT5ESMWoao8VHlXkrNNYPATO29aT5nVs1wHYhfQDWT0EhenWGP40o2SjaoSy_AwEPA4HUK219bdDNf1c_4TGDQG95omIxv774fSbIvjdip9DGMm_CNw7bn1J-FT4IHxjPI16Ix3v5JG1mWLn8DqvZ81R8MElB8tSzs9Eeu39kusZN9CZYpubkCTLmhLwRXEvQOoTixLq4vUUbUT9DOLcb4dSvR8BNiETmbE3pcCwwlqDotuUcgfU1Gbg6YG7NrbIzNljUoVsXnLMv7Js7sIfCAzrUWYRx5BzXSSn52LUJR0f34zxR-VyjhhFXhN7_6tKXFKAcl6zHat2yMLTZBNcXVnudohC7HExh2ISAGo11eUZOxgQ4Sv9w_zbMc4JiCbDGMy77jjvZQKPMguzEipbemyD1tdr-E3CZhJFc2_ceHiMUqog0Q0PVQFLZyrNHYqZvEJc7cCsZCSpaOYvpG7gcJYnSKuNghOdyw7VxV6F_Sb0VuxF7aA81_7gwMaFi4-_cKWtwGkM7PHI128Omz3_g-aV9lu7p3vHdtmpbZoq1-KjSc8xp2KVwJTpXPZdQGczCK6zrsaFn8SMmipLXWF_R17FyLxbzW1oZINhYAZvRapGbzqxrIk9u7CfqwhP0uUZT_Ng7palqh0RkbwpS38RIq0j3Q-bX_e12OcUf5YUc18hV3wk0wa1V58A9stXakCQ2kWw6iAm5x9_mGNdu49wNeFlwIgzlrYupNAs5koSnKYH-Jog4y57xaHTfM-aOzUc9y7SHmbmjOsA9wEWsvmbV-04Dfbq8sTBZaWE9b1f7ji9Pz1Szt3gaJR80nwJgBy3OKVjB13GKBsBgpDU5HfCpo1Eo6BQ4iDgI0NjVfqgL-FRQ8DPNtvJNzCTvnSWSTPwN-mq923B_Tb2jeNhriGbxA7-Vpde24Pwg_KoSlbmpL9Pm7O4T7hNmx5NeSFxw-Jlf-gz29p4PSi2CS2huB6VhySMRMX0zJB5x8kHcxM6uVJZ_p-zPa9su3e20PNujHbLVahbORcxx5kz7j4U3BTXw8SRhjtujV9hR5IUle9SuQptR_G3RH7x8_nQYe4PjrNsDgK61BmCUhsbarMw57Pb7BUmHF07yEH1jsFQOaTL63FLXD2z5sAHGFdx7sgpEV418uh_UMevFnIWUUWHwtqL-gH6fbxQdc9LjsuC0rrYQf8kEvi0j1GJTarb51JbZEGbGbiJnvZCawYpWG2qS-AjLCQXztaDMowH6-IpFUpAcU3TjZhiK_8Sgdqid8c7_A4HaVqPlhqMN1YGEEL7CNG6-6smYiRusfm0g1SkWop1bWH9-5eC9enoosnTx6vYgnXSF-UCyP7IHhAZ3_tykUEq7ECxm-PvNGIrQ4uysvlJMPhj4dCkKQbuUWP0dmj10FjOo51ibaYl0UwHDyuWmai2Gl-o8UcwdyLF2GzrT5HwzkS6oA43rpO4qtJ9nvpVTAc9EWyHz_9caOc-UuYcpGvh0m9-Wr2c6fOFRRaFzDUtVmVW3vYF09HlGewGkwUH101VibGCmFGp9DsXWu6w73_QXX4qZu41VXJJZv8WL4JhiXfDptSWgBoO-7NOO6pLRucnz0oixZc98wR9Uhq775Z8mJRQBlFOSJaJ7is5kNSS5wzBJcXU2GtL12mXOXLuDPnbFWZdIqYONE7-ifIjCmpcLMut4HUylFQR5jjYuZ5poPS84fT_PNoU9PpnzxcMIiCe3Lv9RIv-MVSliWScfYrZ_1JipkBez28J9Kkz_-5fvqnhy4-mCtVCwS1hx_wx2vt4XKjVINYTmXtsqs4I0Of6ZiEQPbbdubKkJvlby833etnCWbRiG7mKcXP3L2fsAc8NBadxX0ygSRH7h4Z0VNgImKAL60iRXCnFkqBsIS8y5ZxpUaeMREbWjdwK8xuu5492eopKrYLgY7Vs0500qdHxGrYX3l3bRBYPV6yrJlEZ40AFY-1z_-OJU_PzUiTmgZGsshN9_THFr-JHo-T_rGqV9juNp24nquiB9TeIW4b2MTFqzgJfXaoHoUyiC6MQ6lYC3YoGVZmLjXw2gLdRtLgmaugoUftqf41CjqRRZ3y1uZv6NI7RqTGijmetGzMDKcEvyKm6c1HmdQi_rw7FUMYjPHQg9YRdnM6SyVL-6xUn6MphVxqQWCouhoWb16XdnqWnJJJfmj2IFGa9mU42kj3qas2szthvnyQNTLBEsZQLOLRm9Ol3f9s9KadmPxkYDqWj7kruzfXGXbUIbgGybd9AMUrkAGNcsTNK2n7IlKqd1VJzoTve82APcp4zx3yHF_7R96GYGf-zrfvHFPCSMVyQAmD7LUS-TB_YAL7NyAzEv75qufcjQ5eeYx-NDx--ihrt2iyRsh3n5cbTYwSfOcWKCtoVwsXCgHbeCKLzIe8zSHmiXDhNF8RHV3v92EDN_H25T4j19M5Sh_EQgLR_eCuvnutlGI5_QuUKMy9Lhb3WaoPNnA5AuBUqjtH6chJn5n-opGj4Iuk0QJMa0RreA2waYrcPZ0AqsqG-JsdJuEGL2V3dpo9JQX-pSlPkdKzNGMGDygGfg_dIsu7PJGAwQuFfNtxIRa-xfYW02D9PRyaRP7hryix5MnTqH1T5itmyIhiDhLBl7uayf8IP_3orKJo8fbb3pV-h_z1STHxeCAvw_Pql_MpEL2yAvvr0innCAI-8MFZGncZzm1BmXGig5TdBxFR0lJvfuhj4IEbqvV6HY6w8x3bJ4OV5-K9nxvgZrgTmfE1KsmZnNw1au7tn6g_6WBkgnoWvhIVg7nRPVcxm1rr-50EpOi9j9Seas3i2mxybGlyVVuxNQAo18PQxRUzXZ3dAEEugCrXIOexrZYO-alWh4ZsIrPTOixUgcn200-xPOaoDKBTXpkBcWVVr9uwlpLkS31H17e2Col8tOx4jgKKNQBieSBEYIRiakE-V5y9uvjY_2ZirCncx_ebyqiXeN_67qAd_mOYKbSYa8lP-1tYGG2pVKdZa4VrzUSAtuoTTiT-24DKbKJsjqMSNs4HkdbadLI2KYcqpaLziQb-AItbI3xNAbkqsRf1_Iy-nAFAkqIrex9SsBKOpIahE411FvvEpSEvWZHPHkmV2TZoSf7rtNEQvUBvpVxR8bZRCeqM8w2agwChSR9ekvt4cKlbjfTTLLmloAq14RTBxfP_ymJg_TITdRZeWfoZjfm2DeRtPwTNFJth3sUQkYr4DP23fmIUpjH3R8Cs3utJ3eyQPqIiZPp1szml9xiSNIuzTQ-73LRxamF4hULZYyt3B5v.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_02d5eb7e04d8605b016af8bd99045087d1bc2c2a736a92eb78",
+              "index": 1
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Navigating subway routes**\n\nI’m exploring the subway options due to the weekend service changes, specifically that the 6 train won’t operate between 28th and Bleecker. I see that from Bleecker, the 6 can go north to Astor Place and then to 14th Street-Union Square. There’s a transfer to the L train there, which goes to 3rd Avenue. So despite the alteration, I think using the 6 train to reach Union Square and switching to the L makes sense!**Evaluating transfer options**\n\nI’m comparing walking from Bleecker to Broadway Lafayette station, then taking the F to 14th and transferring to the L, which totals two transfers. However, I wonder if the transfer at Bleecker and Broadway Lafayette counts as one because it’s within the same network. If I choose 6 to F for a walking transfer, that also leads to two transfers. Riding the 6 directly to the L seems optimal, stopping at Astor Place, Union Square, and finally 3rd Avenue. I might also consider transferring at Broadway Lafayette.**Considering transfer options**\n\nI'm starting from Bleecker and I see that transferring to Broadway Lafayette, then taking the F to 14th Street and switching to the L results in two transfers. The goal is to minimize transfers. I should check the map to confirm if the 6 train at Bleecker has a free transfer to Broadway Lafayette. I notice that the Bleecker station has the green 6 marker and orange D/F markers nearby, which might indicate transfer possibilities.",
+              "format": "openai-responses-v1",
+              "index": 2
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L2mq1ATqRTEjyWR_qIE4KIannyySlNwLaqj_w_tiotKObhJxUGBybeG_Y6ERF4JeqfaAcGaJHq7QzZkWLnc5rvaqBr60aO9h7NBg3rmdFiCHM9_M1Ng3j7L9GZuMUAdvX-bMmOKZC4w0DD0AnlcCrQXGPqmKOTXXD9AXdRtpjB4VyMZ9c-gsB6m90ArQFPsDvAfaXnPRvZg7ektjVu4yizapYtZaYW1KnmSW_aYpCIMEpKx15sF-w6YcibNpcvrDXdFhy32x85nzR0lA7smANUal-1DQMPdPQnwNXjbp6Bj5m9Ybq8AW3lkd6jsWJkE4tjGAHXbUs6T9YB-XwnIwxkd54PDab-c_45Zg4D4lMj-xajJzYGtM1EfA20eI7FWqzklfFxQf3-dOuuAn47FTLGONMHvug--WDJ9tCr_utr3HbBxCc5340NPR2FWBdiJhLQq-qctf1rT3HEJ72atOx7ENTBMNiOI-b0ANhCbhEzeh6uquntsyw_8GnkzPnNVC7r1oRSex8pGTGve_evoCJ2aI3lM6OBu7Un0Eg7ucb8biGQkj_4gLj8DkIt5jY_cgn5ZlYVPIKj9yxGEy2P7rytlaOpKtILXL5ZCF230YQ04T0AcqjPWfl7hbNeR5McpxaJgKOBPAA-__fmOWlnmiza7czKW2XS41QszKdP8mY5j3XJL0BmVxTxNCtCtkJKbkZ0wse3dT9qRh507XIpZgyAlLNC7rT05OnTI1P7Zk2AM2vjOMPDLd0yVW-MQPendb-L1nZtgAyJpOv26XB2OtdyhGp2buldw-jdXE4QuuW5N4LNQvz0MZZZzS6sBpBfrmu5RvlvvjR2090fvGZjJJAWTFTHtSLtVm2OOEu4kxgkdkVoaI7Bht7sxxqfxZDaQ4ipOmycgpYOm32vKBhZEOjNYTwTfcCtBQUNqMN7JgkmP980dXA0XZNXsPa8Zi6nPnZPI1fnRdXgIWKoGOrl_YkCZivZ334K2euOQ8qyWwfRDl9WeyRa8_E7bQqR_Shau-vHlaoC2VmWuYUslWiRr82iHV4tvE8MoYebxr1Y0oI3LhAKQrjGDoiXgLEGgOdmmcF-anDH5Kl_xU1EYGxMFdnjxFGNu4EOJwkAWY57sOoSjpjeneB8F-dB8m3BQJXwwuxo8NDhhSshoVcd112tStcxonSi19QATcRExDtn5DYqkbkz-f4vBCdjiKwCuhZfuVpnuDulfUTkj-CNjQufqY5B7FSR-gi1ZCTahw0z78WErvNnOvGyYZk5G1atRKKhrbD_e_meeGi9ywxgZsz_h89RLbJp5AV-oHT0nxHtXI5GU_VNr4pWOSPge3_uFkdsttrfpYP0ym_Eb83D0ierOaN-73E6J79UG8vQtGbaRrD3ouEiwhd0x2_DSIkMYk017bxDZiwSFJy021uvTAawmDcp4ynI0tUPagvDRlPe1_lcuTORQAnrSbdyvIzeQcLt9yAkHkOBoNXXkkrTlKuqjFNajv4rXmcUpRtVEO4yKCIYVnu_E6zy65nFcqEYRHnn6NkBWvCxKA8ETEh1u8HcIKs95dARx1lW-TWlD3Y5Qo8q4BUZOC_wZkwxOWjI972lceWX5sZddA0xTpMCF1owBjvUDfZWA6fV-NnTLO0kQHHAZ0O_7ct9j03YkNO6cmx2hSr-J43DiP6QcBarFF7H7g57GvfbCMmbI761DOKn0tIKqXPgyDQ4ACAqjQ7sk0f4K1VcjHqaBPf6CujuYCDd8TC6MWzk9OXd3X1PiQw7CVQ-rzJqenpE8LktmDUOuYG6gWqAwrgvljaMVhme074DZktAZL-gvVOeWInfgA6CsNmmD12yVyrfNmXED8mFvuXtCm5Xa3WXzPIueJl624zkUmAQYz-G2EfNcfvYOpdO9HLHJrCnS7ovRYqK7i8Q29bxDo5XNOfYgd54vhtQ0vE5LbS76Cr-xqTXqHFUQanSHToskielfKh7_FDqTK-jto-TNkFDBYVttymvLScoTBMtkZUHBeTDwNQ2ymF91L6sp8gbGBMvzuL7bnScYICgTP5jUI-fHl4wX_0tTtgLM51FuuTDK1jgj5SyT1VwRj5d8-AdMXRkvIVEHIWWhspcf0Su7ta7ogLzUg9ZcT__SIHftFLlu6FMFMAUpm9PQrZWvn3Rc4ABDtFLPXDCtx9La6KwLrdR24iZsQIBF-Sr0K9OvtFui0rQfxZ2zOGqJmZrL35RLflaSHsro-jKOTQB-Lwaan3F9V4Ok9Vxmy8ZzISg9DBgY3dvQT1PZuMgClswH9mzfJIFV_3kiNWBuXYp9v2typW3wcD7ykOuOHBgAEerdjbLJ2zK1IyLE5IvE-Hw3sWC9ooRmeENZEhxTdnYLy5S1izjd1EU9aqoa0dBxv3a8HSOL2DZsruGGMxRApuMGd1mtjvZmiGJSa640fUavNvog4HNBC_e8bKqIUaP-KGWrqi9V-gfe3sB3J96xuXYUV8QSRnV0v_0DPmc0oFiqt4QrN0_4u4RoMAIXJ2vhfn0x-zgOiPX1m_2C3WBtcjPpJ50-wgCPX1WrTScGndZLD01-wyKb03z82txd-wZbVfxocuxTi0ocUbyUkXgZhr4dtVSiRqusFs72-yNau9mOuKTBaPAO-K_x7pN9l8ZoR3PMm3aJGBp1bG78d3dGDgm59pWGFTIg2a4WPnUwQMsxL3gp6J9xxdvBxQ1RjW5oqnhsPLzzTmVgIegSmnYygnM00d21TqHPMvXRYS172QnIM9h20vbV69ZuTFQtLeS5IkOtfGmzIKQzQ2fPT4eDGN1udjAdJrc7YqYPR-Hd_KUnr-SQ1meWYiiwvnLqvclxM-1UrPLa9gA_knSQ3jXpj1Y0Nz6xX6xn4x0LEHv4T-_e90vMXEpwO_jphDbKNIb0xLtXY896eL5kevjZuuZje27V0WhHmu4NWc-s05QP-hwftDCF9XkrEqkHLlCyvwKc7Pccbpw_KKiZShU18sG4AeJl9CS29g2IqVS-_mO6yal4nUVtwX7xV9ALFjDfhoyiy3yakXWxIA9r1_DsXRv6an25Dcy7viqDQMMJXp6tiwwfKEnedK5qgd2VgkQQHKVLvR34w4KTxG0M2ybBTlG7wlSllo5OpS_R66Pa5PezPvP4OshmAcS21gbAVQKOiOCxOJx0aLZj6SdiuYY_d2XByEiun9yJD1FwGsZ4K9dJHF8v430-1gAvLcjgyKqj-R-_n-R_oTX7W6xPh9lJSjGvr8cHLRFQUJ-48nn7Na7NTRC9cGulRm8GGzN3SwmtS69DES_df8VHZknXvxcmR-gE1gk1UMqxFGTCbVG4ReGF9O5s4SlyQ7AD2HlAv1fsGYUWQDW4Bk79kAvEdfwbUpcnUJbKMSDcqBy0KJdqC8r6DGzoikHzpjE8ES_VtdhxZi5Nj0NbFgIg7jSFVDVkqavifq4WfBtix-7_2VNYYXACMP8X2im66R-uwqejeYCEzCqZh1dgT05T-TzcVpNiYTdOmJYWBUm7s_61Ed4oImeZkxtZ3-3RxZPRj-LH-fmzRH6WmQuViiBCEL9JTtmynGkA5uVkD8JXGEYUabxoJH6fgyJ1vzyhknNUCeVtI4_PQ1GrMVZu4LrBEz0vn6U6IDdYA3Em73TBmfiz33znXE8cG6injtuCGI6HB7jDRivA-g1dHFfvetfcjEGo_P57_PiOjRn7McS4VVEkP3rGPrhS7dyOjmgwwpWQ9ZbOXRL2Noghu-56v6BMCUs8y7Jwfo-wOtngipzzuOzYbtm5tbxlN2bTtA3ziifdwyJ9OHRGFSeEF9r5n-YXpLqSxjwQQtiltNkhVt19Co9k3eBO1L81LmmctV6-y5YrRQIoSVg-sBqq9llEj5lXzNojJzjpMj2xWL_uWjWPDA4a3S2CwZzMQYZaRqIwCVfgBHFrWVwKSQx7c0Y38PVKDp8KylPjXdbBtOX08iHHJMsL7REg6M_uBTV2qO-UeoS5dfjpmXVMNbmbl6B5LX0Zlxs5JSZJzdvL0hFhEOSHCtEplAFOjv9E2aNqIkcB_qfby9xBTwWQSul27nbV-LAMxvziTEMtNGRGh09JCGVKr-9hrA3jTt7QJipVFyTjGi9UnwdoGY5wQBONj2IrDuY1CEdxpBBhc0QXto-EEwWApafHdCe0O5AYLnLudGT3oJ5fnBNh6w870cb0mshvD4U8ZjHl9xkTSCuLGydWW7-B3CuIPPD45Tk8b7dGzJlFMpFsd7ccX70yLEp3vmisPXVr9EDVU8wdZb9dL5Sdf-nugc01bsg-_SNugCVVXK0h6uLJzbwtdkV7z0callZs_uVT2akDXm873hH7Hp_FafVGFsTblcMiCWV81T5lkZaBrR1fNo5JQdeC4-CfR87LpFhkTw0SH874cg5nrxk8v2I0s4uPvBa2CrT6Ou5l1xuaayyFCLJ0Nx8B08QEs7-7W2Cyrc77N8vlElIRjEQc4lEAN13ujlGgRaivIT8vrk301peWyAT3kNW4DNLRKpNWDNNuVvbc4u7OobxH0wxco-MGEfETSE_6E0ORzhu7ouJ5DbXj8-hK3ezedyfmNlnXII_1VzYw-wZNMERiZB4bN7PugSdNMpsbXNDef3h16Mvbhs4hT1ZyzFf0I70hgWEONAf0I-5ROekjLu3wOGIEWNscwQ_lqN70jcZo6OBA5PlucRmGUlKSC-o_1QyJn_-Z7IF2J3dU3Ti6L0AFS_PNnQQDwiKBC8hvbMY0hd-AoB0SSaMFU7zXmtGTFUdi6-MzmUCKNPSiRFdp6NNy-bpVBLL9BvcsZAHAChgV4j_buyqTtT8UMbmZkyaHcF4EZ45n6M7YnqCtmXIt7yuzSJF2NO-qKfLMoxJHTaXxltL1_uC-bho_fvXntvZeEDak7N6opDumdPkTwlUUwmtpfZQlICq2nUGSXpFvOWloWpL8N7NraaVYVj9Mn4RCC-GiC_LQsZFn0uVAaFwGuL-Q9HzDelOqFWSzEsfn3cCuJmLwGMDNGCnX9u7lv2gu-_iD1ZDVmvPoBmddxBHkpeHCAIenmU09Ne-_i45YAFWNn272E8bbvkwcGJTOogL2pZxpBMFtMoiAs48Uvx5htW1Ev1ifYoNZrnItX6mFhY7YEjMyIEEUiEN6lw2xnOwVY93Lo8ENBMLYUYk-YIjeyVeoyjotM3Kxy_dm58f1rh8uaULlPwgUG18b7u7PrXeYiYUZTuhhwB9kAX4M-fyy8QGJWsvx0Pf2fa8gWR8qHVUXHkNqNK508F3Ca-mL3WmGE0ni9DHb-izONJkjzu4YVRvvVDvagzJtszTOlioWKmE6WIcMG_IRaBOjJybQlhZy9qqRhBXG866c8EDGLZw60GuBj5ZPyApoXYyHE700x6zFdTVwkjRqau67JtlIOvtKeOANa-U2lCAhvkkdvJNI0S-arb6AseglajqBQ5GAx9Y__DNzuip2hYN3iqpOW81gYflsnjOlJdrWVsxTXX8IrCpNok_0mGOrR4tBFZlwHVlfnup29jKIwbmoIzqjUblJyEPsKSsjmrWj7zKcrXHFfKuREUw74w3p31QWwZfDB2pOYdHecIbpYBiqDkq8OuDe5622Mxii78iEc53MjIQbzlMexbdio_SnsKcilY1z9VEPcCev05eKX1f3w2Pv0fjmnyezMrMyDSu4vBdUHLJzjuDw0xMlidjaU86Tt6Do3hgS_ZBpTvBdrIga6t3Q5XFDvCuZAhBfIcWpHs9wzWxwY5BtOSV43AMa--8TuCwSX6NmOYoe0AJkV23OuTjErxDIggy7TqOWNCSu8eo3Y-M9Xo-8aG9T7IsL4a99mjPGCO0i9kjBawRoWFUcNKN1pxXz_qCId3QgrTiQ1DZ0q7OoK0sgTaYoJk6A46Uolbf7fznwngUUQfViOy7xEoFUFJnMmlHqJ0Sob88tsISsitVV7hDyhFcsnWNZ8_IU70Tr-4tIx6sN2hcb2ysyHyaXErXIqIqUBHn7MoG8D7D53cpLJxBcprEPX-a-8we8kO_JIcM7FoqTfI5JYA8Gd96LkBYwwxQt1JxS6AwhDic57OkKWCyxK18IxRSNbquNxqItA4N1o-6vdNc9KwXwuVyIUQwSZ-XiRNOqZanxFs_MPpZDFzYESfRtikrxa7qyI-_eq4pd6DdeNyy5LoF-pmEnBMM_egh_EBM14aNZ3bUT91SsLx28JWgvc8CWNtzrZWLlMo7dTFFwpst8odNF3XjS59A6Yir-r_Zxo1KsE15RvNAeWfGnyJ3cWH9ib28Gkkaoqed7643efLKUwBBYqiACJbRNKM540Fb7XFt2AcHc5kBzWN5y_N237TxrFI5wJRlY10-LhwU4rAm7M6oqZW--ZRu_kL_VhIAvxlnGV3x0ed_fqLNhdvUJcV5fg83qMSegqNVl7BQ8WICpifwzSOOS2UjHg20lknMZCtpyjMaK3CMrRdeOF68h0KfYONy3WXIWkHBLQ6C6GQvh4dPJpeIkVgt7OL8SslVDMALei7Y5w6idM9aC7ZoZJ0OFJ5rxQpRLefgqiQrJ5q8HzjohSnlviVEKizDPJFGQZXQsc6b0jIPiYxWrVZ3fjnEO3ARQgz4w6kwZ9P6E_JF6KdAkqkJUDSL1BvqLTWxL5ROAamc8gVwyhsglXxgnsU7sYyM8T7SqOqWqVrIfj49xw-KQtVB3u-1IJ2XaTvdH0n6rTkx-MJn08B8-Kx_PhG9aUJBwPCmxMWgN47HPv32IdJ08r5sKQHmsMD9Ti-8bVjlKINRWkGxPCD2SnVS9SO53I3D5_1Bc2ij_WRKxyUdhObkN4Qm5r-55ka4GJosYklRvo0_KGLR4rzalZDBKr5Rbnng7Rh985N0McfWgB6zumqlVBCYXIH1_yBb_uGVS9ZQuLUmRhKfCBzb-yTfg0mwrSDnzpJZoY9G5grNDYvTcD5x7w-kjSQNTbqRZeGSXaI-s1CTZBgDYCYyOv_0nuJuyw7uoJnkEVELoz8d589JzzcfwVjk24d2xDKJDQAsFRJH5jHe4h04UvPD0t2VhpIDUy_XBxd636sHMqCYAnwQIsR-Xl23sdBgGZJWeY36JHIlsJ3A_Xeey3Z2Yt0ruXvQmPMWuofvu8aQWaQvt5IPrAHmkxU1vq9v3Ht1tvi3bU0xmffCxWqJWKYMn1QYdi4MbCIh01_Xqyj3OckIGa_VNaG5mut5KDGaFlklLME3xkPpPkUXRxH0XRt2RlO4BgUgMBOIPWS1kLWKA2CUrJNUMYTF_a0Y_i5KdnPakDkfC3zH_49hx8ml0tLpIOxtRshSJOiIKyySMFRNsYlu5khgjz95djqTzxWfn8kipbEkuEQD3kT_E4r7C_PRBb1mgIBGfbqiExSd-2WPNcaJUdN5g6aUQU-qvSbTCBg2iU22oGXsJokoeVIxiU4k0jEbQn2YA99YFJ_VjIv3tVCplZqsCR8BTJraGF6ngbsBcVXA_hO5-bpt6OvHn7lcdg3qVHwf1kCNjW05_X_N6p0Ic6t3CUL6AVdAdSZypU-qTAXxLUiwisTIA65J6Dhc2xQoIQeRn4AyVFgQPd8VvNTeqenax5FQK.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_02d5eb7e04d8605b016af8bda0159887d1a0c0364ee3e60d83",
+              "index": 3
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Mapping subway routes**\n\nI'm considering subway routes around Bleecker and Spring, specifically looking at the 6 line which goes through those stops. It also intersects with the L at Union Square. I need to clarify if there's a transfer possible at Prince Street. It seems there isn't a direct route to the L line from the 6 at that point. My answer would detail the specific subway line names in a clear format like JSON.",
+              "format": "openai-responses-v1",
+              "index": 4
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L2nfPD7c-Kn9_nntVAqxXuuguNHT6lPQjlvWI_8aeUPyHxopB3FkEein8aRvVFDfWVUpwswe8obCDRdu1bm0L-jxLKA6gBhN41Gf7Mu8fW4G0Wh_PYLhP0REfAci-XxF2ow_FFqv9nb2TtNNQOBC3JXNnkdfq2XTVFgf-Q3KVQDFskH-woofXibV2XcaxEjBJqjv3TEpmzpNb5fszCoVuoiUeGwXerBET460cYv9ARsvwA-aplqD5VrlwdrAnA6q5O2f4_Y_30JKRyzALMKEwsNzDffrwpbFwkBB92llN3TZk7W_nz9QvfA0NySBsLSEjW09UbdD8_6OV-1tC5R52xmlzx1nMjSm3bEEBsROzBNukAMPWnJ4a0mJOsp6F1Cph5mqev_Q3WWiNQlgotwwFZYIK8Std8XA0_FflF1Z-ozziXKlSyPUDoAqqDY7pwO5MqhWiAHRFcaWp2HG9tQbebH0usR5L9av7KdoqQJwEzHLZyg-lOEmpo5C2CmYlHTMMxKerXAVI3QGvvkRZDkwfSKpQy6AQzmHUVTzJyNEbjkGhAvtfwN84jwZpXDC_hdDDPi0IAZ1YEBJhZegsKv8kJjLhsCY7tcqr55F2ZYez_spuEZvS4VIjel4wvoaEcnur7dmVOsBwFr8l3DsbZ8CklK0zN1OdF3SXFDKcWraa4Nrjx03b6N9h4IzsldHokLJRXfoJoKFpvhZCxmTFUNzNOV_i2CoSrlie9jfHgOem72Ywvm_LPHnZQoXtPKRiBNeNIKjSfxez1-6mIr42btNm3Efvn_nTnpmGORKEqvNW65ilhy2x1zyupIgx5iw_QvoOae6vwmu1Hf-cO4M0xd5flzkBYNPMmq_ThRVzSjLHaNQoKoJpY5iMCoJcZ694Ylrf55kbI-00LbhoBBX7vPwy-zfTQh3R_0TvlKwcICFZ8pU8TAz_YB4Z3SKIWRQI0DtpsopdP7exrtKmia6B3A2SorWvvSARHgDeLSUSocs386RBc-TclAKbYTtLnR9H6cmluzogNv3a21xjBdmoQfYjH14HZgw_xUvoknEZ-mIyQTpNiMv0ixvq4zwNKSmxjT1elWgZQ7iergS54b8sJghLeATS35CStX7csBfnsoYlWY0C-ECaB-vkBj_OGQ8Cb5nJ-wZ8EmzexVxdo9-JoW61uwuXcY6VHsODwWSoOK1ySY1q5NlHdvyDPPAANWn4LE9i7SV-c64KWYVd3ho3JYup5D1cPaNQ9k6dNTa8PxnpaAlTjUhJx29cH__MAhHioB4h5zNEyte-dBtx6C_FbsD4Bq8azEeI1eakK-nmzxsHH7R50J-XugShcwmL78-sgUlZ7QtQK4z21BYkpN_nyXYVXe6VxCZ85XhOhX7wB59FEe3p8xVIFjapieW2Od91dsAI-ulaDmnY9nQRo_zVwBOLJjwCMVqW0hhuHOkAULwIHwJD8hfGVjogjYqtfArir5i86mdprBDQ5J-IfjOam7NAn9fBEQGQq8AohIFV9gvd-4ay0EGPyiVr9NJLB57vrj0y_nNXGI8PKssSVbxOgHtEccibUDpyTuw46N9cE_dsfmTe6QCEhRn21NzpFwCCVYZLn2pWrRCJL5M0BjsKXrAA3M7hcpARz_W8wnZ2dCJsebIxfLK_ENNJbtVlXPbe-4mCtaW82Nl5x2Buq-gBy7akZCqfJC3qzFTtqimrexrv_AepJB7crpARTzJbktiqBBOXa0keMhvr-bh733ycaARK5XxnwoGkzaIdgoLBTFsE2KtbTfpdNIZFgWOD0yP7m1GHPsZX6NzKQLGyvpVemr_HrXkao5hLe94Lt79cP7DwjSCuE-V6J01QpfqcGRU-QkKG4o26iMHj2u6z126Io16HDlq8nlEqvqx6Gw_UXxl_3Y0rKhxx4axN_41N99sSAzLMnkK9M2Z90QWeSg12RbERXU2TziioigpxqdFDDCbAnuaMOZV7DfWpB-_lMzuWiSfGEK602GQYmptTyb52cmJ_uevbvJdOZpON5WOYhwYpAhIWn45mMCEGLo5hpF7QJA-rAIJb58S4eBJ3G1h9Ooz6yx5fvPdw1qgtEGwxvX5ftmRYtUadVFXxW2mOZyd1C9S8jyyfOwrYP6_nyfFObjO3L19CKu2UDRFtIufWxBEByjvKqZxYxJdJPpnCDEpH6Obn7fQ-ZHotbxEwQvOpYmPC23N9gLbn1BGxX92NxFNJZ94I1Lo3DOZuz1nhtmnTb-KdQz3Os2wGvqdr0oDhSycGDhy3vK-dk4d8OBj6doNgsiOGwUNmoAykkBo4QKmgOFCIJlrS9SGXOelRTPzqg0yDKF3cTHnJo_IZ-y71DMsmVy4EgY4_DYZd8mWGaPNLLAKTvMbVCbMUwhxBk75UCXXRCMlUGLqrqxgQUDbYYZL61r790A5d_UX1KGE8Rs7AUJpq55Y9F8HXXfFDA7RPThXiUv9iIGps2oINMts9BJYiFw50a0cZVroxpoY_EWDwZGpUZ_IrG_I7HTr9O_npcmO1jQD4SC9pegDIqYghjvXla9FoXrYQ7rqq6scAf4KgmUtj0XqknAoj2jbk4VqzhK0w00n3y0gh7zI1fpDwpFoAwW9jKfk_7n7j7if01s72ieLa26LJtCxxtdBqfnDJOC0OWUjakVMGALsSNlbTCeioPoY7hXQVDm_BtEBA_cnSf6mkRuHUTN3DK0IAnfGmdg6fbU88hQfIqTjQDn0PHnKBeTuEocTK7_NxbtKx-sqZftPVF_j7FjIsErsjcXsdWVz96uzXGVIDn4rLT7CA9OMhbNrvQoj9NLjJqRATA2cIy90Cje.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_02d5eb7e04d8605b016af8bda650b887d1a96cc70ec7c1a059",
+              "index": 5
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5071,
+      "completion_tokens": 1145,
+      "total_tokens": 6216,
+      "cost": 0.00062348,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 5068,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00062348,
+        "upstream_inference_prompt_cost": 5.098e-05,
+        "upstream_inference_completions_cost": 0.0005725
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1129,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

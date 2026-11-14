@@ -1,0 +1,45 @@
+{
+  "models": [
+    "anthropic/claude-haiku-5.5"
+  ],
+  "api": "https://openrouter.ai/api/v1/chat/completions",
+  "temperature": 0,
+  "temperature_note": "temperature=0 is sent on every request, but OpenRouter's model list does not show temperature as a supported parameter for these models, so providers may ignore it.",
+  "max_tokens": 32000,
+  "reasoning": {
+    "effort": "high"
+  },
+  "usage": {
+    "include": true
+  },
+  "prompt_template": "{question}\n\nAnswer the question using the image. Think it through, then {format_instructions}\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+  "prompt_format_instructions": {
+    "number": "give the answer as a single number (digits only, no units).",
+    "integer": "give the answer as a single whole number (digits only, no units).",
+    "label": "give the answer exactly as written on the map (just the name, nothing else).",
+    "multiple_choice": "give the answer as the single letter of the correct option.",
+    "sequence": "give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"]."
+  },
+  "prompt_note": "The user message is [text prompt, image (PNG as base64 data URL)]. The exact prompt for each call is saved in raw/<model>/<task_id>.json under request.prompt.",
+  "answer_extraction": "last 'FINAL ANSWER:' line of the reply (fallback: last line); see eval/extract.py",
+  "scoring": "eval/score.py: numbers within the task's tolerance_rel/tolerance_abs, integers exact, labels case/dash/whitespace-insensitive, sequences element-wise, multiple_choice by letter",
+  "task_dir": "tasks/final",
+  "n_tasks": 10,
+  "skipped_invalid_tasks": [],
+  "workers": 5,
+  "max_retries": 6,
+  "started_at": "2026-11-14T19:56:22+00:00",
+  "finished_at": "2026-11-14T19:57:38+00:00",
+  "duration_s": 76.2,
+  "clean": true,
+  "accuracy": {
+    "anthropic/claude-haiku-5.5": {
+      "correct": 6,
+      "n": 10
+    }
+  },
+  "cost_by_model_usd": {
+    "anthropic/claude-haiku-5.5": 0.0374601
+  },
+  "total_cost_usd": 0.03746
+}

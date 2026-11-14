@@ -1,0 +1,132 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t03",
+  "time": "2026-11-14T19:57:34+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Delancey St-Essex St to Franklin St using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at Franklin St itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t03.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "[\"J\", \"1\"]\nFINAL ANSWER: [\"J\", \"1\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "J",
+    "1"
+  ],
+  "ref_answer": [
+    "J",
+    "R",
+    "1"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5214,
+    "completion_tokens": 815,
+    "total_tokens": 6029,
+    "cost": 0.00045991,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 5211,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00045991,
+      "upstream_inference_prompt_cost": 5.241e-05,
+      "upstream_inference_completions_cost": 0.0004075
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 793,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.00045991,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 12.75,
+  "response": {
+    "id": "gen-1794686242-xw8ml9YhVVDcLvlfbq18",
+    "object": "chat.completion",
+    "created": 1794686242,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "[\"J\", \"1\"]\nFINAL ANSWER: [\"J\", \"1\"]",
+          "refusal": null,
+          "reasoning": "**Finding the best route**\n\nI'm figuring out the minimum transfers and stops for a journey. Starting from Delancey Essex, I see it's served by the J and M lines, and maybe the F? I need to check the map to confirm Franklin St on the 1 (red) and A/C (blue) lines. It seems the Franklin St label is on the red line, and A/C also stops there. The A/C line goes from Canal St to Chambers. I want to confirm if Franklin is a stop on the blue line!**Confirming station connections**\n\nIt seems like the A/C services at Franklin St station in NYC, which is near the red Franklin but is likely a separate station. From Delancey-Essex, taking the M line to Canal St might be the easiest route, but it runs west/south toward East Broadway, not Canal. I need to check the J line from Delancey to Canal, then to Chambers, where I could transfer to the 1 line. Canal station gives free transfers to various lines, but it appears the 1 isn't included. I might need to walk from Chambers to get to 1.**Planning the route**\n\nAt Chambers, I see there's a transfer for the 6, 5, 4, and J lines, while the 1, 2, and 3 stations might be nearby. I need to check if there’s a free transfer between these stations. It looks like I can get to the 1 line heading toward Franklin via the J line to Canal, and then I might switch to the R line for a northbound direction. But wait—does the R line go to Franklin? It seems to continue toward Rector. Maybe walking from Canal is the better option to reach the 1 at Franklin!",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Finding the best route**\n\nI'm figuring out the minimum transfers and stops for a journey. Starting from Delancey Essex, I see it's served by the J and M lines, and maybe the F? I need to check the map to confirm Franklin St on the 1 (red) and A/C (blue) lines. It seems the Franklin St label is on the red line, and A/C also stops there. The A/C line goes from Canal St to Chambers. I want to confirm if Franklin is a stop on the blue line!**Confirming station connections**\n\nIt seems like the A/C services at Franklin St station in NYC, which is near the red Franklin but is likely a separate station. From Delancey-Essex, taking the M line to Canal St might be the easiest route, but it runs west/south toward East Broadway, not Canal. I need to check the J line from Delancey to Canal, then to Chambers, where I could transfer to the 1 line. Canal station gives free transfers to various lines, but it appears the 1 isn't included. I might need to walk from Chambers to get to 1.**Planning the route**\n\nAt Chambers, I see there's a transfer for the 6, 5, 4, and J lines, while the 1, 2, and 3 stations might be nearby. I need to check if there’s a free transfer between these stations. It looks like I can get to the 1 line heading toward Franklin via the J line to Canal, and then I might switch to the R line for a northbound direction. But wait—does the R line go to Franklin? It seems to continue toward Rector. Maybe walking from Canal is the better option to reach the 1 at Franklin!",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L0sQNrHQHzpTVcvVc_ksiuIhwiL-WZSExbjJrYV_hh7ZsF2H6hk5zidMdfPllgQkqqhqVYGfaG1T46AElLHnwAyORxZLmHzXXJ_jCBgWkZMvXs2Ua5KBAE9_IqFJ3f6c0d3ggrR_K6xWzEThlb9Y2DmGRCUdh_cFVJMaPcyyGbqflLXX05Ac-OR4v4n_4DUYHNHsPXPMfSNyJMut7zaQB_gG1RuR5kCrWgTHutx3Itq8aQL2Fl13yPPfQWu_MOZUZ78e4pIE64Y2FyLNiog1OQb-N-qdjHD93b4807N8t1y1suQRPDoBVR7FencrdXp-RUjRBc3SzFUxNC_f9R93hO197Hzc_WzQtQJkm4icHHvDLjUNe-WpJhE4EUeAXrwdS9adglnDisLZg1Xlibfdvw_ibGRz1g7zW4Lw6P33rkX3sJQXXbi6J1Go7aSbetstccfLJ1DpgvCg06VVONQnELk0wt29LNoQ47dtgDQv6mijYci0UJNH8BkDVVavcMJJSmHYWdUXD9HVpHZFcxUmM8Ck2FY7HG_x0SCKKk4eu8Q09ZLYrAn5_xTXfpcJPJb2UHWy06HaKEhz2rCrdKSdExoaW-LlKjokcMUvruMppNJzW0q3iuS1gQCpWgr3xdYhiUgi05BljbzHW7JHJR1nuwsR2pIHwkCJKfNUSRDZd51ljn9qfHZiZErCRen4FkTjpA07-sg6Li6zSE7QulaNhQB1tqYibVQ_NoYnE3JokKM4UQi_OdA03BxraRtcTn-D7ee_anSQo1l0xG_n4edsaKXCJrFBtOOP5b0aE2zpnlb88y1PEt9U_UHIag9tRsSLaVe_1_wATT0AkbEpTXjq-TVGtuzdN12jcF-KTmtE-Z7yTxd3N9dqt0VE5D3vkhGhoL1o9uwpshGZLmdhKGMVR_PLvLoewDNk_cU_gybHQsEhKukF2npzqttROcruDX7dy4m2D6UO0otIbLbV1E7J0wpxgAF4_bLK3NXXSIpbipnqdO0p65Hc8I6H2TdnoQ5mbyL4wYj_zyKIUayFeuAoRElr-uN8wkQbZYaCKW5oU2bt2NBnt7d7NftrxQRhLpwayj_RP0Y55ZuIL8eG0uQ1ao7K_wDZss7sE9oJIdMuHinAjPYtyCg-M6qKbP-PIA3QK-1wYc_TMefKxiZsH8N8tjztIOMrnMOZBygO-hEd0M-ucoslR_g9jh8p-8c_t3Miegpf0Gg19k9lEr-T08-nv8VEn7IhC-_b47fRe-g_twpYXbtnHVZojedVz6m65OR5hW-gWmYMyDItJ1-KzUxzt1Z6x2LYVCnOjnNCQpP7yxpWfogxC4hJ4AWdacUwDhVliqfrKfdlfOGuC4ORTLIkM-FwdTWUThLjgEOufxS0VAC1UTNt9kJvCEu25gQVyz7CkBlPqmAYvQPRf62JICmwxAg1-1x2CYeToQLsaLKKGQ1WE7UcwDNRp6GsCjibRCGAPswZwxvM-oNi1hzIEivrIqMBMVLOlhMc1k5aRTeKUBigUueEqAcuhosVoddabrBFdzNEirRScvvGQKASaU_6T4_KNIXIJSC34wr5PY02Sbp4c6nQQlTFCEP0ijGbBbswX6OrODyvlfOUDqOfoxFujQrCKh9pPRNXcGftNIvYUQHvxyxvrS1A0kiVvwCN8-DGc2uA1GAL-CeEd2WFPlFWryWtAeNaEcQHB-RCrqCWb6VspMVveNNMk1cHwf_kRM8cN8KTi8iue_ymO3mCITUvqkHDX7qxQFOLmAUhZt-MTHSKIjnHbz0vex8Nc79Fc2UKaiaJQXCU5stJSa018SwoCwFBx6vasBeaDyQkaWMLyRJ0Rj9mkx_gfnse9FcMxp3UMceCwgDjbZ1Zt3c_Appk5SDhiiheclVjA499kchEnN084FWbP0RH5fnKSrPc41ZJHoFqA5qL17DiQg6lMaYj_FiNSkh567gq-0FRNrQ49tiD9wfu89ykojOm61aoRGroDkEu3VG3NWmM3zNOCdNgSGQf1bJzlvRChGcC-_fPO2HD32pAElVpGkK7nmH3uTJW42E553w2uz7jKVYSNmVXOxqSLg-79Dgkzto8WLxRKJL3zizhQQGb-D2SQEiLliHcg2uLOiU14ghZDd6FjIJ0ix8hD4Q5bxahKs4bNjKzHvTJrkTHeQzSott807LAZ-7gMBN69F77V3A8Fht6EgIP1KpSadOtKfY0tRo9yskqUucREVqWhMKQBJwtA4VDkGjy0_hMVjd3c5TsUuecvRtQkQ4pCG7GhVjcqJDfwD8wukeo4V5txPfYp3MDP1F_dd4iw7VFNnhK7QXp5wMC1BSK4hONkIQvDan_vdOJaVu2nJwM6hlCAJhy_5csBuSPCXGPsHIThudE0BTQKJYP23C90IHf6LpGb7pd7Iw7a2kW3ckMz_vyYe9zqdoIhk2nNi61GR_x5ohwNSuBZwIgZalywRS82qiQTNh2jr8A8CpyCyMcBXRd8DWMW8S2vJSCJOdEH6M4k9TwgZ2H3ASBTetWZSFH2CmXNcOPsYAwvJoun-mVi7koXUPk3YHz87zoZuzkFX-_rcMVpy8AHVDVhRGhZremPRZqEZ_SsZ5suvlCR37u8MkNDOwLlLPw_sQSMiJjF3u4N0O2EMdXurFcjnUTFawPpFdKblptRen_FThFH1pg62MckR8HmPtM4tBCuRhlVh5vESsOHdX5q_4Xk6SWTEXmID_KhUpW8Ag3pMrYL-2Gx-2UwZO1sBA5DfSMT6If_h0Ecdwddjmgc2-jAB7O2U3KWg-Ysok7QgdaXtg4UJ0TUddbHPsPG9eIQECZ23KxWj7oDsGF7aD1N0MWPgmRez5fnhsnPs33ZfvjMDZ2bs17pp_GAm0OnhADyTHuxFTKm2nWAiF_LN0i9b-iEo7A8neVE8JNStEx645nHBc8C-aZgEexAwu7Z8OH_YJCkVGJmdWEuXWcVxx3CflN3GA01LTixcGSnCFJaiOTg9ew5dNEQAhWSDBQXO5ZtlZOCWsgsdIfG6FhMOsJXdR8RTOXHvKwtZRzbLyk60kore_HuJs6ooSwFxpjzYOpFkxEkAefeJ94BncBZwkaDthqIB5a-igzBpqSRmAU-zEmOU7050vsxqPzJlMDg_KMt0t9x5qDtBVCfW7aCh8mqrhkU1Accx-Ph2vub1MWu47LZuvwJp0JQel0g0TA2CYp3UfPb3kBNdkUdcT7fiNxhFowrGPfMFGfj_iJBBNqgdQH4tf7LFsUJZFULi37FecdAaFr1S-D93bi3EsxrTtbC_7EFBcTH8bOwPTmRZAhDQCkjX_UymYlNGTiFmyl7MDaAcb1U9c_evjKFeefuRHAtxvI-z_9SDwrpd6B3YVR1pMes3Q1sWwWbzN7mGmUSiXqNiM6reYa40oAoHuG4IWw-5SYN_A1eataDY6v0-Sb7l_jjXF5IGzKpJNObSgiKudyIen6NWfzQbLZ4hib8vjq9nBvxKMZJXSPJn8HFemHcpxiVyesGMc453b26fwzW_QRflF8MyItqifzyyFXr5CIUNMHoMeuiTySODwVlL0bkcWJR5bAyd1woRO0m9xBq9trS4Vy9ToF2KTzozgzrxdQygcpS8Ih3KcVRE5fiD0xmEQMI2uzCWHrhPy4aj1FGb6QFcw9XsWAhqbOLO3BdAAdMRFscgJf32MKUu6VoDR1MgdYMyntFw1cveYwlAY_oWBH-AqUHdRTPYFPEQCZ2wlXSayaDjY_The0OH0QZYJlAn-18XLMZfuLa0eTrfXkfbFLBPokCgoyqWbzF-ju0vRjQbCjz7hWMHt_6cGUkOCEA3rZNojdPDauK3PHaDM6t_hJRD_Iy9cUNpvtKUiFiJn1e8NB03lpaavGB9lPvTAoQrGeLY482zUp0kq2K67Tkzhklo2U4U1xXUuSwDFPGmdD6BKykAsubIat6htmGGcV4VOBW6e5vD52-AV5gBSOZVVbAwh6gDOlo8tZd7SI2Oo_xDWXEeStPocmpYKfC5rwoBpJZdDFQqWSArSzfJtp3HdJ6QyM-72RuCo_T5ioTwOLlL0PycTP-t0MaPTVIvFos7SJn5KWY-Z4ZWHBX3_3N3scPztv-mEpdR7k0pumOukKNfOzbfZO-ODCr02qF--jrj0b3-N3wFmC2Vh2gW9K2_CrZqGaaY285AnhHtNtHpWDLDWgx4sDXiN5JQnvP4oefGJOTqTV4s_MPAxa7-yU_3BXsPnetMnmyu9afvukgXrxsM1HfgWaNC5wiV4VitYornzRU_lyk99zT-rG3qI_-HODwRzYbz17cydDPSwRjUEbA-WpkmLtqsgLk-6sR0UwoXpsjyBVQEv6OlqMiUT_LZhlPOmOqgj30SEFUPXIUw07NzNYkm-gHojZzDELpfne-eA6hABeq5vDa_HfkmpKFvKK7g48RVTuR-8qqkw6NxuKDr3bCnvv6Rr37pT5jEWqTyWf6cnul8HKy16dFz6xcNg4iOzaCE6ooo9HbbgpGkospBVljrtrqXP3hi-KCpV_smr_srbvchSJCmr_IQUlyJs1X2L76ruyUMKxIRx_HNhGOclxe2AteZvbLPa7CGFLaBuEvuvBvhM65d4drGUSdfTnmDS7BMK8Wz_PVEBj9X-rFyBBPk9YQQxdnp9YJ-Yir9jfzcGFxuzs9pSYU9gWMBeuxsubXXev9QcLeKPUMpbHyzmpqjEORk3nNbquhEZLcdG-J36eyExsnxSDDSrwJ9xNtaf8IYdom3DVgDN9O-GdRSpV3VIE8sDM0W6zBz1vXrk5c-LNYEY6XorzxcLqbbt19bDIziUjRKFb3qC4-FMXnlndA245lN1knUA_w_UfCCHmqHpgdX5zB3lLWeNxvhHCA7ItGnxPYrc7nJM8GrTI8dHX2THgJKG0JiOucQEcAOc30tfeXqHA9uEP_boRsCg69TJyKLIhhqf8ZDYdQPL4embYnu-Zfp8GqQtATMgM-e3C-jLnmbLwf2pq593JE6Pm4h0tzfvK8sDaApTzFKST-u9gJpJWB54GjR6ko4CMYiIZBlJsTRU_LsbHCg7NkECVouJ3hZGMzYf2xGU8Ns0V6i411hIYhwHrlC3DaXFTCH-VvRFZJOwy8WY_98dnwc0tPjYdd_4phrRmXBmuctu1JFq8PkM3WJy8fUJpLTHb5YWBcQv_6Rvk-8GIXiVtCRQqaUCBIRN15Ain1oPpljdjfdwD6OEozDeSCAtymoqvL0gs1GpRpfjQX8nOi6AR3RcSZsv_Tb_WxL4PyCUl3c42OEP69UlSXAtJYWyNwxEMcxxITJmHeaTsPAc_JmzVzmygL8T85jFQM8NpYTq9vNtuFkAMGlvQL3cPcRx9Nl00cNpFVNZf1slXtwKn9N5lhDvEy6qkR6b-Ik_uB2sMbqeSktkNmvMxEBW6C3SBMyFk3B9rS3KkHuWhDxE5HcuWNYyLqO6BDfH2THgtEzQxEGVrCGbXH_U09dXTg5BboLzYPOnTFW9GnLpPA77EauMyiiCSgupDDhyM2t6sVDKh-poUyKcFar7TPntoTxJwhff-cT4akTCJNUvxTh8cpvjnskbu_FRVIj6tMNwAmQU8mI6bTbIdao_HEhIrhCiJBtw7tPE7UigluuYw9LDEPgkHMVy8DRPi-rL2oQLdBBxbl28_bGWs5u5saOVH514XUaCVuJXht27bLFC8ttZ7JCTEEpGRAEP4xP7WNl0CfiWXczbelOeSS2KEk2CWADq2Vcb6PdJWvNDp4y9e5R1Xxo42YabStCtafS5QZI3wlNowPfgwgi1DDXciacPuQI28ccpvpQ_HWApmEWW2ePfnqHh54FkUMY6rX2ZGMdSur3z_sVif5R0pjxsViXkIxFQHCAPg_1yckAn9v19W9QMsrb71TtF-5Y7bz6ARlA0GfFLQCN0gYTGLSjwy2p7RH3In_9Dzx46ZsPa46d76l6RPEL9mnvZN1yoN1IF0gWL75073qi7LDvKGfZ15zJN0xoPbtV4j58eve0n5h29zN71iqIuu25GqU96Kt2Ec1LgtJa958L0UlOCVD9zAwNtarVepnIYtch2AK8P8vZvMa2lTqlNLr2dKS40Q1AGCoXAakcfWllaL_TZMaXHQUKAwiWtpw9yWWw6iIA5YgPz-uih5BwN6vL7dOfyc3VAYcE7omyRpXP4y7N6lr1iMmSLHF0T01x8F2NQmeH0Mk5FhNhdi2sAh24sfhs9p7EcZ0Gmqt7eyFJnW0DFPgP_I1er09_A61OpD_77IBOM2I1UnhkV4BI4Q-C1LnhPhm9-Gl7N1_6TNABzO_a7AOWW1vaGAPqOrSPATQ7HeNcn4Xm6_BlBZQ-UqhEa_Nikr8x98KIFUjt1ALtzrbAPaZsJg6OlK33tDXI_nci6nnqwByUzRI7IbDCgOFU4ShomU9tbZPrnIJeb_SwPwjpO15p8LDauH4uip8d0DRi3svEgFHmyMiN3SriPvMTL3jYHpmM275y2RoHxAlu6q83GKUSEO3tZy4zqNyoT5TvyDGu-tP7hDtwYB5LJGE8jKSxNcr9cThvfSWcMFvQzCVQuzodaszqMA7-dkbZ5QLq6gNEF2eTuM6T2B76_KE2BaaDWKdeU0OfRKoyL92N01rswDjEFrm0teX3xTJHPk9xLXlgPlmkZMhr3-IdL8zuWQ8-t2k04mNGDk2qk5DVr2ScuqPRvI34rgIxsGKxvPHmsjjzewMDin7t8m7SH1fyAy1hl2vPoymFACnMyNwSMcwoendk22XZkwKgfRUXLmGNQQ_BZYvmQMUsAyC1lnBu8lc9acsAQAGg5Ap6w3JvynN1ESzaQlnFeH0lLHnSe9i_sMIDauATv5bVJENqRUvr0rsyMV5X8MkBPTelv6h-MEkInxFxmwmhmB_2q-Y5t5ipdu-2MmL3J5WZPFBtwfHUbJnXaVGSvv0BKq7yNjOZnloViCFNpwq6DLCovwMW7IZybmJg96_J_J95klOMm9wAVeaEa4qoJvWS-APgsYz2sjP2f98SuawASAHBWroi5sGPW85QP2OUCe_HDvQtu7pm-ltA7TVQ3q5YHecs71SbjGOVijV-2lbPap5-xv53hAcO0iRQq5-gWF5V_suc5QHVQTKEukq4UPNAAmrb6sI-NAUPGTE6pVrSCKPTayFyJL8EOiQ4_JYqclNDCc4UsNoIhe4LqVvxhVqidyCgB_Jb2WJpbv3B3RCYHCo3YIqTWjczMw1SVaH3AXdizO612hPdhft0onCYyOht84FAo5qrEQWSvK39w2PlwvpVWK1g2A7De5wnr33K1-KnYJ8y0Qi3AZL2A6V-GeIUVqzSmlhFXD8JbR5q5cks-hHHOSpXtTrcJSPsNUWOpfchFVjxB8RVfBqZQykfy3Q2H013j9t6FPsishEsK9OEAKukkpNLipUK-d47rGcUbhMM2JKy4CPJ1LcIBZGzsUJG4_X4GRip76YKzVjw0BqqHyPL2dRe1wiWyvjBJIbILXUVDIxrE2SlCk__Yu67NNkejTk0d92BB0oCysvP_W7bS0pViC0zXJQYLWka-4Rkm4AlEwki5i9K6BsP4QPQ0-D8nSOIQ8Js1NQ-VfEN7roaJv-sWhXPlfgk7z7j-1AYxFxxbjFUQAKYMzPsy51OKrMZCxlzlZuv5mb7p2iy1T8J5oCSoa1qhyWfb76Uk93vGUCXhvZG_67UpbisdPazoHpTgVLQLFd72p0BBpfp71pDwMJJd_L6aEVeKkLdJlaSpHm9ssGSBtKDvVYAR5Y6hnN6zhmSt3moUBbdYiYwcsUZyTaMjpgl5PTe37f2ZzAX2NyA=.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_01850281aa7c707f016af8bd235a2c87d1ae1fdf620e353389",
+              "index": 1
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Considering transit options**\n\nI’m thinking about whether I could transfer from J to Chambers and then ride 2/3 to Franklin. I notice that Franklin has only one track, and I’m wondering if the 2/3 trains might pass without stopping. I need to map this out, especially since I can ride M to Broadway-Lafayette and beyond. I’m trying to avoid any unnecessary transfers, so I hope this route will work out with minimal complications!",
+              "format": "openai-responses-v1",
+              "index": 2
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L0ukXxDnN8SLWpweGpNC7aI_PNyCxUTukR8AhAxJQCqmfRKWdYWmad7AfY1QPATk6Pjkad9cUZQorjr5KvwqXIzKPQ2lgy63RCwrIurCSttEu4bxzCJg54hw5Ceg5b1sH3toJ5HjkxAyYY19MEnvebJMPS7qtaTY2z3UYLZ_GMlMFYFM4qzq8X7Dfer9jPT-H7TBKewzFU60uE9o4PfHjSqC_IYWSWMYjeA2I0LSuFv6QbtWoXl1kCk8nGjJk-2w-8Hf9sNOWaLYWb11_3hjXD9GjQpmTElN2HOORYWkBCC_7ZojZ1u1IlTyhhN2lBAkwczvG8hctTFDsRYdvNFLeKydMpc3IalTTVAQtc6WCp9Slq4F1ntQYe6NNJrouv239Q7M2m2FlY1uOqJeHsNWRm05nFPjXc4wSmEjoKJSW7sPWs2LSVyhJNmVZ--yZrjlPcS6uDsGIfBKIsdbX1-ujVVe6ORIwqtSPPZ_Sx0VgDAAIqQGflY61VFN_deetW8p525E0FU5eJrV_S1kHRmFFYr3mym0EAJJym52zmG98_fd_Adv6OdPAVAYmauGOe74sepqsr9fidQPvDW2T9Vnp4vMXyAadpcJVsjYK36NpjN7nSL4v6r-SNL4qVNDj_AUooJ629JEnJSouk7H1nRrgOimbj3LtKbr7TBO_b1ahrOyNJWM5D9RNajZktCBWFaPKmJmFhWLFwFuXIeiEqMjCYPtwfduCepXNJftFD7IHkparjsId6KC6aT7FpR1_Qa26b6h4XUEpiKNIc5OGEoGUTUJOtKdd6vSYfvzXiMPqRmPbdLxK4UO8MY0AS9rXs8sbG-yTkrZSIrvyd05CI9cQOY9CD4H1S2tHKkubgG5a2BP_MVGS7dmACtHzJUm4ehyOVUHIhdng4NSj_hixdQQm_uL7yL_VisELwoP_bXMN54BKm5vgO13OKFg5SodcCsMu6Vz-n3VSDS3BCkA8F_cbTL7nmGl60KS15BwPeGZzgs5vCbgn2MoOsC4eKZqDL5vXKGBEf1Uj9iOFRbK_xTPsciNExa4OO_HZ8zbIfWTt_OhJ4koJC3q0zU8lIF5-xU-MGEFVcVb4LpqD0BuDn2IFQst_ewg00Fp5uMettkS6sQIRpEea-WLjwgy-cDF5SvOHfCZdlN0zyl7CNSad1lP17s-L1MpZ7EyDpzxuxVLc0ebEgz1W22k4bXAzDZ-UqJXF6Q_XJMmEQ29FWIeUyjR7EvLzz8d4v0AFq5Z0bxr_rf2ElcaqikN2bsBdNrp9FOI50VoOCVcGRkx138ylNUWa8mGTvrYyXA_ZYb1z3yIp_kN1ljbLtVMiFfs1Ha83zv1w3S7V-gB6HZzdCvs9EL9qE5LuIobf1YfcdVhuuCG8IhifRJ90m3y6ikeq5lmIcOvSrK1FkrFvVyMwuCiRr5wFxH7WXnSHSMfiaO4tRdT04AXPydnL_EUW5ZGmI872iM6ep8Mp7nXI5lrKRQDwmBhE-xDUcKRk5QdCpMM5MkBhSn2ZztOY6ie3-tpaZUDtPa5IXYsyWqaum5h7qWqdR5n9JqnOPaHWueENnJccx1ZswjOctcQ5wTLwYjyzY1CyWMDzeeasqhiSPSPKCeFHtNeMTx-VthepIOFYzMm3FK8B49M_s_5esIriX_RmznsdV3hp1n0OyIiKROEHjWy3oA36dxbEafG_qtGgE7pVxy6ZrfA-g77o2pusOMw3-gekQiMOvjZ_tgeI4FHBijbIfYhUmLTyTcsO_n922Oe5l0rEdrvBO9uLv5Mkkpr7cQrY0h99Ky4X6EaPcVnXUsCi5zP6lYCJs66lEN4TV_5YbQMuREk7JUmsIfcazHIwGKJOY5Iki_VoWCt9LRskCUjg_2tPcSwXeKq6OsUGLx7K3j-rBsgrxcPPRWgX8zWaeuNKiGBAyCsAOg6tvmde3xznKTlc-n7ku4xSp-Hqc8NJB0TE0oM1vt62IX9yr1_Ttj8IqwDqQXbaip0BfasxBv2BxBiX2d7KGGJgKP-lDbzWgPYDvDh7cU3P_3SpQrSn-gZBfQ7HXmbbapuPQMby_iGtlRo5ic588jnP_KI8HHhcwUmuvTS7GndxV5ZkloJQNIKsvcGWc-jOnGCN3E5lPDyHTWguOT0i7pK-7IEr9cLIQiZqN2OL-a8qReFpwJSUdePbdu-6CrrZxBCxvt5zVktjl2A9iMA3DI6kd8IgC5k9tMSC-yE1z3eyQ6UWfeXfco7sxw6bVbLHlgOoFWHscosJqIC1Gy_bA2was3xgBkfHM250GhyM6raeHcvT-JPms06lbFoCSnQAZtHNNDsslpVwpiBU9jDzD6nczAaD3rFuXFQnq1f5zA6qCNEHzh9jh_7sJUDBHTEMmFTd5SntOEDxm--4b8NLO-8p2NeFCfO0z-YMH_kbwSKGAeOdMkAR9TlwjrpWoCff1ZoPdiq1ASHJAaMM6isQ81F68DEDCPtAOBY-lGDnnGz_RAlPkhMkD_S7_1g1k-M6Ai-FY6S5jTioIKW_YaOrOpgNSZ81JMLLckNGqPF7F-S3D-Bt3Se-YpUTMgw7qUOgq1ynyoR7MKAXRrNcQGRIRuGiuodgoAPDc5DMbsBjs8rHOj0CSEF_SOkS3wN-QwAB7bOmxwh5W3TrBipEMeUyYkn15_TBmX9Un0sQR4mwa4n0mlmhpwT6j-ARpwYHp_YRGnP_LAeBKRUugy5WdcSYWiOyOLGhInYayXU-3E1kZ4A_zEJOQFVqX-A_VAzVXj2hNTGJtU6xPAn8eowUKRbnehdFzp7cJxYwqGixGLeKOm29L6lp3zVMAw4Sr92QemIOTvOTfE_auk2LlsEB3EJ908mSqdvybcVFI6xGybRg_RMZYbgn5FkcxTtp5CAJu5suJhlZsaZ_3P4o9SeMSKVqHoYfRN6_yjzrS32FkBah5MbPWP1dt9uohIwV6u6v2rmPNTYr30SFmMg8j-384IG0ENA6nLKAwKQImtcpRI-Sxe_Ok97QnNkGRVny6JJ1nXiLBgieUoxc79fVfNAG1ih956KjOHcGGbwz9op_EUX4LpeLtAD7Iw1-J0ZUEFQnwwOpKuNinbIqpEwj05hzhh3Vc-L_UD-xfHB_KSxV-_RYJZXQ_VshCGfgvyp82nYRhtHxByy5k4v6H_yiXqk2mOErAWM0uTA_X3l8kEG68G0YciW_EbvgK_iS_J5lNapGOHKl--OMHyrxTLqdzWLJt514wGlBxA_h2XUWSTHk3XYEakpOhcrmqDJSQBhRgdGvR_YWT-qRw8ydmDcwEivEHN4G8u4ZiIC17s_26TlrabVpzCGYzYerGf5LwUv2It787bMcdKbjw2c1Uw_G2hY_27PHVHS-x47SIjbLPZ07Z0HX_CpqezB72jLB-MGPJ-kWSEgn0Q5enTBk8_sq9igeiwxDOFqfxoXekYjmgehAaHNZlqosTNar7mKnEmz4kl8DaklwzuU0bqqG95xq2Ql6KXvfR8_Z-3Q-LPIOCzWCOe4JIqBVLhKnGKVxbTmvGI5OK-hBQp5ko-WCKkhNDF_wzNpeJdUryZ5VFqV1-_WmvU5vglrJxJ3wQxWPu_ErnIdbNsBFLJf93zvLATAoduQKIwZMQWuLlQXgojI52ORihZ82itsqeNBEFh1T2N20-ZIJ-mYolshvzCYmjhLCR5uLTZHANQHM0Ov0fds_OUpDSOFkwP3UdsBx1q_JMpTnAzQRW1Ba8BoKV56bld4qjuoLTYSWGxODvu3tBcthmyIZbYXJjbVzGjzCBnjw7vOcpQxELuryksiaobBAHeEsHwJ_3OcA3un4YzD1QstTr9nzd9bv9Lwf5jeBa4agRRtDC8IXVHdUKSasjML8WCdwEqkLhsL6Z8wuweg2eOf8-XbMzoIG2LDoh93M0BXsCEwDk3WA2QGniFl-PP1PuFZJE9jRPIp6RFDS2tYHJ6L5v_aalRC6CVU0HAupJqVt5kMGorDK7wMnAUJ-5hVRX-llvJID0YN3EpqqQd8JVMESA_Y9hLpWAQso9dGFnbExE3yvLw-z8-xc42YMjsvg5_dgWXncjG-fNmxjFe0RMt5bYBbmhkBu8KTcKe_1Xw7qzHNFQy2vbwdwsFEKbGfekR2x-F3qTNA-fOdCU8vf4TGhyVnwtVJugwRHcwF8jvfgZA589UEccxiUxJmPgARmEyknp9VxWf1SWd7XmncctcJmgdz73mOYvKWCGvuRnc1hc8gKAGGGPkUpf0nKGh_11BqbS2sbMbWs1MwDOTo9uuEqQYNb1mEs7sXzhdlOhDzOYM4KhXbAfgFUnePp9s9xOmcorVTkPy8yM0z_wDUllbJlc97IDoGWLdLMvjg160UkLfcat5kNRTESBUgGFctYLioL8tZAxICMo971ys9QkiZPzfR9CrkwdYmJA4nFM42eNG_7CfLpIl0laGIVmby9CtkfwafqIZx3fkunj6GGj2i1pGE-Nlbks-5uJRZ5mA-W5LfHvBj926tiDTePgm6uq_0NTiazPDNGYEKPAmBEX2XLQ7G5g-DAqQ_06OHBOAx3aV5aIYF9SH4DECCSzsKrc2HwqvJQJLbQheWAt2EpZQURsR-g0JjGHGOHqMi9B8DFHFGhvhTKwExiKq1j9yWc1B7XTLMNkE_r_OCnXLTLHs7noaNlVddR9dJpm9S4d3AZytTHQprrPguTLckRgzJd_0zX9KIpEDsCtIrrr5KSZKltq5uZ3JChe1Hc0WLnDb4Z_ZmO2KE1fFNEIjVEyP6hssnOiEdbacB7ISsGrb_GC6D2XGHlMWbD1FFK-JoHzRqLKIwFpYvLzcXRUcfj8P3qyFx0X0f55KdW6AjejFUUiyDCPpVuds8Z9jIBo7IXs39NZmraobTFl8V5L5rdepds1s6Z_AC3sryxqI-mMeQ8BraNML5o2wU1I=.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_01850281aa7c707f016af8bd2c4d3c87d1836720f2b9966a5d",
+              "index": 3
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5214,
+      "completion_tokens": 815,
+      "total_tokens": 6029,
+      "cost": 0.00045991,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 5211,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00045991,
+        "upstream_inference_prompt_cost": 5.241e-05,
+        "upstream_inference_completions_cost": 0.0004075
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 793,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

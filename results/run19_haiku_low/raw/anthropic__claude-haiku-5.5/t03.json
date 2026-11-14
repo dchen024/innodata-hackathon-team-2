@@ -1,0 +1,114 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t03",
+  "time": "2026-11-14T19:55:12+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Delancey St-Essex St to Franklin St using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at Franklin St itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t03.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The trip is J to Canal St, then R to Whitehall St-South Ferry, then the 1 north to Franklin St. That is two transfers: the R at the Canal St hub, and the free walk from Whitehall St-South Ferry to the 1 at South Ferry. I found no route with fewer transfers, since Franklin St is served only by the 1 line and the 1 is not joined to any line that reaches Delancey St directly.\n\nFINAL ANSWER: [\"J\", \"R\", \"1\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "J",
+    "R",
+    "1"
+  ],
+  "ref_answer": [
+    "J",
+    "R",
+    "1"
+  ],
+  "correct": 1,
+  "usage": {
+    "prompt_tokens": 4986,
+    "completion_tokens": 3552,
+    "total_tokens": 8538,
+    "cost": 0.0022746,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0022746,
+      "upstream_inference_prompt_cost": 0.0004986,
+      "upstream_inference_completions_cost": 0.001776
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3389,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0022746,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 19.82,
+  "response": {
+    "id": "gen-1794686094-boQMJSP2mURCptZABuW8",
+    "object": "chat.completion",
+    "created": 1794686094,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The trip is J to Canal St, then R to Whitehall St-South Ferry, then the 1 north to Franklin St. That is two transfers: the R at the Canal St hub, and the free walk from Whitehall St-South Ferry to the 1 at South Ferry. I found no route with fewer transfers, since Franklin St is served only by the 1 line and the 1 is not joined to any line that reaches Delancey St directly.\n\nFINAL ANSWER: [\"J\", \"R\", \"1\"]",
+          "refusal": null,
+          "reasoning": "I'm working out a route from Delancey St-Essex St to Franklin St on the red 1 line. Delancey is served by the F, M and J, and I'm checking which of those connects to the 1, since Franklin St only has 1 service.\n\nI'm checking which transfers actually connect the 1 line to Delancey, since the J to Canal St route stops at a red 1 station with no joined transfer to the blue Canal St. So I'm looking at the Chambers St and Park Place complexes to see where the 1 line is reachable.\n\nI'm checking whether the 1 line can be reached from Delancey by taking the J to Canal St, but the red Canal St station doesn't seem to connect to the blue one. I'm now looking at Chambers St as a possible place to board the 1 toward Franklin St.\n\nI'm checking the Park Place and Chambers St area, where the 2 3 and A C E lines appear to share a complex, though the 1 2 3 at Chambers St doesn't show a joined transfer marker. I'm considering a simpler option: taking the J from Delancey toward Chambers St.\n\nI'm still tracing the J line from Delancey toward Chambers St, where it stops near Fulton St. I'm weighing whether the 6 or the E could carry me from there, since the join between the 2 3 and A C looks like a possible way to reach the 1.\n\nI'm checking whether the A/C/E at Canal St can carry me to the 1 line, but the 2 and 3 trains don't run between Park Place and Chambers St on weekends, so that transfer looks unhelpful. I'm now weighing whether the Chambers St 1 2 3 station near Park Place is a reachable point to board the 1 toward Franklin St.\n\nI'm checking whether the J from Delancey can reach a hub that connects to the 1 line, since the Canal St hub doesn't seem to link to the 1 and the J route might work better through Chambers St.\n\nI'm checking whether the R can get me to the 1 line from Canal St, since R stops at Cortlandt St and that is joined to the E. The E line runs through Canal St too, so I'm weighing whether any of those transfers actually lead to the 1 toward Franklin St.\n\nI'm checking the R route from Canal St down to Whitehall St-South Ferry, where it joins the 1 line, and then riding the 1 north past Rector, WTC Cortlandt and Chambers toward Franklin St.\n\nI'm checking whether the J from Delancey can reach the R line at the Canal St hub, since that could get me toward the 1 line at Whitehall St-South Ferry, though I'm not sure an in-station switch would count as a transfer. I'm also weighing whether there's any direct option from Delancey to that hub that avoids the extra change.\n\nI'm weighing a route that goes from Delancey on the J to Canal St, then rides the R down to the Whitehall St-South Ferry stop, where I could switch to the 1 line.\n\nI'm counting the transfers: riding the J to Canal St needs no change, then the R to Whitehall St-South Ferry costs one, and stepping over to the 1 costs another. I'm wondering whether there's a route with just one transfer, but the Chambers St option through the 4 and 5 doesn't get me there, and the red Canal St stop isn't joined to the 1.\n\nI'm settling on two transfers as the best option: the J from Delancey to Canal St, then the R down to Whitehall St-South Ferry, where a walk-across transfer puts me on the 1 north toward Franklin St. The Chambers St and WTC Cortlandt stops don't offer a better join, so I'm leaving those out.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out a route from Delancey St-Essex St to Franklin St on the red 1 line. Delancey is served by the F, M and J, and I'm checking which of those connects to the 1, since Franklin St only has 1 service.\n\nI'm checking which transfers actually connect the 1 line to Delancey, since the J to Canal St route stops at a red 1 station with no joined transfer to the blue Canal St. So I'm looking at the Chambers St and Park Place complexes to see where the 1 line is reachable.\n\nI'm checking whether the 1 line can be reached from Delancey by taking the J to Canal St, but the red Canal St station doesn't seem to connect to the blue one. I'm now looking at Chambers St as a possible place to board the 1 toward Franklin St.\n\nI'm checking the Park Place and Chambers St area, where the 2 3 and A C E lines appear to share a complex, though the 1 2 3 at Chambers St doesn't show a joined transfer marker. I'm considering a simpler option: taking the J from Delancey toward Chambers St.\n\nI'm still tracing the J line from Delancey toward Chambers St, where it stops near Fulton St. I'm weighing whether the 6 or the E could carry me from there, since the join between the 2 3 and A C looks like a possible way to reach the 1.\n\nI'm checking whether the A/C/E at Canal St can carry me to the 1 line, but the 2 and 3 trains don't run between Park Place and Chambers St on weekends, so that transfer looks unhelpful. I'm now weighing whether the Chambers St 1 2 3 station near Park Place is a reachable point to board the 1 toward Franklin St.\n\nI'm checking whether the J from Delancey can reach a hub that connects to the 1 line, since the Canal St hub doesn't seem to link to the 1 and the J route might work better through Chambers St.\n\nI'm checking whether the R can get me to the 1 line from Canal St, since R stops at Cortlandt St and that is joined to the E. The E line runs through Canal St too, so I'm weighing whether any of those transfers actually lead to the 1 toward Franklin St.\n\nI'm checking the R route from Canal St down to Whitehall St-South Ferry, where it joins the 1 line, and then riding the 1 north past Rector, WTC Cortlandt and Chambers toward Franklin St.\n\nI'm checking whether the J from Delancey can reach the R line at the Canal St hub, since that could get me toward the 1 line at Whitehall St-South Ferry, though I'm not sure an in-station switch would count as a transfer. I'm also weighing whether there's any direct option from Delancey to that hub that avoids the extra change.\n\nI'm weighing a route that goes from Delancey on the J to Canal St, then rides the R down to the Whitehall St-South Ferry stop, where I could switch to the 1 line.\n\nI'm counting the transfers: riding the J to Canal St needs no change, then the R to Whitehall St-South Ferry costs one, and stepping over to the 1 costs another. I'm wondering whether there's a route with just one transfer, but the Chambers St option through the 4 and 5 doesn't get me there, and the red Canal St stop isn't joined to the 1.\n\nI'm settling on two transfers as the best option: the J from Delancey to Canal St, then the R down to Whitehall St-South Ferry, where a walk-across transfer puts me on the 1 north toward Franklin St. The Chambers St and WTC Cortlandt stops don't offer a better join, so I'm leaving those out.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4986,
+      "completion_tokens": 3552,
+      "total_tokens": 8538,
+      "cost": 0.0022746,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0022746,
+        "upstream_inference_prompt_cost": 0.0004986,
+        "upstream_inference_completions_cost": 0.001776
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3389,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

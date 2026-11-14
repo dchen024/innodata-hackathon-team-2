@@ -1,0 +1,132 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t07",
+  "time": "2026-11-14T19:58:42+00:00",
+  "request": {
+    "prompt": "A rider who uses a wheelchair travels this weekend from 59 St-Columbus Circle to 34 St-Hudson Yards using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 34 St-Hudson Yards itself. They can only enter, leave or change trains at stations marked with the accessibility symbol. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t07.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "medium"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "FINAL ANSWER: [\"A\", \"7\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "A",
+    "7"
+  ],
+  "ref_answer": [
+    "A",
+    "S",
+    "7"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5033,
+    "completion_tokens": 1046,
+    "total_tokens": 6079,
+    "cost": 0.0005736,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 5030,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0005736,
+      "upstream_inference_prompt_cost": 5.06e-05,
+      "upstream_inference_completions_cost": 0.000523
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1030,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0005736,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 15.9,
+  "response": {
+    "id": "gen-1794686306-tCElZ1tNetpjL8mWEZzV",
+    "object": "chat.completion",
+    "created": 1794686306,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "FINAL ANSWER: [\"A\", \"7\"]",
+          "refusal": null,
+          "reasoning": "**Planning accessible transit route**\n\nI need to parse the map for an accessible route from 59 St-Columbus Circle to 34 St-Hudson Yards, specifically for wheelchair access. I’m looking for the fewest transfers and stops. At the origin, I see accessible lines like A, C, D, and 1. For the destination, line 7 is the only accessible option. I'll likely take the A line to 42 St-Port Authority, then transfer and walk to line 7 at Times Square.**Evaluating transit options**\n\nI can take the 1 train from Columbus Circle to 42 St-Times Square, but that involves two stops. A more direct approach might be to ride the A or C train to 42 St-Port Authority and transfer to the 7 line at Times Square. The map shows accessible connections between these lines. I’ll have two services and one transfer, starting from Columbus Circle. I should check if the A or C stops at 59 for convenience.**Comparing transit routes**\n\nI’m considering my transit options: taking the A or C line from 59 Columbus to 42 Port Authority involves two stops, and then I would switch to the 7 line to Hudson Yards, making it a total of four stops. Alternatively, I could take the 1 train directly to Times Square, which has the same number of stops—two before transferring to the 7 line for an additional two stops. Both options seem equal in total travel time.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Planning accessible transit route**\n\nI need to parse the map for an accessible route from 59 St-Columbus Circle to 34 St-Hudson Yards, specifically for wheelchair access. I’m looking for the fewest transfers and stops. At the origin, I see accessible lines like A, C, D, and 1. For the destination, line 7 is the only accessible option. I'll likely take the A line to 42 St-Port Authority, then transfer and walk to line 7 at Times Square.**Evaluating transit options**\n\nI can take the 1 train from Columbus Circle to 42 St-Times Square, but that involves two stops. A more direct approach might be to ride the A or C train to 42 St-Port Authority and transfer to the 7 line at Times Square. The map shows accessible connections between these lines. I’ll have two services and one transfer, starting from Columbus Circle. I should check if the A or C stops at 59 for convenience.**Comparing transit routes**\n\nI’m considering my transit options: taking the A or C line from 59 Columbus to 42 Port Authority involves two stops, and then I would switch to the 7 line to Hudson Yards, making it a total of four stops. Alternatively, I could take the 1 train directly to Times Square, which has the same number of stops—two before transferring to the 7 line for an additional two stops. Both options seem equal in total travel time.",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L1u6PtWTc9ZHnFp4hhfQOMjrWjPuDZCSH12ViyQUorUG-ImSTmlHW_1n707Z68KTufdoMt7jlK9HmqyyMOBUHMpG9I96jFOVYTnah0h91xUa36QMatMpJe1c_LDVMnniwcJN0gB-OG16ikvodXEc8wNOOUS9qR26NbbKCpS_bN6pU_W8PbkTMqjhxWMN5NdYYNPyImhlBRdAqXW_RzyArTHW7VomQQUAeqtafIm0qUAPNLwJQkU5gSZLEsR1_OrOO2kc0OcXjPnpmflzm4E1S5saWKQoxPuVmnXdM9P0SY9ZiHqfUKCJK6QNDmCDp_lQLSKvz5x7micifT_jPvWBw9rbD-q_zhA1imLzvdnRDptM2OsKN8qkVTxVVBnz8M7IRPIisOHoTsNPj-XSQ8uQpzYDE9DGzcRye7s8yezv6TC2Coo7W9udjoI8abxRnrvP7jZNgFbRGkKUvi2SND9EuYr4xWu1T670sLCdnpODC8xJaClcwr_uxcGK8g5s-WByEnECw5cEdfC-1O1foNViFJcc7E0KKqkNJpqMxTpFslVzvCLKvLBHgXiSCGYhaV62f8nQfqD1mqZar1zxFfQY4QbNFoR7dMWYPAJH4M0wVqTNy2SHHuG4DyJxMNymo7Xa43XGYWSlGLTREt8yzFCxvO4wdFcfIDxI1AJfU-ngT-wrGGnkruxolSq-xv8uBvgIYc_wkIGxnCvNVxwqidNfdmM_rdZW-QZlTiuTu1q9h_JK4oATpOA2II0e7whnslM2m9_VAF4h4pi-8i1JRlSsANtBR2rZyAniyxQIehlnjzT-M7wNy5XWiystRLEosE885a9gu99Qc0gsDq7uI0kV9BBxHTH9x9wq_PIbuw-8vkGwbtOKGpK9nwrRplQiX8Y6yLR1UGE114U6EzoRoh8vkHBa8jwJL1ZAb80f1QIBSbDWWmfU6Wo9KsypZfRuKCIqrLv6SLWjrhJHs9QV39nd3nmOxPE2x5EMJDDisz8VnWPL4cxdH_kY2uFuwGROfYIZLIA__4IcYsw6Gt9gr9mse6YrRwlfWIQ3Ry8tQMTv8r8eLJxw7bfel9i-iJe0evQwOas05N3NCZCIu04fOV96Ly8D9QGii7RCDLBalBOoQE9FxxRu0XpH1bNDZjVHyQsl2M4wDp2qQyCDqklsIF6-Rf0sfJnCYPxukAl8pCgpUkCq1MJ5cvywSHBV756sl5XP-qcucyZi40fhQ-lEDfNpTBjaUfmQ7rqMnaqF4Br13GR2HpzsIE2fvPFeayUqYLyENvte9i5ZPSby_xlXKw5b5YdKQqMsp_abS8fEWrEL7BGUv2u1rf7964hJBqF54NUrysNpX-PX7s4QQWeCjXAFM72EgsoxRN1d5AL3QnPjAby80ujlf0y6QBWKCkLNsqY4-JIH5DEY2rU6CrvzeNnodJl1NoKXOL3RSnegfX3s1pDyHrfqWuz0z4lnIUflLgsSf2MufXoc4zad1FArVMlgzE7VFQE8AxAYMAxTTlBfBZNDknVwwbHgn6tX6j4AKn5bNwTFUBYU6JsqwBN9pcajbtbUyQS3APU8A03gAGEH9HQ2hS3RMohmkUXbgqzyf32txczE1qTpVT8pHIYJkbD-p63a1vZKZS3BQlFwRxy26O9sk_TwbF71A7J9d63Dr45dbBXXldCz-nAExC2a_b5TuEyO7_ncBnY6bwAuFImTW4Pkcxpt9hlbq5xmOEMnGi9b_Kr05iVJpnAG3Ukr6MWmq0ao5Xe_mfbl5ijmTU6YXak8twL2sd3U4-VQqCoEp869yl98StlIbsMmyQ7QGOb-8mf4t0kelCsBbPI9ZV8rn18lqW5dlq-eSQokw84elN65NWvx2t9bdeMfUjbB3orZdOfqWCfYO8cx5FIK2P2XfmhctkNVK9wuDNgSsWZ-6tQcVLwX5wndBU4u_fqOBRwKX8AZmtuFxaiFHMD23JbFLbVC49_xWT3fHITXruN4pWvaydditAdCopy5c7QcIecL_0n9eOMNB-xsZlJvOsNIh0Gjz3Yd84B628xUMqCuNT2XSFFucSoSG019smjB1s6rn7JSaMVtoBUObOlLenPM186Ama0nX0CoBnSl6x4b9BaiBTKNTs2j-r81uyZ9QjIAP3rNtU3LYvNnp9ghW9uNB5uHEP_Wz0haPyw19l8DnkbCUyYAKpT1dZdX0d8pyciqXP6hcd1jrul6whSysfrNV_mP397ThvofCa5_M4ZbtiGkD3werZnhqKd_z_blMWUFwgXCPJ4zU5tMedyyjesO7oe7nF2PPMVDkQNPsIOlMGp-lChfspX7fvImYc791qijaS9NDdZdAPzRGc3n6LcCU7-7zEcrrDmYlxRqU4v2fXaRbzBC006xDTHMxLXvQgTAvLymCMxolZgX6-K2y-7ZqucSBbCgxlj2gvzQsEHStWESPUbHkn_sdnDusgSi_JtsKXwkbk1TQTfGKnTNrIxBbFJLjXPiF0rZzo1EX7cqid8w_tdnrqEjDxvFSz4KtgBZB9gzqQVs0Bt1YLGfPLudBNH815pkfBB0q1Q28D0oG8fT7r4N26RfA0xyItvHTiwlQExq7h6WmAFpWxtedbmLgeh9ty5CRV95wuIX014pnziGNDrX_W0vU7AzgI54TNOolMrzBzuQvfoGawRQ_fdm5kT2HaWesw9tUPDtZRToqah3UAlqJM5yuztiHtsrPlePY2x6-HrmRusfUaXMSZpuR34mB-tBZ0acwTSC7N8snk8IEE_-3kbK9Z0GeHGhUPt8-ypuXbSFlBNpd7C-as1lqNG61tHcD3UA8AFzcqxRZkd62qf_rwVGZu2KTXIN8Bvx6NME9CeV5xwbZEnBrGwBYCxgHuiF--TgaehOlOjIhS0h9ofiHdQbbqvSrbqJhd2rOZL7gxeXq6mHNJyAjxENov_NOYHEBFkAZtvhPjBXDZIg_ckKES2ZiHlpUvybnWJa8oe-kUxYpWUKu0TSXLVl-dY0nozMzJ20f8Jsof6qf00LZkYUKZSlH34Xe8_A2n6AK-1YToUcyTSx2sOEfxK4OPvL-iHMuFQQzNP1CJsYIVoDxd8uiOuFlTEjA1YwDui7REBwIw1r8O1Zeg0Utu8HiAjbtETa1_P6C-TSmEDB57-c1w-MSOnnaoUJGWIkfbeTeFvblSQ9JABIutQGWlnm66SxaQjBb_Ca7XcoGsNx9mJBM9ahV9U4v6e-yhHWtTmC44PQetwXiXt01L9vRTy4-0zXlAujdbSpJjzm81m2RMCZ1UC2ZRUBIIAEtAjb1N3q3ThHlP5c6pVN-lEPWR9W1yKWzQECjAP_T9xO9fXc89MgkYbolH40fs2wTsa3n9ouikSrlK-HgJsBIyzbLT7cN4xg1cTDx_h_WdCIK7NYAwpLFbW2qWayq1GaPEwpphKvqziVup2TX4qE6GTRHIiRhn-m3J0otzjLS9sMB6dDlMFowXIgKRJ-oLefvmukr7NwT-O95X3GvvwTNFZVBg00rl1sNZk_Za6JjO1VfyKT20B0sXKbBFa7pZ6OEJ-xu8J_jWVosooXwtgYTlfQ5BpaoOS7kCWPSTyBHst06pPpno2LUxOGMowPU2mTFfp1mYOfE3NqW844HjXLA_HYxLIzTkehzWuGZrNhozVROBprEMP2ly8ExQuH9wziYuCDkeKZh-7mb3x8h9Qv090OJQh3gn9ju_G0cHlCU-_0azhPlYuu4kP22wcYBmIjlOW8aOdATW_MQongf5QbAAD7bw02H3qvAIPWM3rv9_V2fkVM1WyYiegfiBleSp7PPOc2D8f35ygBcwqpI_xLKJSQE5trBWl27-gzI73Ww6Wm2aKWLlj-5sW6dkeL524rKWuyuUSwwO1Y90dqTzNxHCDvXe17HL0qpDurqLgrf8dBcrLHJRCkxa249y2SVliEPX7bbeGjH4hHUgDPdMmkf-t5E1ptsWJrlQbzoR7g_IW4-35qiCE-VKOGE5cnOtiXtg9IA6zKOigVYNHBHKAoa8VoMZ5Wlv-B9nijpemsVYucNiKBhOLZm17pN153h6LTEUuWHi2ShiT2n7k3zJ8MW4FhziTyrrDOqGj6Q8NHh_sly0tECdagJCThqo37WzfrEeawHX_jIFcfyvULG8B6AZS5BqZhXurDHBTYz2GQd1QUgZ9gcpM3-wnW8ScqfyCbACjVVkhaf84L7lS8LGYYX-eanN59XFC31bQvLLDa9LfPseKcRJg_tp7h3tygkDQ7ucqoOP00nb3SxNUDKog80BzhhL8tfa9JvY-GFzSxHXJSsPV16FsE_SO5PJwXOUumFv_s_ysK2_56hVfr8pKjCkJ8Bclv1TT7XhQxAmePEYoNTyyXqcXenl7aYAm6620YEh06vyU8d_q6OOBMDx_x7blexhoad89hgG7nx1iauQ1wB6-Yjtl9Fo58v1LuI-swZszK5LLgDTzdCMSIiE8Bw3jbCEi7siZ-dZmpZ4n7iGvvQU5Zp06sOLLtj1fP8jXBN0gxbEw83lAJQDRlMuFuQOjqNn79AQq3WibtjaagSkrugVAtnXl0EJAYHGHUwH4bOb1mPgvQRCYOvizkCZcEYJxklSupOqFAps7BkEULE33Pg38q_oreA1jaj2jn_TNs200_Xg5oi5iYODa3_k8C5TwcFkko2ZVnjOOX8iHLmc_S_-DXTxKSbDB4CdWyYwVDVfrTy7I01nT7vMcbDPu3KH_X5k1Z4Go_0Yj74xcimx_6hWa6eJ2i1i-nKk6hTT1piw-7J4xWMdtdf-TVwnF_VQ9H9urisio2yR0E_pDJK0BghOFjRepIDOaoGGNGgs_ON8rWEicGje5eRkvI2fO_TwMAMLw6XCX8_SUFRUnzubyi09ncACH3WIIBw4R7xTMAxEMqA6uMKtkrQAgYXUZOXiBYpcUjaTemUoe41IR0EHudReYtcZpXrItq8UfffQ08bOJCHf8Q00v3LkeVhTXvIn_-IFq39Al2dDy6pCjyC4hrMoGDmxlr9sHGDrEA2rOiJX3iDLO8M2MiTwYDizhk7bOcV6MKHkejPpNXJC9NFZt7Tt3VHxHgJHdTuDTF8Ncdogj66tTZZutxlwpK4pZTB1xpAwDrC-Oqk8CanszTpMeZ2ZFfWB6UxnU_zQ9TcIcDNYyjON4Or0ARxK9ps3QnovUtW8spR_1EgMSfcstO4-MHBFNvQs-TbHT39PFBmeOFQiiijT2DumyQwjgG2f25UNstq5vcS80Fvokc9aeXGpQpCW9XI8XNDM8k8qr0XhAo94zCKY01LaV99Y1M_P34IbB8les_dAbUJcZ1AwuOJaZY2o0rCixgdVZDcxs6DECD26hK7KYNW-F-X_jN_XvOFQGgvRe2UlrCfGUkPEeoxPQM-XM5Iq682wzrzB10wTBfLcYtAysQshVBIGiumNZ9Uyf3j0zxzEwpIFy46Iu4RYBeD2153aA_qtVXLo0eAm2UcrJBrMmUjA0nDRgg-dAS-ca4LFobuRBCQ3LhHD5zjNnE1tbyyHOSkymTsDyvluuZGuEGo4AWR-Gkv3AkPAnLli_HDr4HeXeswiHDUGP0yYwvgcp3h5-UU7gic3mVffgVtZLt9tA0-xpMMZSpyrwEup0SrScxbXIdOXz9XmW65gj47okg38cm5x-O6nO3Ae2tLubpu9HdnkbQmXraY2D-UudjQtnaUajGpM2LMAyZ4Ov_OLRYbkO7GaUUJrarVnXWEYbHoK-QJwzr3Wgswq8ZVwSXFS_PKBq3qs91Kqwv5dOpm578NwQsC63O-SgXcbLCz-G9G9MqqrLK_HpjiVrtlLX02heJ7IPr1BZff9igEzs4mT5liULJltg-Go0-ZPo9CV1Fa9oxdhWjqyELStvbgSb3saavTJi5Kg_kGR2EiaoYlszFlgoyxJMXeVNFlhEveedCK_WNK2-5aiaiRJg90cjVsrokEm74-bv7pjeIrCqIIvwL18-HlOBMrU8vW3-kXx-jeBKkyzqU5apUvWYi6xrG9gtZahCjocaUrVJZweLbx_gZ4bJJUTcky4J_ar0mvSD3_9WM_UhJ2H9LvaSLmbjUjBBpUKBL-PRX06MqS_cWlfmAEHSd39dE6S9dQuyb-rcKLG7nrP_7ScAilnjn8T9PAAilskZF5lRwhnAIe97Z7krlUBKK6Q2wLVGRoL1N236DOD9_Bjh_v2Lr6xP4p81tpyhMv4jCB9YsqQgrrvPKNxgLhPLmblg2XFPtk7GCVugRVdRYIOp2JKGj5jXgPdbRgjIpGzX8k4hAK1qFxtQnk453ozJJ4ppBIiNW8zA6iPqs8yOwzTFgQOJV6DfNv4lupzRbqqf8R1N3MwQkciy9gtEU4i4dC59jgrSRYHq17W3e3PgEORO8NKNuQvL-8OPVKzznAz3KtaLw78bSfnl6Yu6Nl9_azhNVp-St3WrtmuZd_S7OMaI42wDKzcYcBXz5DpQtkwxhLCLTMaJ3C_PKhi3fIuOLXnryhxjwaf1e01DNx1ekPjNeq6HAu6Xaa996h7C-eJTCEvbwG_t1NfbeD59zx53aY8OIFwFChRsz5GmnwwiguoFxshm3u9Dd6CkA3FkAMvlhfb9STQRGevTb2xYQQ3alDDYfgulf9VNlDnESMUWrjekVDTQC0QOjkDYJTmIq5Xj9pTu78HtbJqjucouS7wrTGKYS7687CWgmb3pHv1RoCm0dhXQXHfReg0Tlv0emhCPyUOyzlMbleSAwyiRwflY4j3yhzk4_1mJti2ZBcfvUh7HFpEFJceZQ4puDQ160jJUdUarSTaRV4StP3dJiJguSKCAjXUwOb0Y04uJeFuVE-T7Vny7zS_reR_uL03Vye8M8yLQ02VSWSRK7nMaqdtcpMeA5Sadi9Epe6vMSEi1DZRskZYVdaN2RedhJoOHqH5HHjC62dOzrD4aS-i7rfOFYW0VM6ow4e_XrOpqeDKRCcHOV4daxQObsWO567Ia9tYsF1NwZsrvBmFAgKGu1uOsWUgTTibQcx7J_Km1tZIkdWNk2rMqIHrLp0Bv-KbLiAkMXQ0VVHo35sApStkviet175s0qwtZ3q3wAkWomE5tBw2pPerUlferlcy2gtlZprATdO-wwj8fLg71rJKC24ntBcKF9NcvkswtKZH9QhJHXeKQYHNQZKtC5It1RH2ft1HBxW2uiq9DqhaPZdAoH3oiBdRU_BknXpHDoBHGslbWADZKTiHc5_UcjoebeegtTpom460gNvKgkjJE7pwEbcacnG0Wdz0l0qDUCn6j0kHhOcs4tNyfuLy-SOvfyoCJldLfACRc1LDoq-vXWC42HTu5teYicQVCi8woVygUx6AUKgLdFQLdNKe4KR7Trr20q15xddsRwoe6RDmwmKs0HseJgMoHK486vzFsdjUYGtT6QLmhElj_NOWas34kTTESxOiitQE6T8I-stg45Z--W2dQJEq_qKjX8PdWqvv4maMIYkI62THqpHQhvE8p6SmcxP0QPKFEDW39zs9NC4Ddq_CGpvnr1EpFmtMaZ7jo-BkA77vaMHLsKsOPx1soHonNq3kr9mOnEwYht1PIvrv4xKJbWVC8eQPJVxwypQor4MYaNoSwKo6De_D-RSjdYffax30MUP0=.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_01da68b9b2f63894016af8bd6412d887d1a360467a434ce62f",
+              "index": 1
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Figuring out train routes**\n\nI’m analyzing the A train route at Columbus Circle. It doesn't stop at 50 St, but it does go straight to 42nd St-Port Authority, where it connects with markers for A, C, and E trains. From there, I see I can take the 7 train to Hudson, but I’d have to transfer at Times Square since it only connects there. The A express is an option, stopping directly at 42nd St before walking to Times Square. It looks like the A and 7 trains will work well together!**Confirming transit connections**\n\nI’m checking the stops from 59th Street-Central Park South to 42nd St-Port Authority using the A train, which is a direct route. Then, I can take the 7 train from Times Square to Hudson Yards. I see that there is a free transfer from 42nd St-Port Authority to Times Square, as the purple diagonal line connects them. The route sequence is A and then 7. I’ll make sure to present the final answer in a JSON format!",
+              "format": "openai-responses-v1",
+              "index": 2
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-L1ydVXK1qLsRaDT8kLdXIdkLO1D-GFRnRLasaOAP3B3k0Hg2RqZ-MlMuX1RowhglfCak4DG2IciNvpB_XdRmXTBfqcNUQ9UoQWDKwHpRabRU4dIrAwfhPSuHlYzXWBhMwpontJIKDAqlFnyISVwCl2ZxfQKhXdnbPR2JMOpSUa9RHnuhl-62gJYsLNP7la_o5oAS8AHsbRKatYTTUxzdnLwd6ZSrc--RCqQn3Yr-c9AqRLQUjOFkdFmN_We0K5l_nvgJA1BRHQVYVACqFp3FYexHqj3979sMpLTaz9UUhMjBRNTLobZx_68FsBvuLiOcF_n6O2BEMSZBH36WglWK4UPRG-phh_uC3dpGI7ylhS4RJOk6ZNJIO4tfIn8G_nnF-PtmWiQllvICdSptM4YSuH-04SPSb7Cy2lhsHrhbbhViKsWia1bFb2KqjZSdx-2Nx4c7jaFEr7fftjAMXiVLTrm1OVSUzfDN74G6Fooap-PtD2sxUACu2QdnUSVyqPwXnnTZ6e4VQ8zW9uZpw42QF8_xBqYs0fqXfQKBH5hiazUIKCZgYkluvsY4sjCQ6vFdsSZ2H0FRt6RHhzRlLsmY4lcTHfcdrWMNsgnBzYw6dJC_a_eHSXo7kaFaui1iPYGuJAFkt_6oImAJ-aKwTV4rGZfEMy4EefmkAwxDT2PKMkQi_A4S7495RCvdkljMt15hqzo9KvTNip8UN-8vSb1OAa4wpBT7BRCRRwONZf7PTyY-QVSNQOOFdutPos8WNQZY1Fs4s8YL1C6H0Yi4K2-tEn4MQeQD86orwzKelkaTGqREvyMPSFmIWJnrC6sNC8n_8D7QT6HTGWsgluxeIzrd2VaoaINhfWpQaIp2fkrqDQWalEh1ZFCq7tadiUM-2g3KGUm4vIOU8CzLK8h_XJbhzxgphILPPfs_Nzr2mUIRJZohdOlm5lCGeF42tl3cd9Sqo7Lt_CfTwlx5KdjnZySETzHAz0Vy_MSRbmms705XouMdgseNVMl6pm1lGjqngNACeaqf7hsCgIFY4xxwf4_AoYXwbQBh4GEmaajIrzGflXVg7rK13I4k_Sy8GNjrgh_Dw6RwMw9yYrsNhPgZ_l_4a3DYKBd4iNH7K60L7P66TibVQeE3Wb_ot2nJy8PVs9BZFtqkkHw0cJR2a76fYvDOEBc1l1U501D1ETrbWAXUJ5RaM01NmqJgUAPYyX4RM1sox7_HqByyPFIrPGPLbrxgIpStNFRm8ZEBfuhoE99njh9WBbu-NY1cDmpJfp3u06JIY6yjXbnzsH6xEVIY2e5A2EBoGnM2BSvFQ6lLJ9lRWWOYSS5dfu1Mqih0GF0zG6wNpDIDL3s8gw8v0_0gDXdpOpkFYeAIWuHgih1U4N2f_y2wSZxEVJIAyFA1qWahj4DeEci0YOSFqoxMCOezkzHW9XMEuWEmts8BgmRUZ1HnRM8R2JBfHZ7gbVShz7A8G_AmbKfzEK07xVO1MPInk402SbLCGngnIG0QSYu7SwBX66-VtnocvB3glfAIlXp7xlOJMWAq-XndoMD_EAgAdquKbs6qP8A9CfQ6_zCle80IYABxzjAMeXZ-egmB1WNNCjcPT6X5MPeG1pGwuQd9N-3SpzPEy3zqwFiZfa4jaFf6xxOtqwo_hxznie2_j2whpgefJUVBtqqXdzSnVwcwgyttmIOjPFRkFyzZfJ3DS8tcHA94tXhSOo71dsRVrQnN2ZZ84LVC3fS4Lj0EyEW07uijSV1PB11HFpFTtXYaNkUowFwmozGAJta3P5bQnAAoRnmqmjy5RyfyXSfoeXcEenXMfclX6LDu6Qpa81_sAeR7s3FqNK3lhJOvmEQZB3TCl7gq3wMFVAXQGVUwluCY1gyat81zvy6XXIjnz-SUxjnEXRLAQYAmnXeuB5x1JkQZrm2QLDrzTab6sqNkLANn8P0eXOl3Yvn193N-LniHApapfwhegBS2YTAMx0NM90XJcuQ9owlztciwVuAdaQB0oLXiG9jqEwzsUjmMctS2ne8vywWi5NNz8xxhui3jtLdNde35ep_Zhi2ULHJZVO-qOoXFBygIeiJD14jig9yS_j04nsQ3BsAhRxSuN1o96BgmDiGy3BeJir7JFtENrjp3SmYx1H0SGC0t3B9oh6exNGCdZsM67Nw7tukZ7rXaIReSx5hOadlsxXySSsD6HRz5urFKFusx1Mskn5h5To-knayOD4RWjAdBuzImGkOCOSM6qfHfhEkFmWVsremSwfB5zqlJGvvJKN8OxKSWsycW-mf6UOMxRHNZ2mnK8qZY6kQRPCbAF69ZeNMu6OSMdgpNw9e9Qpn5-7VpGWdJlVwpzSSCIDrI8sMXm40fZOy11yDhgzVpGuk_cA5QWeUgNnQrtGttKuzyGG-DEpg_IqF7Rd76D4mYXEQ86_i5ZpL2lrr2T7oFlLxMTwkeaG2z-3PzPR-v26WEk96z7qzjhuAfRtp-KI277p39-ez7j0L8ZfKDO_wXBB1I4Teai0HAzfWNvV7vReNrXT_iosGkOcIoWZxWe0QvvIiubYfB7QIDj--ROvHlhj-DGB7lkWxmNOk9HOaMrMraaJhNVfzfptx_uyN8HXOA4QGeN7mkNnrMfAfvPNhGMJaCpw7Y8cOjQIgGwOn67kZ3mOTu2nptwpehAcZ9ePLPKTEkuFXaTOlURYy6Fd87nFuGQUqZIiMUx2FbneCZLqoyHqUnnbhUGyfEkFSaJ_sWohoKRoMNCeirP0v0wGdBh6WFbrTKu3n_dpPIJSDWIy6Kregnt4a8k3JF5EeCNYdXFyqsx6ehsjxvFvs1AUm3R1XcTBmMCTlqYkKOXy5QPmiC2dbVSQLiHaMm26oVfSLRkfwjKApNAOFtnzogG2kmKksPD6tzm0jZ3DJJ5M-1RsPLARjf6k7HXLpEC4zXaqpA1_kga0LqHLLj3wTunaBQ_n2dO-o4cd0L0W5xyy2-WIQ3op99RF4moxUAVtnji3ZRFBvsUMDRUkF94dR-_zYJTjrac83rVXw0z1U2WqQW_621OwUeikciHxAg5wQ_3FyIPk7gtd8_gFQlVy_tGLBYxCLfvdg2L1Dpvvi_zafdUvyAFU4M6z-F5PwBYgc71FxKQxICqeRaqON0xTOtHa263ncgQAiNPy2HHNdz_NVIRv-uV3_K28fEy0TbmrBocCIAvbEFxiusYkYhy7dopClXYta1S5uA8I4JF6h_vl-g9LnTx7Kt3imsMw4tfPzNXWnxtgVzEvNzaHMe63tZWVi40QxcrEsH-xWHuNCGz3R56NDPVEzygTutQlYSDlCdimRnbubjlOD1huC2UFyBx-t3uSdkZ-ULMiLnY3Js5JelZO0HyQ93ZuljxyeIYSM0pQxeZaITTwEcxo0tvkWBGnL4aPcbDAPWISBqgiiHAq9RFDw5O2XM1ReRwfQ4RyzW_XkUnhojPLdkPpsxN5fBk_UKwcKbDmN6jQJ2kQiW2OOORyZ9eS7BIO77t80WWZO_VVx-U2-Ezf4R1lZo9zoylmGRgRripgX6A9QYxbZOOVoY7sGdvD1z6x8xdky6qUFTuvbftAomTA71xScSWuNfyql_xpglAwd5Hc920xRsqrqtDpRw0HBLQFa8zGn1USPE5lMionBnrev3SNp-P2A-sYBZCQVUIWbSg45irWWSAMBeumLMI26jiP7FjQcwlPz65JsEJmlxxaiL3-NYQFxtAwYUdv2jlpz0k4K4wrFmDSTK2uoMqWb-Uz5YWDKI0z89J4sNC1U5kPbj6h9gIYjoRXWWy3ZnA5LSRdhKLo_cMo5wEwRPOmKyT9SUarC4GMwltSBmI8kDNVuLbudpPtVl4hZ8-AleliavYZDc2apQ_hKDNGgqyzEm1lKGIHXoCOKtyl2KTQ99WvB3d5u8EmCeyu3rm2ysu2XJMEYN9Q3jpsT_8LTlTLfHTz1sXyWGCPm3Sbs0acH-Zb2RAFgntarItDHJ0LmLiA971MsXKAtOyer2sjvDNeoE0F4F8SayTrECVmQoU6C3PMufrmUgYYlBmanvf4F5DJKgA2maYGX1RunnLFmNFQwCAp6eZa74CN78MpLduPnCckQlSeAUwcBZjLooEC-fyUbRymZK03AJE5kIy9eXhsi_xHTpIesbw4DzyNLeh3oXECk2Ek0pn35AfwSTpx4LmCmw_W1K3-a-VWd1TwFmHqn_QndicdTi0zoDOOLV6iP3xSqBgt9wUlQPf-Y5tWRFxhdBtr-DsNu10-S2y3gxalcAkBEjfd-kemGkmI75HDDLee-JRja9ofs3JO3qGBgkZiZTpX_mQMdXl0_37D7qUDZL4iOeMBDuMbrWBkk10Eiv8MaS99Gl9Sli33P0Z6WFvyyHe1o71UBP1Y9OJcosJ_cY9ixlMgnO7gr_wtq0Muum3XvjVssdAogY-qOWCZ5A1crkAXrqLnByW33v8p1tyNZBjsq6vDC_kpF3KHkwR-b-xBJs4E3gQiOBA5l-IekDZa-b13KyIeQkiMpPBQOl8ARQh_X6NLQMXAql1eyFRkvA4Fsq8yNdJQ1Sv5F7bTdEKcvsogrVNd-msjUfmyoZ0-YuWoRrxtATyNd12hMSb20_F4xf_POvCPiU58FFqG8BBdr8_gAP1-oUIKi2lK0Kme3b7hYWQSxd81s1p9pf0u-il1OzUBGidpZFVhjOiKHErLFuF1YdpKM8li70LYnj-DVl6naLBEzW-PfTZf6ZLhNedHmLNPoiBy5KqBNEEWvLGM05la7PXkdxlQ55Xwf2ZyqVWLn3ZR9ZDfNQYrpgo-bUtmhoPpKs5p2ypumMu7B3SocN1teCZjJqa2dUOd20vr1zQpcjr5oZZCVzKtD8TdOjQTjX5xPAreQ2DN-wTHn3o0Pip46zSMHu3tVb1CDkfJJsgwhPVIEhdZMbEqURtevlEBYOrl2pL94uyCB2LRpAInHIMqimfgF3eMaAP0vpKnbP5SqvLiwmoW1xcGOnjTUXyurVp2zofFVhT4w_hjkYSvTrteFWoMAQpQmFrcP6LdpnmrLRK4X6v7yen5ljp4QUgrCzgQscjr2EC9DA_NKO3jtmRYHTgUQy9bZbsq8zAvRf2ycKHOJUPl4lDse_qpSX5nP-x7tjNhOabjqzAyaRSfodddjHIW5bz_tZtrPFBhYMMZG4FxGzeg0Xzhu55eBwdDBNep7UAR0QG7BzAlCdADTNWAfAn8zhL9_UhGVkXQhcMbM_V9WbHBWsL-T00YO60E4K6oc5nKmfgn3LQuSv0TKYR35V0V8VxpiSsSqkSNgnYlMIf-wmUhtetCyx69lAIJyZ4N2y5tEDdDUNDHHNOuQWuZwAeBEvucQeXQGegcq6_TfKp1Lj2MuyK8-KJ-lgClr9LQ2_CtaGapVup3gzJr1subyQprTLcmheKVp4igkrVmKPugB4w7IQmjU5JxnGiCGkQZ0S2T88gvSiWGWIHMNMI2zUGZdfDpHIqiXmHj6E-F1CEbu63Xs8CDVkyxvE-CjG3-kZcKFPxg5cquCPgO6q4KBENMsJy8QpFm-w1XeVjqreCxyN1Y0oYOX9G7gc9CJF-G4YRWoon9TGF6QS4x7lge0TlZwMZmSiWga5GS-8WXyQRdP_lRu1LY7MtMAOMOvgaw6aG075trgWe1EKjB6QwVCl_75F8JWFcBQ9ikNeRXnwdQnPbwGDNel6rl2uPnKHt4Fqf9KOxazx-0ffkQznmLuB7EIa8oIIngC8Eb8wZq_dsndg5a-rQQei6MHg4BJw2jysvW2be3sc0vh659_bYObW00vc_rxM_qC0epUVNZkfO7SoNjTNebmGoAuMIDAm3MTrzKGhzjAsPvRhUCw79ueRwMBplduDJ1jGc_m7ErZlZbAAuAYowI6QCNd86wCmB7e9gcGk_o2kisf34nQKJQ1AnvpjYG1uwsPtRZ-iZJv_PrVpsYt7vQmy71U3jA5L1_3W2hv2KObB49AL4n_K2tR4QFAPRS30z3_FcxncikS1cLSZMG2wHIWYAqr1SYVP7uXcEc31mng6ySSD5b9izyPq8GhsglqR-KaVLYDlJ2lYjQ7HPS5LcE6RV9yqesWsO0RQZGA-BVZ2HHt_bQEjd3wlgaBMyBiVgQOYjd017bvqjniIpMP_SVlUTc_g7-m3Iva1jNvWMldU01rFnXnff7IiyyLf3-OE96fCg5EafYTe3pnmxas95WZsYEQmFzMz12j09HQSY2pCw6ZWNFEKv1Oh2QddLfiXGKwEKgarrOwgisNNgfEQlC2zapv2EZlv0sdu6tM6lKsEMZP4h7l18QADsJ_vZsG3flcE6SBpEYcgZendCvIopRUc91Kv5Ixn-v3ZgujjTTazuxrfojA1yleJwQsADrTsY59wsSzf1TyvOh4DfLINyCkRAaZOludsiKQpFDOCYmWzUoJkFEmtkGcQsfP_tAelwxvuY5gXtG4Bi9OyCDNdXQk6fAjL27lzZdMXiJFj3_-3300UfN6slo7Zed0Pp-yKp_RTI46qFYM9n4HAJBF5iCl0t-7awr2IVOSS412JLafsmAY_k5gwtfMzX9ZjZOlEPccOfQzUNBVXcpSk2ldP20PtWmIOQxxAFLa9Myj0ar0ANxA5U7uSRq-EU37VpvXe8LKivGh-JTrQkMIZJMnYK6yF34vZmnDTZ_y-tFYgqUI0kIvhF7LzocM2vD3_3XIV6ZJfSlXUUCnksamuyyeoLD5sEQ8qUgq4-7a_CHCe8WxrcT62DnSul4s4_1fPObxckONJlZCJRJADHRy1S0YsqNNir_wBJk8qQuHlgqGKx1HiADpZoVpw-lLVQBEOHcrTIgOTItrieNwxM3-DKsdEF2cK6bmI8t3dvl5AqbnuRKdfSLYSZQO8vOmmJ2PUbm2uHOMUmw_F6_H-c2MmQG4ZSAMzwSDFQrMP5SxYX3WSvMMBkHnKKVWLzbUalCYfScyhoxAG30c3f-ImLAI-2lvdmx4wzteTzNJcJUaGCIDVKFK7if9Lb4ZJIkSgTrm_ZxBVLdia5S9gk2QfFetdcpbrQr9lqY3bSho7de5K-uwRoTne43TI1Ps4WWnbaFvWbLo-MdNFAtdeCWTnCO1N9KktwJFAWHkdHIGE-HJrLX2DKqN9bx3uJsriqNmcWuWOQ5fsBML6HstL51T6BUus-qK5dhw8ST7SmDrE-BBrDo_GRbc-Yo8r49CYEWEaiS17FIPkSCAzi_7fiAVucokW2nlGZJ_oqya9pOWN_GLJa1XSmky8k4KozapolH7l_rs-YUt8P8mqIobvGom6T56JC9MnhSN0fmyBEytwNXaW31ocYP6nmnw.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_01da68b9b2f63894016af8bd6ea1a887d187ef816ce9884e21",
+              "index": 3
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5033,
+      "completion_tokens": 1046,
+      "total_tokens": 6079,
+      "cost": 0.0005736,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 5030,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0005736,
+        "upstream_inference_prompt_cost": 5.06e-05,
+        "upstream_inference_completions_cost": 0.000523
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1030,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}
