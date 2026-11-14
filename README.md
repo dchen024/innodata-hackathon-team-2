@@ -192,6 +192,20 @@ recorded in each folder's `run_config.json`.
   valid; during development it caught real bugs (an ambiguous walk-transfer, a closed station used as a destination,
   an unstated arrival rule), each fixed in the generator.
 
+### Charts
+
+Correct answers on the final 10 tasks by model, reasoning effort and run (the reported run in `results/final`, the
+Haiku effort sweep, and the clean-copy Docker reproduction, whose `run_config.json` is in `docs/charts/`):
+
+![Final 10 tasks: correct answers by model, effort and run](docs/charts/model_accuracy.png)
+
+Test suite (`tests/` and `eval/tests/`): 94 passed, 0 failed, 16 expected failures (`xfail`, listed with reasons in
+the test files):
+
+![Test suite results by file](docs/charts/tests_by_file.png)
+
+Regenerate both: `python -m pytest tests eval/tests --junitxml=docs/charts/junit.xml && python scripts/make_charts.py`.
+
 ## Hand check
 
 Every reported task was checked by a team member on a review page showing the map, the notice, the question, the
