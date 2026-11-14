@@ -135,8 +135,10 @@ configs → generator → tasks/ → validate → eval → results/
 Failure patterns in the final run (see the hand check below):
 - **Miscounting stops / missing an express hop** — t05: every run wrong (Haiku 2 at all efforts, Luna 1);
   t06: Haiku low/high answered 5 (stay on the 2/3).
-- **Ignoring the accessibility constraint** — t07: Haiku low/high chose 1 → S → 7; t08: Haiku answered F → 7,
-  D → 1 → S and D → E → 6 at low/medium/high, all transferring at stations without the symbol.
+- **Ignoring the accessibility constraint** — t08: Haiku low answered F → 7 (changes at 42 St-Bryant Pk) and high
+  D → E → 6 (changes at 7 Av), both stations without the symbol.
+- **Legal but not shortest** — t08: Haiku medium D → 1 → S (7 stops vs 6); t07: Haiku low/high 1 → S → 7 (5 stops
+  vs 4). Both are accessible trips with the right number of transfers but more stops.
 - **Answering from normal service** — t10: Haiku medium/high used the 6, which is suspended between 28 St and
   Bleecker St.
 - **Wrong transfer point** — t09: Chambers St instead of Canal St (Haiku low/medium, Luna); t04: Haiku medium chose
@@ -170,14 +172,16 @@ recorded in each folder's `run_config.json`.
 
 ## Key findings
 
+- Generation yield (generator v0.3, 20 fresh seeds at level 3): 17 tasks built (3 seeds found no scenario meeting
+  every rule within 400 attempts) and 16 passed every automatic check (1 map showed a part-time stop).
 - Final accuracy at high reasoning: Haiku 5.5 5/10, GPT-6 Luna 8/10; all 40 replies in the reported runs complete
   (`finish_reason=stop`, no API errors). Cost of the reported run: $0.062.
 - By question type (Haiku low / medium / high / Luna high): `accessible_route` 1/2/1/3 of 3, `reroute_lines`
   2/2/2/3 of 3, `transfer_station` 1/0/2/1 of 2, `min_stops` 0/1/0/1 of 2.
 - Fewest-stops planning is the weakest skill: t05 is failed by every run, and only one Haiku run solves t06 (it
   needs a one-stop hop onto an express).
-- Accessibility is the clearest model gap: Haiku fails 2 of 3 wheelchair routes at low and high effort by changing
-  trains at stations without the symbol; Luna solves all 3.
+- Wheelchair routes separate the models: Haiku fails 2 of 3 at low and high effort (on t08 by changing trains at
+  stations without the symbol, on t07 by choosing a legal but longer route); Luna solves all 3.
 - More reasoning helps Haiku only a little here (low 4, medium 5, high 5).
 - Run-to-run variance: before the reported run, the same 10 tasks built on macOS (8 of 10 images byte-identical to
   the submitted ones, the other 2 differing only in marker layout) gave Haiku 6/10 and Luna 7/10. That run was
@@ -203,8 +207,8 @@ code-computed reference trip leg by leg, the reviewer's verdict and each model's
 | t04 | transfer_station | 7 suspended west of Grand Central; transfer at 34 St-Herald Sq | Haiku medium chose 59 St-Columbus Circle |
 | t05 | min_stops | 7 suspended 5 Av–Hudson Yards; reference trip (3 stops) confirmed on the map | Every run wrong: Haiku 2, Luna 1 |
 | t06 | min_stops | Nevins St closed; stop count recounted by hand: 3 to Borough Hall (1), 4 express to Atlantic Av (1), 2 to Grand Army Plaza (2) = 4 | Staying on the 2/3 is 5 (also stops at Hoyt St); Haiku low/high answered 5 |
-| t07 | accessible_route | Times Sq closed for the 7; A → S → 7 with accessible transfers | C may replace A, accepted. Haiku low/high chose 1 → S → 7 |
-| t08 | accessible_route | Herald Sq closed for N/Q/R; D → A → S | Reviewer note: A, C or E from 59 St downtown — C accepted (the E doesn't serve that leg on this map). Haiku failed at every effort; Luna correct |
+| t07 | accessible_route | Times Sq closed for the 7; A → S → 7 with accessible transfers | C may replace A, accepted. Haiku low/high chose 1 → S → 7: legal, but 5 stops vs 4 |
+| t08 | accessible_route | Herald Sq closed for N/Q/R; D → A → S | Reviewer note: A, C or E from 59 St downtown — C accepted (the E doesn't serve that leg on this map). Haiku low/high changed trains at inaccessible stations (42 St-Bryant Pk, 7 Av); medium took a legal but longer route; Luna correct |
 | t09 | transfer_station | Fulton St closed for 4/5; transfer at Canal St | Haiku low/medium and Luna said Chambers St |
 | t10 | reroute_lines | 6 suspended 28 St–Bleecker St; F → L | Haiku medium/high used the suspended 6 |
 
