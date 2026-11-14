@@ -4,13 +4,15 @@ A pipeline that turns the MTA's public subway timetable into **realistic, MTA-st
 service change** and asks a commuter question about each one ("No 2 or 3 trains between Park Place and Wall St —
 which services do you ride from Delancey St to Franklin St?"). Every image is drawn by code from structured data,
 every answer is computed by code from the same data, and independent checks confirm the image shows what the answer
-assumes. On the final 10 tasks at high reasoning, over three complete runs, Claude Haiku 5.5 scored 5, 5 and 7/10 and
-GPT-6 Luna 8, 5 and 4/10 (both average 5.7); three tasks (t05, t08, t09) were solved in only 1 of the 6 high-effort runs.
+assumes. On the final 10 tasks, over ten complete runs at each reasoning effort, Claude Haiku 5.5 averaged 4.0 / 5.6 /
+6.3 correct (low / medium / high) and GPT-6 Luna 3.8 / 5.5 / 6.0. Two tasks stay almost unsolved at high effort: t05
+(fewest stops, 1 of 20 high-effort runs) and t08 (wheelchair route, 2 of 20).
 
 ## Reported folders
 
 - Tasks: `tasks/final`
-- Results: `results/final`
+- Results: `results/final` (run 1, high effort; repeats in `results/run2_*` … `results/run10_*`)
+- Performance graph over the ten runs: `docs/performance.png` (numbers in `docs/performance.json`)
 
 ## Problem statement
 
@@ -103,11 +105,12 @@ innodata-hackathon-team-2/
 │   └── tests/                    pytest suite (API faked)
 │
 ├── factory/__main__.py           command line
-├── scripts/haiku_effort_sweep.sh exact commands for the reported runs
+├── scripts/                      effort_sweep.sh, repeat_runs.sh (exact eval commands), plot_runs.py (graph)
+├── docs/performance.png          accuracy over the ten runs
 ├── tests/                        pytest suite: reproducibility, planner vs validator, render audit, format
 ├── tasks/final/                  the 10 reported tasks (built in Docker); pilot1/, pilot2/, candidates/ too
-├── results/final/                reported run (both models, high); final_haiku_low/, final_haiku_medium/,
-│                                 pilot1/, pilot2/, cand_*/ (earlier rounds)
+├── results/final/                reported run (both models, high); final_{haiku,luna}_{low,medium}/,
+│                                 run2_* … run10_* (repeats), pilot1/, pilot2/, cand_*/ (earlier rounds)
 ├── slides/                       presentation
 └── tools/check_submission.py     organizers' format checker
 ```
@@ -163,38 +166,54 @@ We sorted every wrong answer on a valid pilot task (13 in all: 5 Haiku, 8 GPT-6 
 |---|---|---|---|---|---|
 | Pilot 1 | subway-0.2.0 | 12 (`tasks/pilot1`) | 10/12 (83%) | 9/12 (75%) | Both models solved every `count_stops`; the adversarial reviewer found an ambiguous walk-transfer. → dropped `count_stops` from the mix, required transfers inside one named station, added the `accessible_route` type, weekend (Saturday) timetable, MTA-style markers |
 | Pilot 2 | subway-0.2.0 | 11 evaluated of 12 (`tasks/pilot2`) | 8/11 (73%) | 5/11 (45%) | `accessible_route` hardest (1/3 each). Test audit found the planner did not follow the stated walking/arrival rules and the accessible memory trap compared against the wrong baseline → planner rewritten on (station, route, arrived-by-train) states, rules stated in every question, closed stations never used as endpoints, U-turn trips rejected, max 3 rides |
-| Final | subway-0.3.0 | 10 (`tasks/final`) | 5/10 (50%); runs 2–3: 5, 7 | 8/10 (80%); runs 2–3: 5, 4 | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
+| Final | subway-0.3.0 | 10 (`tasks/final`) | 5/10 (50%); mean of 10 runs 6.3 | 8/10 (80%); mean of 10 runs 6.0 | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
 
-Reasoning-effort sweep on the final 10, run three times (temperature 0 requested, same submitted images). Run 1 is
-the reported run; runs 2 and 3 are complete repeats, decided in advance and reported whatever they showed:
+Reasoning-effort sweep on the final 10, run ten times (temperature 0 requested, same submitted images, same
+prompts). Run 1 is the reported run; runs 2–10 are complete repeats, every one reported:
 
-| Model | low (runs 1/2/3) | medium | high | mean low / medium / high |
-|---|---|---|---|---|
-| Claude Haiku 5.5 | 4 / 4 / 7 | 5 / 5 / 4 | 5 / 5 / 7 | 5.0 / 4.7 / 5.7 |
-| GPT-6 Luna | 5 / 4 / 5 | 6 / 5 / 6 | 8 / 5 / 4 | 4.7 / 5.7 / 5.7 |
+| Model · effort | runs 1–10 | mean | range |
+|---|---|---|---|
+| Claude Haiku 5.5 · low | 4, 4, 7, 5, 3, 3, 5, 4, 3, 2 | 4.0 | 2–7 |
+| Claude Haiku 5.5 · medium | 5, 5, 4, 6, 6, 5, 7, 6, 6, 6 | 5.6 | 4–7 |
+| Claude Haiku 5.5 · high | 5, 5, 7, 7, 6, 6, 6, 7, 7, 7 | 6.3 | 5–7 |
+| GPT-6 Luna · low | 5, 4, 5, 4, 4, 4, 3, 3, 3, 3 | 3.8 | 3–5 |
+| GPT-6 Luna · medium | 6, 5, 6, 5, 5, 6, 7, 5, 5, 5 | 5.5 | 5–7 |
+| GPT-6 Luna · high | 8, 5, 4, 5, 4, 8, 7, 7, 7, 5 | 6.0 | 4–8 |
 
-Folders: run 1 `results/final` (high) and `results/final_{haiku,luna}_{low,medium}`; runs 2 and 3
-`results/run2_*`, `results/run3_*` (`{haiku,luna}_{low,medium,high}`). Exact commands:
-`scripts/effort_sweep.sh`; the effort is sent as `reasoning.effort` in `eval/openrouter.py` (`build_body`) and
-recorded in each folder's `run_config.json`.
+Per-task solve rate at high effort over the ten runs (Haiku / Luna): t01 100 / 100%, t02 100 / 90, t03 100 / 30,
+t04 100 / 70, t05 10 / 0, t06 60 / 60, t07 10 / 70, t08 0 / 20, t09 80 / 60, t10 70 / 100.
+
+![Accuracy over ten runs](docs/performance.png)
+
+Folders: run 1 `results/final` (high) and `results/final_{haiku,luna}_{low,medium}`; runs 2–10
+`results/run<N>_{haiku,luna}_{low,medium,high}`. Exact commands: `scripts/effort_sweep.sh` (runs 1–3) and
+`scripts/repeat_runs.sh` (runs 4–10); graph: `python scripts/plot_runs.py`. The effort is sent as `reasoning.effort`
+in `eval/openrouter.py` (`build_body`) and recorded in each folder's `run_config.json`. 600 replies in all, every one
+complete (status ok, finish reason stop); total OpenRouter cost about $1.22.
 
 ## Key findings
 
 - Generation yield (generator v0.3, 20 fresh seeds at level 3): 17 tasks built (3 seeds found no scenario meeting
   every rule within 400 attempts) and 16 passed every automatic check (1 map showed a part-time stop).
-- Final accuracy at high reasoning: run 1 (the reported run) Haiku 5.5 5/10, GPT-6 Luna 8/10; over three complete
-  runs both models average 5.7/10 (Haiku 5, 5, 7; Luna 8, 5, 4). All 180 replies across the three sweeps are complete.
-- Robust failures, counted over the three high-effort runs of each model: t05 (fewest stops), t08 (wheelchair route)
-  and t09 (transfer station) were solved in only 1 of 6 runs; Haiku never solved t07 or t08 (0 of 3, wheelchair
-  routes), Luna never solved t05 or t09 (0 of 3). t01 and t02 were solved in every high-effort run.
-- No consistent effect of reasoning effort on these 10 tasks: means are 5.0 / 4.7 / 5.7 (Haiku) and 4.7 / 5.7 / 5.7
-  (Luna) for low / medium / high, inside the run-to-run ranges.
+- Final accuracy at high reasoning: run 1 (the reported run) Haiku 5.5 5/10, GPT-6 Luna 8/10; over ten complete
+  runs Haiku averages 6.3/10 (range 5–7) and Luna 6.0/10 (range 4–8). Neither model is reliably ahead.
+- More reasoning helps on these tasks: mean accuracy rises from low to medium to high for both models (Haiku 4.0 →
+  5.6 → 6.3, Luna 3.8 → 5.5 → 6.0). Within the same run, high beat low in 9 of 10 runs for Haiku (1 tie) and 8 of
+  10 for Luna (1 tie, 1 lower). The ranges still overlap, so a single run can show the opposite (after three runs
+  we saw no consistent effect; the trend appeared only with more repeats).
+- Robust failures at high effort over ten runs: t05 (fewest stops) was solved once by Haiku and never by Luna; t08
+  (wheelchair route) never by Haiku and twice by Luna; Haiku solved t07 (wheelchair route) once. t01 was solved in
+  every high-effort run by both models.
+- The models fail on different tasks: Haiku solved t03 (reroute) in 10 of 10 high-effort runs and Luna in 3; Luna
+  solved t07 in 7 and Haiku in 1. Across all efforts (30 replies per model per task) t05 was answered correctly 2
+  times by Haiku and 0 by Luna, t08 0 and 3 times.
 - Wheelchair routes: on t08 Haiku changed trains at stations without the symbol (run 1: 42 St-Bryant Pk at low, 7 Av at
   high); on t07 it chose a legal but longer route (1 → S → 7, 5 stops vs 4).
 - Typical wrong answers at lower effort include legal-but-longer trips, e.g. Luna's 2 → Q on t02 (one stop more than
   4 → Q, because the 4 runs express).
-- Run-to-run variance is large with temperature 0 requested (consistent with the providers ignoring it): one setting
-  ranged 4–8/10 across runs, so single-run comparisons between models or efforts are not reliable at this task count.
+- Run-to-run variance is large with temperature 0 requested (the providers do not apply it, see Evaluation settings):
+  Luna at high effort ranged 4–8/10 across runs, so single-run comparisons between models or efforts are not
+  reliable at this task count.
   An earlier run on the same 10 tasks built on macOS (8 of 10 images byte-identical) gave Haiku 6/10 and Luna 7/10 at
   high effort, and the judges' Docker `reproduce` check gave Haiku 7/10 and Luna 6/10; the macOS run was discarded so
   reported numbers come from complete runs on exactly the submitted images, and the Docker check ran outside the
@@ -216,7 +235,7 @@ code-computed reference trip leg by leg, the reviewer's verdict and each model's
 | t02 | reroute_lines | R suspended Union St–Court St; 4 to Atlantic Av, Q to DeKalb Av | All high-effort answers correct; Luna low/medium answered 2 → Q (legal, one stop longer) |
 | t03 | reroute_lines | 2/3 suspended Park Place–Wall St; J → R → 1 via Canal St and the Whitehall/South Ferry connector | Haiku low tried J → A → 1 (no free transfer from the A to the 1 here) |
 | t04 | transfer_station | 7 suspended west of Grand Central; transfer at 34 St-Herald Sq | Haiku medium chose 59 St-Columbus Circle |
-| t05 | min_stops | 7 suspended 5 Av–Hudson Yards; reference trip (3 stops) confirmed on the map | Run 1 all wrong (Haiku 2, Luna 1); over three high-effort runs Haiku solved it once, Luna never |
+| t05 | min_stops | 7 suspended 5 Av–Hudson Yards; reference trip (3 stops) confirmed on the map | Run 1 all wrong (Haiku 2, Luna 1); over ten high-effort runs Haiku solved it once, Luna never |
 | t06 | min_stops | Nevins St closed; stop count recounted by hand: 3 to Borough Hall (1), 4 express to Atlantic Av (1), 2 to Grand Army Plaza (2) = 4 | Staying on the 2/3 is 5 (also stops at Hoyt St); Haiku low/high answered 5 |
 | t07 | accessible_route | Times Sq closed for the 7; A → S → 7 with accessible transfers | C may replace A, accepted. Haiku low/high chose 1 → S → 7: legal, but 5 stops vs 4 |
 | t08 | accessible_route | Herald Sq closed for N/Q/R; D → A → S | Reviewer note: A, C or E from 59 St downtown — C accepted (the E doesn't serve that leg on this map). Haiku low/high changed trains at inaccessible stations (42 St-Bryant Pk, 7 Av); medium took a legal but longer route; Luna correct in run 1, F → S in run 2 |
@@ -226,8 +245,11 @@ code-computed reference trip leg by leg, the reviewer's verdict and each model's
 ## Evaluation settings
 
 - Models (OpenRouter): `anthropic/claude-haiku-5.5`, `openai/gpt-6-luna`. Reported run: both at `reasoning.effort=high`.
-- `temperature=0` is sent on every call. OpenRouter's model list does not show `temperature` as a supported
-  parameter for either model (checked 2026-11-14), so providers may ignore it; the value sent is recorded.
+- `temperature=0` is sent on every call and recorded in every saved request. OpenRouter's model list does not show
+  `temperature` as a supported parameter for either model, and asking OpenRouter to route only to endpoints that
+  apply every parameter (`provider.require_parameters: true`) returns "No endpoints found that can handle the
+  requested parameters" for both (checked 2026-11-14). The providers therefore ignore it, which is why we repeated
+  every setting ten times instead of relying on one run.
 - Fixed `max_tokens=32000` (reasoning tokens count toward it). One call per model × task; no best-of selection.
 - The image is sent as a base64 PNG data URL. `tasks/final` was built inside the Docker image, and the reported runs
   used exactly those files, so a judge's Docker rebuild reproduces the evaluated images byte for byte. (A macOS
@@ -342,7 +364,8 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 - `tasks/pilot1` and `tasks/pilot2` were rebuilt after their runs as the generator changed; `results/pilot1` and
   `results/pilot2` reflect the builds that were evaluated (each raw response stores the exact prompt sent).
 - Service patterns are a typical Saturday daytime pattern from the October 2026 feed, not a specific date.
-- `temperature=0` may be ignored by the providers (see above); results are single runs.
+- `temperature=0` is not applied by the providers (see above), so each run is a sample; we report ten runs per
+  setting, which is still small (ranges overlap between efforts).
 - Equivalent-service acceptance treats services stopping at both stations of a leg as equivalent even when one is
   local (more stops); the question states this rule.
 

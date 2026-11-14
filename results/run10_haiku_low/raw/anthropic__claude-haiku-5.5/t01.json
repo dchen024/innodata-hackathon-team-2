@@ -1,0 +1,114 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "t01",
+  "time": "2026-11-14T19:43:14+00:00",
+  "request": {
+    "prompt": "A rider who uses a wheelchair travels this weekend from 59 St-Columbus Circle to 23 St-Baruch College using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at 23 St-Baruch College itself. They can only enter, leave or change trains at stations marked with the accessibility symbol. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t01.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The fewest-transfer route I found uses two transfers, all at accessible stations.\n\n1. **D** from 59 St-Columbus Circle to 7 Av, where D and E are joined in the same station.\n2. **E** from 7 Av to Lexington Av/53 St, where E and 6 are joined.\n3. **6** from Lexington Av/53 St to 23 St-Baruch College. Grand Central-42 St is closed, so the 6 runs through it without stopping.\n\nI did not find a one-transfer option. The only services that reach a 6-line station from 59 St-Columbus Circle need a second transfer. This is a manual reading of the map, so I haven't exhaustively checked every alternative.\n\nFINAL ANSWER: [\"D\", \"E\", \"6\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": [
+    "D",
+    "E",
+    "6"
+  ],
+  "ref_answer": [
+    "A",
+    "E",
+    "6"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5054,
+    "completion_tokens": 2447,
+    "total_tokens": 7501,
+    "cost": 0.0017289,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0017289,
+      "upstream_inference_prompt_cost": 0.0005054,
+      "upstream_inference_completions_cost": 0.0012235
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2196,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0017289,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 12.91,
+  "response": {
+    "id": "gen-1794685383-jnx4hwyEcZ8ZVWdV8RRM",
+    "object": "chat.completion",
+    "created": 1794685383,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The fewest-transfer route I found uses two transfers, all at accessible stations.\n\n1. **D** from 59 St-Columbus Circle to 7 Av, where D and E are joined in the same station.\n2. **E** from 7 Av to Lexington Av/53 St, where E and 6 are joined.\n3. **6** from Lexington Av/53 St to 23 St-Baruch College. Grand Central-42 St is closed, so the 6 runs through it without stopping.\n\nI did not find a one-transfer option. The only services that reach a 6-line station from 59 St-Columbus Circle need a second transfer. This is a manual reading of the map, so I haven't exhaustively checked every alternative.\n\nFINAL ANSWER: [\"D\", \"E\", \"6\"]",
+          "refusal": null,
+          "reasoning": "I need a route from 59 St-Columbus Circle to 23 St-Baruch College, and the destination is served by the 6 train. I'm going through the stations marked accessible, which include 59 St-Columbus Circle, 57 St-7 Av, 51 St, Lexington Av/53 St, Times Sq-42 St, and Grand Central-42 St, among others.\n\nI'm checking the station list for 23 St-Baruch College, which only the 6 serves, and noting that Grand Central is closed on weekends so the 6 runs express there. I'm weighing a transfer from the 1 at Times Sq-42 St, but Times Sq doesn't have a 6, so I'm looking at 51 St and Lexington Av/53 St as possible transfer points instead.\n\nI'm still tracing the transfer options: the 6 can be picked up at Lexington Av/53 St, where it runs jointly with the E line, which makes that the likely transfer point.\n\nI'm checking which subway lines actually serve the stops between 59 St-Columbus Circle and 23 St-Baruch College, and the E and D lines look like they could both work for part of the trip. I'm also trying to figure out whether the D can be switched to the E at 7 Av, since those two lines share that station.\n\nI'm working out a route with two transfers: the D to the E at 7 Av, then the E to the 6 at Lexington Av/53 St, and from there the 6 down to 23 St. I'm checking whether a single transfer could do it, but the 6 doesn't run from 59 St-Columbus Circle, and the E doesn't stop there either.\n\nTimes Sq has no 6 train, so I need a stop on the 6 line instead, and Lexington Av/53 St or 51 St are the candidates. Checking the D line from 59 St, it runs to 7 Av and 47-50 Sts but not toward Lexington, so a single transfer doesn't seem to work through Times Sq either. I'm weighing whether any one-transfer route exists at all.\n\nI'm sorting out the Grand Central question: the 7 and S markers there mean that station is closed, so the 7 can't be used to get there. Then I'm settling on the two-transfer route, with the D to 7 Av, the E to Lexington Av/53 St, and the 6 down to 23 St, and I'm checking which stops the D passes between 59 St and 7 Av.\n\nI'm checking the D line's stops between 59 St and 7 Av, since it's the first leg of the two-transfer route. Then the E runs from 7 Av to Lexington Av/53 St, and the 6 carries me from there down to 23 St. I'm settling on D, E, and 6 as the answer, since no single-transfer option turns up.\n\nI'm wondering whether a two-transfer route is the only option, or whether a different path could work, and I'm deciding to go with the one I've already found.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I need a route from 59 St-Columbus Circle to 23 St-Baruch College, and the destination is served by the 6 train. I'm going through the stations marked accessible, which include 59 St-Columbus Circle, 57 St-7 Av, 51 St, Lexington Av/53 St, Times Sq-42 St, and Grand Central-42 St, among others.\n\nI'm checking the station list for 23 St-Baruch College, which only the 6 serves, and noting that Grand Central is closed on weekends so the 6 runs express there. I'm weighing a transfer from the 1 at Times Sq-42 St, but Times Sq doesn't have a 6, so I'm looking at 51 St and Lexington Av/53 St as possible transfer points instead.\n\nI'm still tracing the transfer options: the 6 can be picked up at Lexington Av/53 St, where it runs jointly with the E line, which makes that the likely transfer point.\n\nI'm checking which subway lines actually serve the stops between 59 St-Columbus Circle and 23 St-Baruch College, and the E and D lines look like they could both work for part of the trip. I'm also trying to figure out whether the D can be switched to the E at 7 Av, since those two lines share that station.\n\nI'm working out a route with two transfers: the D to the E at 7 Av, then the E to the 6 at Lexington Av/53 St, and from there the 6 down to 23 St. I'm checking whether a single transfer could do it, but the 6 doesn't run from 59 St-Columbus Circle, and the E doesn't stop there either.\n\nTimes Sq has no 6 train, so I need a stop on the 6 line instead, and Lexington Av/53 St or 51 St are the candidates. Checking the D line from 59 St, it runs to 7 Av and 47-50 Sts but not toward Lexington, so a single transfer doesn't seem to work through Times Sq either. I'm weighing whether any one-transfer route exists at all.\n\nI'm sorting out the Grand Central question: the 7 and S markers there mean that station is closed, so the 7 can't be used to get there. Then I'm settling on the two-transfer route, with the D to 7 Av, the E to Lexington Av/53 St, and the 6 down to 23 St, and I'm checking which stops the D passes between 59 St and 7 Av.\n\nI'm checking the D line's stops between 59 St and 7 Av, since it's the first leg of the two-transfer route. Then the E runs from 7 Av to Lexington Av/53 St, and the 6 carries me from there down to 23 St. I'm settling on D, E, and 6 as the answer, since no single-transfer option turns up.\n\nI'm wondering whether a two-transfer route is the only option, or whether a different path could work, and I'm deciding to go with the one I've already found.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "CAQSjCgKEAgTGAI4AUIIdGhpbmtpbmcSDP/nkoadu2yOfLcSjBoML2x9i5cINybn9jzDIjC7dAOfKRwH/7EUKYE5wFISeLb75z0JXqZ6i7xQ8q6RJStZENEt7OH4DJ/BNDa03dUqqSdF8CWgSlSEuUINulnfZJU1H+xmhgIrr4PvYya3cJUliMlF6jqISuJo7Hf61le9HOogLM6JdwUCV2gzpnz7xqD2EqB7EXQ2bbS+o0BymMQQgaaJ/p/a20BFXBE05BxDVmZpWv0fLRFXYId+IbZVpf5CNdZ8Fe3eEUu/LMjLJI1iTWfe5BPYzv+iDsLr3TDsHR6TJRLlpBI0DkzKIDPZlymkQD1iYgqvpsmDKAKW6cWTzMGWI7Fo9oF02mBHf+eetgRiB+4KYIuH5WagVKG0JeKDgbVnOcwwswgpq81QViXbPJwMMWcl7KpHIvkUm8rveXl5hd63v/bSMVvhiow4OzpPTIsXcekK0im86P3Lzd2hQcSEJLKsSJEZt9Y+x+qdKd/ZWckgkIEHkMN51p+iyoPmWvzs/fnp8iPFE4QUiItKyPYIWTcZJDPfkVEVc6L5A26SZzxOBaZwV70H5Q2c3uwEltgxzD8VynWb4DQM/pZet8RDqyd3koG6ifKGOSOCk/2ln4FDVUNyVMMhsLSulDmWlsVRZv4romaCD0fWh2AoCRz5POU6zpHzgbyUwSNZWL1mSzIFoY4E7/cSBZMiGnu6+QLMfm952yV4ZfL3i01sETW4wfT6R6f6ol5SzgiA49tgi9xVsLAJXx+5UXZO8oUMytJq7QM48xCuAv9m9+k5+dt4P5W/Y2vcJqTqmrrpWudP58ELEm+XgNpI1V/FarTl0OSEBqhIUR3iUoWrQwTd5/Va/L1YCZY9s8m9SstLXW6oWOvMa52c1UvYM5puCPqV8dPMzXyaX9b6tMcGTvRa6Bo/bw+JifOQUJiZMg17R+PzaiusLW+toTRM1+8EdvyWmjNqraZLqGgQkI56iIRcr5y2vGg31GKy/kr6bEOG/bXDRZUo1v1Twpx8rNsCUxuwIcAu0qzuuj07h3fUTPQMuffjIRy9V9x+MTBAOoo8kAOtD6AWHgjrTOJtQT8dLBcFovxdXzHwXY2JEtMbbI5NtlooGyvNOQAAcoYPUcxZJ+8D1XoTjbXNoKRCFTNeb+BSjUgG1Z3Pjkh8kgiyn0QI7UuNbEpYFDejh1MuSI3tUQgJTcjjJEMTe8Qu2zZT/olQjlyt++oGtYs1I7QHysF/909OMWl2xaK17q2oqs+5F/m1kCS91fiPJ0m+bEHSWZ1MZHZOehSJuIqL3EdvIKT/2vTygkhSi9fsfmDYD9YyoWauIZJDOgMQG/AIkPCFmNj7zEOaaD5VSlygj5hC8BrQ/SLXH/Uv6Ezs/BfmbDLG56hNhtZAZ3bXLodUzutdqf69Zzq0a9bVKqlr1Z1dzLLEsWU2/LP/vGcOARR7g5gOiFv2xNi7Ad/tBPmhBZd3655D5PDUQxEQK43N12yR86e4fkqnG1N0m2t7VgnMLMjCEx8Xe0UNrOQ4lzCa1y378BL/71v4if4zMyC8HioHaHsjaFKnjdMHSoSrpYaclHhL/LDlfoNh49HJuhe2U3Avm4YUhVR21RLkANPSL46iCheHj0UkXbCB9iMllpv4Ber90bI/BpdmT1v9xSbeQ31OW/+JDVeg4bXga8biqM5gbaCBo/IDK3hS2xzHowvHRcg/cSEl8DbXbPaSvNoPIOnQi9DKPPCrKF0bV453nk3phRleJe2exL8gAjUjOmUix38aIcP4debAsIAVKeME+4HyYD+c/5GOgLF0dtDtuUZtSkFtoXPsOLKkbcXDRqEcup175exvRp9jzBQ/xOiuFZ4tup3M+PDPbeN9ZtNyeTSF/2nvlgJOLTjXGur2Z6LMShtfvPl7mFUoO0LmgWT+Mb2LnrLtJuvkpClPN+GuTpyZISqQiNQ77ZlQW6sJgwSFS4DmBTjHNKFqVOndEnSpj0Ogbgw0HOUjjTAl/xvZhed99uns64dZk8u+Qf6rDYpk4K0wBPw5lEXrKfYTh8cZ7hLp/eSWDdT/KRP4Dg60NCs0nizpwDAx5GUhK9GeK/R16tUMkaP53ny3hoRH6ndY4hTyYv0FfEkHmbVuoSKrVC5KU0hQ15QBAdVWWq+MuSVIwe24/wwEeLVCAkPy1FTRGF+1wtG3S2YMpEocmfvvHDuTCe/eYyCyKjvZ3icBtaJh8w8EgQsQnMvDiSR+xOiUWfxrkLs/uU3cpfxFNZq1mi2Mun0m1RxtYEGdkV4Z7R+Jnjdh4ENuVaSlcOfIYX2OCp+sGHO7ZbJisjaG9iYvNKjhsHlFvAbyFOZD7VGMTG4CpYDyRTim3m8sw0GVKFlgQCI788LqSG+6k8NymOWCHW0u7isgcBwX5PRw9OQ02f5Bb7aicIFz1L/+qezG/FoMJWOG9CG7vD+7CskpvSW4ctKOA+bBeRfKF5L11WvbIlVUwqCe/EWWY2SilCf7WsNU3axiYu2YYgR1zkuS5Nud7wf6/F3siRK4wt4Yd5rvq0rMnl44wO7Zlxt29iEm4ZiQzJoxtPurXQ8YnozvpSJEorlihFs7wl/oNIFgJt71Ex4RQioS74uav2nYaUFOf34+VlzCDURA0zLw+0r2pBDkdG0VaLARB5ORnOlA9XltZAfGVj3/Etu32cXvmiOc3+AXmryChpUmiD3OPgWfT2LMC42opN9FpkEq2/EkRni2ZWpMjKAE0z6/4DBqKqLIFeROewn2sK9sT3SBaMNIgFEWTNIMiJqXT5z7eSCO37oFk7cGnwcwMPwDQ4trdpLx24gtKvGgu/8M3CIeY6RHb2tFDOasUGmXnfoY2ApdJAsk9b83frz01em/bluK/huI1SDjdN+E+uIW7c9dRi07zHzw9XM9ggOpdlHuGGrCP1gTuNs+rdAy2XxzDL87leVIrTQmaxpFuLV7UxZY1VjuBUYh4RxYSfcJ6I0KlWYRHwDA6Te6uOOE3Iu++HySH6x9zEiY4d+CzSczTOSKkwnlk/TlRiIIA3mNZvcbMN91vL7o2sBCrZUofheM4iJaLm730gBi+OvedvNr4tEmnkKR14BSV+iGfJ301v9Pt7eu8sCSLGfiV1gpbJrJCM1FnTheN+2OYnV6IgklIgKPP49cii6Qhgt/aX1jltszWQx1EEuvw7BNHCCROrlyDW79FCIBdn2Tbds1WzdqstiGGZ3oW+9PL9SNB0zmtdiVtsY79jFVM+9U+dJsAbngdTEaU3iblP6bNppSXriG/pRQS253ckjzUCNqzXEEfJ950QM7KUIIL+g251c5fR+ay10N7PtfGZVaXr3ccpG1L8IdwvMkHboRZm477nLUN79jDxjFKRt6+Q3s8CSUE1UJWr5DV3c+mAEzaswd+JKDi4+w/U5r8dyhZK1aFD/vgvWDJBhjsrxwcVhDUaXDvbdUN0zN2nztGM6XBR1SmH7skSLDYnUN17f3cTWO/EyHg07jMmg6umxqn9RgYuYfHQnRnBtxVZDutCd49cxGonYI3hO/QduSV365Xe7Yfj/JPJ197q9KqDCZvdkAr+q6t/XObAZxX3zXgH35a3duKkJDGzUeTwlxvNbA4KL5/5z+ZNXwN9d2lqgJA8Yaw8G1pyiMOzNCWsypj4MP9hjpIaejau/mftB3H9vYI8R6qBB0A0yPLQq300Yqkt0FpkOn7CNT8lgVmNs+wKg4KKPqwA1crLfw0MEQo2f0EhSQRFioUk0KjKih+xY2obZVf+VH+4dKk7YHnhCBQ6508At+DR7TizradwFdSi2yrNIdfMN6G+D6swEYKtltxFNOzNAjJxeANIMIP34zuHCCQhvsZfpwnLn7+YMwlNOmCgc/gBv02DnDegTh9nq8K0NeMIV+cYpnPNoPTq1rmJVi6gc43rIhEbsVmHcddCXVAO8E8Oz+bYM2xGJPZNrcWHciftrG+YHkysBdY+OVHxm50oUtjacqrp1XbhQbCx9lPStFBHt7auyZ0UFRWgBYLfp+Oyr+HvTyiLa8+fQx6YpU7zu9thGe6s9283qNu9g7it5VRz1IgdRLNdtghFAGrVYne/6NeMVNnQCv9gjTkaKI8XkWiNcwO7VZy/F+f5PDqtVJ20ELGBws94OycEBs5R9akqShs3zehxivCx+BJiZoN4N1AZM2Tb8si0+wOm+aS1PWZNFYQU60W/UvHn5bflu5dja5rMIePn3cIOWEcP5bM/+TTOuvVEhIMT30fGd6G1TF2c0tgJefptNgKH3wmqEBiOztdHh6deZl728yw2yZvYsCYV5FTIFwJh8Sgx8UPBtTEskpKKvzFhYmMFRRbC70o2cs5/AqlnHJYJBnMTCU7iNr5jTzXZvYek/FT1/6DNO0EGwAnrDXog1LcLL1YFKbCy0pEFe7JmBh8jenXygA6wTHHthPyzRFrLF5eBT0lVvKhXjm5fYLcndNfuVNwAuZWVvcUvIxjaenuXZmggFOjrP+Hlwa/JV+pruxuP8/L+nIoMx8Gal25e6K4YQwf4Xy8ZInVdFCpd8Nm2vJ/b+PB4eRLMTTaaDkkJwQ4UR/0CjBvmR70Q1ONlmo87eXMpzAFwXEb9U9bcdLlNQsn2kLu1NQvqr9qcjRtnLea8E7JiSYELfU2UF73HE3mTnMdHqgzjlb/DjgfaAlCcIrkrq0qqcbGDAHP2ZigT/qDJsGyCp/STG+tD5MYQxYQWfnANWaXnyK7HDa1iKCvXHjmiGmNu4oDaua1LtjaSyFI8r/WlX5waiVPmBUwfyTSfdMK/+9t6EDy44RpF+8SgpZ1dd5VmcTjGgXIZoFpk2mEYsQZ3MzpFkVXE3mVmq/jssdaghzS/PZ/vjdA8BoQFNB3//7rBC0os+dTzmiu+pktZMhJJx0vLXk/lu9A9eKuY3Lu2g3Qin+xhpubehGK7j+TaPw5tGN66KtdYiKzHefQbpxzGJU2bmY7IBoXcNmQNdqu10zAAwxG7xhYRJH924jCI9pOsKT1Yjy8HeJWgzZfxvHBlImJPuyDcNRRHvQHn5ZqNu18zKtUqyj/l7D7FlQgzixqVn9D796now1zFKeUJErv8JFyapJtcRnDNWqa1S339k9hHCH2ATpQr2E6v67lHoK8nAZfgXgEEcI+az/qqQ68gnAOTXuFVgh0wCtnS/FiZd6ihEPOp4f2M1IpdHKn7jk8X098JA8aUHXPRv9vE4i3Qo89vomqOgQkM03CqX7U0u0QkI/uzQqMJM7p7AhapbksZ5TJ9EvaZP+pf2ao20SrF0XM2SajUiMA9yv8L7sQCUNKb1a/ycIuJOt9odT+M0YrUgwMkocLLfMzk7QGzhIKVeBD8lniTDF4TP6Hk1k4ms4iutPdro+kghHCE7IYNltG4gOH5c5QF6zirm/1MCr2T2aI/2DVpef+IaT6C5BgAv1S/UhYTdRWGGmgzqwrJI0uCAdFaQD2dazRJldauhNJoTWiuHemoc+hsFn4hAciaX0Dx11kmRAfQcibE1thdTT/4n9Sr9ceS9VtGCBYUgTuoNd/is4NDPSuXic+Ae7rUX32+3Estn5Xzg6FGm8lt88LG0TLhyRGmsN15UCqC1uHlyTZ7YQto9acfZh3wPfuSIl0+OLkYuPIZT4DieEtNp7bOoT/a7qzCFio7xKwZpRVhK7cY/2fH82TTT+lTs8sQHirOqpgRtGCrck8VYjMt2aYn4juxj8UsHDvFOZqoGthIdjXnNj9J8yfleWLYyTOwPEp+sFsyF3HBZWgmmSFEE9FPWoucvPcvFeosISLDVgSBgza9vMTCpzh9dpDhLpc8v2QNGfpAeN4/DSeMJ96EuOy4G8Om2b7qzvohoT29R2z7NyeNX5S3Es6Tg7MjJbIQq4xrjFuC79MpWSfQa8RCIQP1y/pzza/TIPSBQyQMisHdhhiolxVsOYcFFDTyblqbi7v0HRm9H+oUiEdTun6wbR/vnEyBf8JEaPy5chB+WH0xWthLbOhjSGrsA6ISP2wgjzrjt9Vu01e0ZRVC9SL3I/gspheejSgIE9aSBjmXGag6ocfIPF+ApmvNVclF6hQuPWcZUSVKSLD4JNmlPMth8YjpBqMCByJ5p1qia2lAADU6V1+6+kI+8gqheJnS9Ok2xQJtnz25SgAzKK+Xwz5h6UYArEyPmWlhx42vbXX8zNBF0J8w4Up/pn0kFFxmdoQ2jDumt+He0cOFak49DHHe611AWrDVGBhQiv+opCvj0x+Uus/lBAnvKPRWcXONQ8l+KX1pQu7KHW34fiPN1LEPNYYM0Nl1fn9OsOS6dlnlF+RC3K8GOBGRACkk1aLNlxgd35+/JZtFjctIzUeoBc5GJiFq5jJcLd5XCUQ8mM87uvY2gedWLnIT/ddkf8L5vdXoAy5qzCXkxicxI/nM61aLMaKXk0b8CfmovYWgd4c8xgGnxnGFitK0pYUqrwLVhkd+Mt7JyNliCxDCynxKhQ4tey/BqcMRnGxic1e4vkatKFBfNVApJ7ghrtadqfBPThq69zRr6OGFlLIZ6kiVBFRb08JPg7kwsbPxRC+KyEu0qRw9UlutMti7HWTbT3gF/BG18wUNSJ0o7Z5liPC2QpIZwyD7f8V/CG6uy/k1xq6indQX4FxD+8nWzTSAFqJHg4vV31fxDhllp+a2n99nKfs68XrNbmMsUuDOflxVOP5GAd3LZlP4w6PGGVLfTwO2apLqttVIISJ5PCDU/Ju3bTcxOma4zhRrNkY9kJNJIOJD3d0i0PEJoO0imJYPfooizMhGbQNNBbRSqfg8gvXim33zsSWXbArRXQBT9g+4o2xxb0nWc1X+SsqgUYlwjdzEctyhgB.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5054,
+      "completion_tokens": 2447,
+      "total_tokens": 7501,
+      "cost": 0.0017289,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0017289,
+        "upstream_inference_prompt_cost": 0.0005054,
+        "upstream_inference_completions_cost": 0.0012235
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2196,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

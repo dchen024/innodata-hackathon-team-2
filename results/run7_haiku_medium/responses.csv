@@ -1,0 +1,84 @@
+model,task_id,status,parsed,question_type,response,ref_answer,correct,finish_reason,error
+anthropic/claude-haiku-5.5,t01,ok,"[""A"", ""E"", ""6""]",accessible_route,"To reach 23 St-Baruch College, the only service that stops there is the 6. On this weekend map the 6 does not stop at Grand Central-42 St, so the trip has to join the 6 at 51 St or Lexington Av/53 St. Both of those are wheelchair-accessible.
+
+The E is the only way to reach Lexington Av/53 St from the west, and the E stops at accessible 42 St-Port Authority Bus Terminal (A C E), but not at 59 St-Columbus Circle, which has A, D, C and 1. So:
+
+1. **A** from 59 St-Columbus Circle to 42 St-Port Authority Bus Terminal. The A skips 50 St, so this is the fewest stops.
+2. Transfer within the station to the **E** and ride it to Lexington Av/53 St (stops: 50 St, 7 Av, 5 Av/53 St, Lexington Av/53 St). Neither 50 St, 7 Av nor 5 Av/53 St is accessible, so the rider stays on the train through them.
+3. Transfer (joined free transfer) to the **6** at Lexington Av/53 St and ride it to 23 St-Baruch College, passing 51 St and Grand Central-42 St without stopping.
+
+This gives two transfers. I found no route with only one, since no single service links 59 St-Columbus Circle to the 6 or to the E at an accessible station.
+
+FINAL ANSWER: [""A"", ""E"", ""6""]","[""A"", ""E"", ""6""]",1,stop,
+anthropic/claude-haiku-5.5,t02,ok,"[""4"", ""Q""]",reroute_lines,"The trip needs one transfer, since no single service serves both Borough Hall and DeKalb Av. Only the Q stops at DeKalb Av, and the Q does not run to Borough Hall.
+
+The best option is to ride the 4 from Borough Hall to Atlantic Av-Barclays Ctr, stopping at Nevins St on the way, then transfer to the Q at Atlantic Av and ride it to DeKalb Av. That is 3 station stops (Nevins St, Atlantic Av-Barclays Ctr, DeKalb Av). The 2 or 3 would also reach Atlantic Av, but with more stops.
+
+FINAL ANSWER: [""4"", ""Q""]","[""4"", ""Q""]",1,stop,
+anthropic/claude-haiku-5.5,t03,ok,"[""J"", ""R"", ""1""]",reroute_lines,"**Route: J → R → 1**
+
+1. **Delancey St-Essex St → Canal St (J):** The J stops at Delancey and continues via Bowery to the Canal St complex, where the R also stops.
+2. **Canal St → Whitehall St-South Ferry (R):** Change to the R within the Canal St complex, then ride south (via Canal, Prince St, City Hall, Cortlandt, Rector St) to Whitehall St-South Ferry.
+3. **South Ferry → Franklin St (1):** Walk across to the joined 1 station at South Ferry, then ride north through Rector St, WTC Cortlandt, Chambers St and on to Franklin St.
+
+I found no one-transfer option. The F and M don't reach the western lines, and the Canal St 1 station isn't joined to the J/R complex. The 2 and 3 are suspended between Park Place and Wall St, so they can't help either. This gives two free transfers, and the route has the fewest stops among the two-transfer options I checked.
+
+FINAL ANSWER: [""J"", ""R"", ""1""]","[""J"", ""R"", ""1""]",1,stop,
+anthropic/claude-haiku-5.5,t04,ok,34 St-Herald Sq,transfer_station,"The rider transfers at **34 St-Herald Sq**. Only the D and F serve 47-50 Sts-Rockefeller Ctr, so the trip must start on the D/F line. The 34 St-Herald Sq station is the only place on that line where the map shows a free in-station transfer to N/Q/R, which run north to Times Sq-42 St. I did not check every alternative route in detail; this follows from the map's transfer markings.
+
+FINAL ANSWER: 34 St-Herald Sq",34 St-Herald Sq,1,stop,
+anthropic/claude-haiku-5.5,t05,ok,2,min_stops,"The fewest possible is **2 stops**.
+
+No single train from Times Sq-42 St reaches 47-50 Sts-Rockefeller Ctr directly. The D and F stop there, but they don't serve Times Sq-42 St. The map doesn't join Times Sq-42 St to 42 St-Bryant Pk, the D/F station, so that transfer isn't available either.
+
+The two-stop route:
+1. Take the N, Q or R from Times Sq-42 St to 34 St-Herald Sq (1 stop).
+2. Transfer for free within 34 St-Herald Sq to a northbound D or F, which stops at 47-50 Sts-Rockefeller Ctr (1 stop).
+
+FINAL ANSWER: 2",3,0,stop,
+anthropic/claude-haiku-5.5,t06,ok,4,min_stops,"**Answer: 4 stops**
+
+1. **Clark St** is served by the 2 and 3 trains, which run to Grand Army Plaza. The direct 2/3 route would take 5 stops (Court St, Hoyt St, Atlantic Av–Barclays Ctr, Bergen St, Grand Army Plaza).
+2. **A shorter route uses the 4 train.** At Court St (stop 1), the 2/3 train stops and the rider transfers to the 4 train, which runs express with no stops between Court St and Atlantic Av–Barclays Ctr. Nevins St is closed, so the 4 train passes through it.
+3. **Stop 2** is Atlantic Av–Barclays Ctr, where the 4 train stops. The rider transfers to the 2/3 train (a free transfer within the station).
+4. **Stop 3** is Bergen St (the 3/2 station, not the F/G station). **Stop 4** is Grand Army Plaza, where the trip ends.
+
+Grand Army Plaza is served only by the 2 and 3 trains, so the final leg must be on that line, and no route reaches Atlantic Av–Barclays Ctr in fewer than two stops from Clark St. The minimum is therefore 4 stops.
+
+FINAL ANSWER: 4",4,1,stop,
+anthropic/claude-haiku-5.5,t07,ok,"[""1"", ""S"", ""7""]",accessible_route,"**Route: 1 → S → 7**
+
+1. **Board the 1 at 59 St-Columbus Circle** (accessible). It runs south to Times Sq-42 St (accessible), where it stops.
+2. **Transfer to the S shuttle within Times Sq-42 St** and ride it one stop east to Grand Central-42 St (accessible).
+3. **Transfer to the 7 at Grand Central-42 St.** The 7 is the only service that stops at 34 St-Hudson Yards. Times Sq is closed to 7 trains, so the 7 runs through it without stopping, and it continues west to 34 St-Hudson Yards.
+
+This uses two transfers. I did not find a one-transfer option: no line serving 59 St-Columbus Circle connects directly to a 7 stop (Grand Central-42 St or 34 St-Hudson Yards), and the 42 St-Port Authority Bus Terminal stop is not served by the 7.
+
+FINAL ANSWER: [""1"", ""S"", ""7""]","[""A"", ""S"", ""7""]",0,stop,
+anthropic/claude-haiku-5.5,t08,ok,"[""D"", ""1"", ""S""]",accessible_route,"**Route: D → 1 → S**
+
+1. **Board the D at 34 St-Herald Sq.** It's the only service there (34 St-Herald Sq is closed to N Q R), and the D runs north to 59 St-Columbus Circle, which is accessible.
+2. **Transfer at 59 St-Columbus Circle to the 1.** The 1 runs south through 50 St to Times Sq-42 St, which is accessible.
+3. **Transfer at Times Sq-42 St to the S shuttle.** The S runs directly to Grand Central-42 St, which ends the trip.
+
+This uses two transfers. No one-transfer option exists: the only accessible stations that connect to a Grand Central service are reached by lines that don't run from 34 St-Herald Sq, and 42 St-Bryant Pk, where the D meets the 7, has no accessibility symbol. The 1 leg is a short hop (about two stops) and the S leg is a single express ride, so this is also the best choice on station stops among the two-transfer trips.
+
+FINAL ANSWER: [""D"", ""1"", ""S""]","[""D"", ""A"", ""S""]",0,stop,
+anthropic/claude-haiku-5.5,t09,ok,Canal St,transfer_station,"The most direct route uses the J train, with one transfer at Canal St to the 6.
+
+1. **Ride the J from Fulton St** north along the brown line. It stops at Chambers St and then Canal St, so the intermediate stops are Chambers St.
+2. **Transfer at Canal St** to a 6 train. Canal St is a shared station for the 6 and J.
+3. **Ride the 6 from Canal St** to Brooklyn Bridge-City Hall, which is a direct run with no intermediate stops. The trip ends when the train arrives there.
+
+Other options are longer. The A/C route to Canal St passes through more stations, and the 2/3 lines don't reach Canal St or Brooklyn Bridge-City Hall. Walking from Chambers St to Brooklyn Bridge-City Hall would not satisfy the requirement that a train arrive at the destination.
+
+FINAL ANSWER: Canal St",Canal St,1,stop,
+anthropic/claude-haiku-5.5,t10,ok,"[""F"", ""L""]",reroute_lines,"**Answer: [""F"", ""L""]**
+
+1. **Boarding at Bleecker St:** Bleecker St is joined by a free walking transfer to Broadway-Lafayette St, where the D and F stop. The rider walks over and boards the F.
+2. **Riding the F:** The F runs north from Broadway-Lafayette St and stops at W 4 St-Wash Sq and at 14 St (the 6 Av/14 St complex), where it meets the L.
+3. **Transferring to the L:** At 14 St, the rider changes to the L, which runs east through 14 St-Union Sq to 3 Av, where the trip ends.
+
+Two transfers is the minimum. The 6 serves Bleecker St but does not stop at 14 St-Union Sq, and no single service connects Bleecker St to 3 Av, so one transfer is not possible. The D also cannot reach the L at 14 St.
+
+FINAL ANSWER: [""F"", ""L""]","[""F"", ""L""]",1,stop,

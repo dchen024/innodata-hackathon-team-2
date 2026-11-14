@@ -1,0 +1,133 @@
+{
+  "model": "openai/gpt-6-luna",
+  "task_id": "t03",
+  "time": "2026-11-14T19:43:16+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from Delancey St-Essex St to Franklin St using only the services and free transfers shown on this map. Walking between stations joined on the map counts as a transfer, and the trip ends when a train arrives at Franklin St itself. They want the fewest transfers and, among those trips, the fewest station stops. Which services do they ride, in order? If more than one service runs between the same two stations on a leg, any of them is accepted. Answer as a JSON list of route letters or numbers, for example [\"A\", \"7\"].\n\nAnswer the question using the image. Think it through, then give the answer as a JSON list of names exactly as written on the map, in order, e.g. [\"A\", \"7\"].\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/t03.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "low"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "FINAL ANSWER: [\"F\", \"C\", \"1\"]",
+  "finish_reason": "stop",
+  "native_finish_reason": "completed",
+  "parsed": [
+    "F",
+    "C",
+    "1"
+  ],
+  "ref_answer": [
+    "J",
+    "R",
+    "1"
+  ],
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 5214,
+    "completion_tokens": 831,
+    "total_tokens": 6045,
+    "cost": 0.00046791,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 5211,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00046791,
+      "upstream_inference_prompt_cost": 5.241e-05,
+      "upstream_inference_completions_cost": 0.0004155
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 812,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.00046791,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 14.35,
+  "response": {
+    "id": "gen-1794685383-oAlQX8C7ZbspVwAriFEK",
+    "object": "chat.completion",
+    "created": 1794685383,
+    "model": "openai/gpt-6-luna",
+    "provider": "OpenAI",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "completed",
+        "message": {
+          "role": "assistant",
+          "content": "FINAL ANSWER: [\"F\", \"C\", \"1\"]",
+          "refusal": null,
+          "reasoning": "**Figuring out subway route**\n\nI need to find the best route from Delancey Essex (F, M, J lines) to Franklin St (1 line) with the fewest transfers. I might be able to transfer to the F line at Delancey, then go to Broadway-Lafayette. I’m thinking I could take F to West 4th and then switch to A/C/E. It seems I'll need to transfer from C to the 1 line at Chambers. The map shows this area has a free transfer option.**Planning subway transfers**\n\nI need to figure out the best way to reach Franklin St from Delancey Essex. One option could be to start on the F line, transfer to A/C at West 4th, ride C to Chambers, and then hop on the 1 train to Franklin. Alternatively, I could take the J at Bowery and Canal, possibly transferring to the R or 6. I want to minimize transfers, so it seems the J line at Chambers to 1 could work too. I'll review the map closely!**Examining Chambers station transfers**\n\nAt Chambers St, the J train is nearby, and it connects to the red lines (1, 2, 3). I see that it runs down Bowery before reaching Chambers. The map shows that at Chambers, there's a grouping of station transfers that includes the 1, 2, and 3 lines, as well as A/C/E at Park Place. It looks like transferring from the J line to the 1 might be a free transfer, which is helpful!",
+          "reasoning_details": [
+            {
+              "type": "reasoning.summary",
+              "summary": "**Figuring out subway route**\n\nI need to find the best route from Delancey Essex (F, M, J lines) to Franklin St (1 line) with the fewest transfers. I might be able to transfer to the F line at Delancey, then go to Broadway-Lafayette. I’m thinking I could take F to West 4th and then switch to A/C/E. It seems I'll need to transfer from C to the 1 line at Chambers. The map shows this area has a free transfer option.**Planning subway transfers**\n\nI need to figure out the best way to reach Franklin St from Delancey Essex. One option could be to start on the F line, transfer to A/C at West 4th, ride C to Chambers, and then hop on the 1 train to Franklin. Alternatively, I could take the J at Bowery and Canal, possibly transferring to the R or 6. I want to minimize transfers, so it seems the J line at Chambers to 1 could work too. I'll review the map closely!**Examining Chambers station transfers**\n\nAt Chambers St, the J train is nearby, and it connects to the red lines (1, 2, 3). I see that it runs down Bowery before reaching Chambers. The map shows that at Chambers, there's a grouping of station transfers that includes the 1, 2, and 3 lines, as well as A/C/E at Park Place. It looks like transferring from the J line to the 1 might be a free transfer, which is helpful!",
+              "format": "openai-responses-v1",
+              "index": 0
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-LnQhElp11HaJR7JT6tH9BdZPV-W46UUMx_V4tol14YM-kMHIwI33G-xdLVhtn6CEWXwgcYx_nq83XnjILdqr8KaB0qX-vNms9spsUcXTsOPmdZKIdEdZrsqoq-17a00GLM0PVhGN8Qx7hmLYGb-Ac390T_dGmfzMviWuyIk49k5Qj0NW-kfskblEtf9uSLjkVGHT7yv5lASesXWhUbfm0LVbw8bvuO1t1SO0Ku5AEi0GfzsvcXsXkyw_HK2Pahhu3kYutgw5dU6ChKKlMd0XhTXaNpPIxHyq7DEcuiqVz94wJ6O6DDve5AL0bo1ePtWWruEcyoDGSW-4q99Be78tMU3siLqX35Tq8AGSdRnT0DvZgDWNhCLyJn_HXL6slEqhW9x7gfNIrzyp6bXWRiohvt5sFSy56Y3iPPCTP41KPuC2k5TMYLCccysCjio1gS0sxhzYvhe6aU-g3paXEQ0CTS1AguX5NCyYyC8skIALM0eN389zaxnJoRoqQuBekx2XeRGXJuj0pK7qfhj8uGamyYLix0t_0H0hrFv0piNMUo_DVO6PKR8ji-v9ZxoN_A3ovRJaNANcw62HLr3Eaz5MebEaIUW8eWmqRGyGIrv3Hp5fVpxbb882OetK_0hLonC64SO1W3JpmTOo7W_HAhApVeBGXThmspKFYWeG57oLM30Z8p0gGvqlb91DvhCmzjfcyz_aAgmE6RwAkVAkINDv3Llrkbe2pq9RTB1f6Z912NYoheTMHRec6Y76Aj26QcclFaGsaAyvUVXpl8nj5OJ1Y468I428ZUKzQBSWfkHV4yU9y2u8g0I6n3HVQk8NcjBNhtH2f7oHw4yrS6tPbcOWqkSJYGgpaBMCs1YT_z6sW8hNgT-Wg8WdbSj_CPVF8UE3blncMKI97vYTOtd-LELYli7j0hqU3I2cetAhUgNzl1OAU645xQQktzo34isdLf3Fc_JRQt6LOjtknnR7C41MVhTk_MtSAimpjP81x7q3Df9WutTpyEucPn4KNjWyLyKkANlkLN29QmZdaYAGkepDyFmSCU39-83sE3MXwhRRQtGxXzb5Q2vwWgRBcg79K0L4_IA0KwAj5YnAlbcHaKV0G_5GvLWZvzMmbJftxs7PuNPasCGsXOmfS1gVM_St5S3UNHojwdKKl-yXHLqAPutvD72TosfuZg-p7WwkxhqQOhpNo7kBaPl8rgE7YbxovdRFOmIHBhmmmBjLdE_tE0ceI70ASoZHklwnRmEi3Hx9ABErRz_qyrUQfIZfzrvqk427Uc-ZI1OM0kWi0Hdpk_9TsV6LR9igIWOhSQaoPYR09rIM1m8-0oavJkro3EaOZrpw11zOVYzZIbqrMEJ1MwIPFSo9szjR1sIHui-ewZNFfIQa-rspD0eoOaN8IxLodQpm4H9VqTf51LB-VWuLisk10vduma27LZPTnpaJ_-yEpjhWWpHPz7pQhye9CvQh4z1gqu3Jcekyeo7X511aybzfVW8sGqylUMtX6YjV09GI1r5ZLEa2nu9RN73E-49D6_O0lrMcuh_mAsDMSe5ygmGqk5seCgWokFKPLOOCKgKIQmQ9H3VkajDoFzAVnvPSj9eBUEg0rA-rFHM_lwwnvkeMNEY9EPFnatb-zCRUs13jVOfA0G6OO3OieejgMdTX0T3J53XeJ56Y30tl4_RJR_t9WWnHFAhMhvNz_17EGUBg_kSgMqocLUG5iEpXic24tmGgc817E4BU92tf-WKAajjvFgAoYKNiubtBzgHFNZYyTMOL-IgXnQ7OuQUbCKJ9mxCZDPn689QJnkqaMu8XDL24JzWDNV-Sp8DH-nXDTeWWqiXfb7HgA9IZe2ftasLBIr9DLLu2cZ5LRBKWIgL9ReWdnTXucJOVhQl5O7Nq7_HUxG5nuWNnEZm6WeY56VwImL8yIhWVMVwNOPgWmfEfiyBEJIofmsbeouMvs8A2bDtJMR1Re0q3A9BIpz6MPgps-WKUnZkqrKXHF5PrfWQ4eVmIG6kqCdGYFnw-10A7dRo4y_T-Vo9zakIcC2WRnlHjXcdXvsN4QKMRhtVy58pXd0PP-gQBO5gce7Q6wLetIamww7Rbo81rBZ4eQ5DnNVPu7SGY102kgic1nfYy45pAxeB5DoQdIAFfXN0wBmHqejl6C3tE3Hqk2QaoganzQZbRLqKtRdS_X5qoDA07U2LSnFGG9B-qnYccVaX4pTne6YiiEB6qY_K9sbo9_aaBmIZI5h7y5eED3VkB1ePnBa7EmnZu1wQS5KXsQNs3lSxdXJiUghSWJYFBJDRSXbu2Kt8a1KGLbMGcg3DaDsqVffXt1eMlG65Q4w0iWasVP91TeokgiMJhcLs_JPc85ehnZECfTRniR47ZwvPGjTvCFQJqbputEhESEOvMfYEBxaGmqyqCdEmvF9GCymMWwKX4xllbqWz7XlpFpUz-3PmZf2SZCaAETwoqs7DDkSMRtjAutpWdJeIJEICWXR9_Md76pwBr28sDcnWRdGMDpR-ezAKefCC3U0kHVM2rMw4eEMkZRQzHoKcOAwOQpKmlsqXNL1YdEadfYRYa0Xiwssgvn5sotNVQNCCXv6nExjSoN77jXKfiaS128xvAOpTUtQLD0LrpBIu_IOenjqewSeYlViZChs_bPZXGrvkXh_s_jojyj2M3fK_a65z_GHP1ZFqdjwXsSBG1U1uSmss1cdAGUac_SyU3ygpkJT5OeA2l4QhM0aYs_RgtjVTYmE3KUJ0_bRmbuVie3aYSuHMHQNvE4S-eIAEHxd_vkuRNAjWd6d4z3vT476375ZAMMsVDE-gmgIpj030N5XqxELPu52EVhdXPB276YbiB5nXpejwzq0i03LO6dmNYgkRwlEAWInf44sdPNbQ2V3oMQRNPc1gNsQ2vi8ldL-4dX3ElI9iISDxdtYtBN2CSGaTR_WD36scBywbhDgdEwvZPN3Zdv1f_rjK1bcZvQvl_fHzpdb4Tj9k1mSbgHaFS8-_mbmt6MbrpjbYXZhG6aicE-elvrg5gUuMIG7zQMg38dDaYAJ7VZ3FjztLh_iYNhJAAkIQ--2WLnhMkyySRBd2K4ho86C1n6ePS320I4Y-kSlgcX4UcOYVqS-CAy9YQEZd860cnCVJI5-eAQ2Z0Vhwj-zv_uaXUN6DGl6CC--4dlrpgxpgKP-BZkxShBG-qs1U3E5ARCSWdCIr-dk3Vdv-hPc1vGxFNZAZE7czDwSnCZgQ-WPr5SiG6T3UJNGAW4sTd_br_Rk-a8BpoVrBRFHQIeLwYenxq68OHfzxxPefhTrbsTrqO-hfpkUh4x2B0O5Rr6-LRdW0PPAV7Z0DycoLupfsyWxo6eeqJXJ9Fif8aNUxVW8JB3NmqLn6h4SJyvshMWUQQP4dY1RaBXksY_3bMtT8m0iexXMgIKluSfZEokbcBhF6BvUkAIAkQgEJAcUBquSlzfW-dEPj3JGsIi2CMQ4aCZGqBO5r_3Zpbebbq1kNA82bEoomPOg1iAaVk2RZ1xIOIr_mcwZ6Ou_hE87bGdKKikK0IX5o53o4zB-Y1ZEH3tGYI8Cb2uO6zxMgFFbvwMXb8Yb1bQzjIM4hKeZqVo7q7ilkP_NQ2hc3HXrQfaIJ2tuEbdeYfQFLZD6SHaOIB1kDnauLiNJ1C5U9hro7mpmdj3nzymvxI6BnZAkV1FDNUTqsza8La0w2RJJ4mD_ZIoOpaT2pMIdffjBw76v1EV2YrC4NGVnJ6vk4ZJl41LqB8j4NFf8GZeRS95braUnMDHvdaebCDD2Pkw8aflxLx82qix4A5IX2KE6BzjUNqbfzFKbaDi9rh18SLlHRy3-Jh3grgbNYCiIroupBTS-Z9FDh_MeohauwRhKWX2dVm3YTtbccyfgVJ2bKnUqNHfy3XczyCksTvcwO47YasNPKhuEjucwBdeU2BLHdqOcS_daIKhnJrLelUVfjUGY9FXeWy3bPfJWLJkw7RRom-6ZKKYwCBuckEcMn8J5GqV10AS-zJYnjJ6c-9A-8ypdvJEC0kv08kIqNc5xux_UVsmubuPxPWkFiIGA53xEin1ivLRll1HrYkO7eKiGK1hBd4n6rV4dHD5f2zOoE_IyDKiSHnlVJa-rKVkyR72KgpwBk_r_-U-Ch6i7_XVhxYWJHJTFxsIz6u8CAgXGFiJdawXgDj_siwfXDgeGYinM0sLy3l5pWcpY6EoPxGs0-jYGQogtu-jc2mZoRiHc9VGQpmLxEzNQka1zL6dZ2dkT9MJdroCtIdFW1TxHU3TDrUHNcR4aOqOGyjnlK1Jrwdg8tkXcxc_MWYjyw_CfzEchsQJpiYeXmYjku8ANZla03gTgBySZNfM6sMM6LopBLRFZXDjB8gND3ZASaTdmC6tTZD1t_JMUP02w5l8kMsmG2pwUW52dJiDi3zzsqxS2mub7M9UppyK93x5Rwr_Bgogsf-0FxOPwtTYYvbLLBqLTn2ZZ25Z0uyVstNLjSgUU5tJkmB78tWf9uq7j8peXIJFUgK72fxtfayCsia4HUGuvyz60ah7oUkmB3F1axd8ckMXPVXx_7yggHll37dasnZxzVs_2LnEvTZ_9s2ACTwB_33CUnAJiBtKJhvak6giL6SZxbZi07uXvPQ0II3yw7Jys2D89FbOWsMCdEKkdQoslbidFy5v0qMVFA11sUQnGfnK_JZSrF9zkVVc26xY5n_nfSySpF5bH8DisTeIUOhYhi0P-Lohu1HLCzpU8L43ROBCAVEijzfyOsxjdaxqUDmIuPPOkYB-QOlA-Yc2UQqY5aT2rOFewiDRm1cmSp4W6-pQAtaJ2xtZRxrm6F_O7MS0fQvhNlHVC0P4C4vBLFOxgtbJjUmLrzcg0ZkommsanX7QfloIKuz8pcz0cORLlBWKYR5manEIn1o35ftqdy6bTAapYdCq5PVo1qog_nSj9x8Sda_KOEMcK6bDje6MNRUozxNeWHXONRhuDF2dOyEyHHgUlmbzcaPGes12roSO1GuUUSsgYcTsgZUcSvtXIEWQPYj4Hk2GyGts3vTxW954Pq8YBjPwPZMRnBmqsTNTOot1jDq5fQlLsDPKPiqpfwBFj9qze965jxRZegrkJM2Nn4wQFPSnuEftiLmZ6YMtU7r4-sS7_dEvgtY8jp4gTqAAu9TXfGLeCmA4-Ko1DXRpGEjEZUuL7-LCEBv0Sq0gHHPGLdXbO1gelK1QXFwlMeiBmEwyp_hYuFtLlTgW260YkOc5jgv7DR1SxSkjJ_cysfrB0UhkwLl_XS_pmB9nMa6TC84W6GklKorRJOdfTkIJ5j9NMDjS2vCyB5J6PFiK4I6gCBm_VMjYQjFWWhOsRgVeH27jkHlhn3SlCtUNNClgfhBvPwghcxAlSOpU2cwnILWDtX0Tcgb392VwBwJxvGv_i9JY-H0cFcUbeLXho93r8slF-g71pA_mz_i0zgYby9xsJS9aBkMoah1APHWhmLp9sBkwGJpYK0yrKVZDRL4URNQI_IsM9m3vI4pZUY-uiTcTgOmZ7nbAF9HD8ivcqd2GFw2PHgBgxtelpm7L-OVPbVpTbUR8oVty41fEg_2T0gyKP1F3f-NbcV1VTZbjrK6t7dVmeXhGEFbohe1Kte2f0fL9wvqK0j4XneSSMq_yHQR5FRnVMWn3_Gth9euqN1oU7m2Yyuvqix8FVK1cX8dgzUWOVZKALDBT2J1uFETT2L55vQJQ-aKkkAr_P3-JQh0SNB4mH6YX0VjZeZsnHCTfwhUK6um6oziOvzzMUKgH8cvIrkD58aF2956bim9d5QjT6NAkNyH5YyaZipc0JBCxWOljm1GWuQ7KfXekfA_WAQweHUyGfOcFG3b9dgE_yFtfWgZNX4FMquyt6DjmrVOlBWsBURWc2yUL5Gu7nsMWHiFnIPjevfj-rhrjjAIWYrNKD2y0flGalMMg6kD7q8ipIJ_SY6YLMh0zaXCpc3Oay-xh7SDUVDUlrjUKfWGbx46_3hF1LPKSdOCrI4zoG5r_wzmYPkaDDMEJZK9JRK7jz4hlNHNTR2d5pCVUc684TKVPS0T-6cnY19Q2c4j-qzV7NhSvpJXBqMhWFwsexwEvLndVQyqjnf9d9GFKcThdiUGDYTWUCGw1IWm51M5Imp00GhgS6GZdiBtcWwxi6T3U5wg2Z_gXmV2RrSc4akDct89VS1uUOfYAQpgCxw71EAi38St4_81-X-NnL3KjkOxjYAvQ0ENIlgftbL6gZ42sWnQOhT_a21QdSjXU162gwLTtV4xiZ_NW7SMfFOUl92mf1QnxyMEBbeRKwycjKbTmc7qrJTavq3HUZs9Lkw6U9Pl9OsQgYeYV_IJOIAMcZSAYfbfXD4pqSoU-D52ADXIfOWPpH05atYF4Fkv2_t9dgiwcIM_DYuiHldlmMxB7r-wrptJVfpkKGCx_IAlP0BUkI5Qh2jfoqFjghYHvUblkHCmBRLrHnDNTrjxrIYFDrBQRHI0gq5PeWtfpzQbINaQQgdfuRuXue9Vw9ZHdFdVKDMBVDLVurKV_NnOPM2wNA1BY11ucZDyN7eZ76yGPs17_bykECUN6CB0mVUZQP9VhwtVkMx4WY0GyTlDca9rF1vTL_j-QbUiCpiKIbDIUjBDen_CDcjtk04vV7O_9b6s6hdlcR1m9xFVvS8Q9I1oqnZ55tCxKtTs3A7OyccZmyG6hNmaSe8N1cz7ksc5fhXldS4_txbqzZTQM4yjKmyQTFwLL7G0RaEpyv4KUMBXlbp3lcxtFQhYEr2AzZrZz4sydrNKgEOq9GirGIttamatYR2mu77v2bs5rs3PFBftBtI5-8U32-HjHE8vsiddyLgVympfe9rFHRGkDfEuTIAuagfwmQP7mw9SJfmSZv-GtNvrilB9egNFgHKxHUnlbykORnzv9E7APWM04Lxo96mj7zvf0PoQeU-DTyOOhTRMk4oZivK8bG6jx6RaorjezH1GYroYKYDO2TTJwzP8Ot1M5E01J9yLFVGPTcWyVAxjh2tt8zp1GYAyIrhKM7ne1q-fT1gwcEXVdKJ2BuYMPJ95Uy_1oXEzSJO7ljyOxEbXta-3NPXD2XhKiP5MbDDBo2I3RpDA_0iJgsrafjPqHfFhJafbK8FVrILmhCLLCarOEVyVq7iI5lQDISE-JndIGu_0lhS8Yq1kwJ3B6_QvMA8CLd-YmValnc7IsnrvCPJE-KWbQ_MWbW9qNJ6BQ3mZYojL31v_AvAKbZH1IWmJ13oOA9Pr7TS53TJIpQQbHT9MeLcJsOcPiznbKx4rb0WPUVuihG28dI7pWfvjJ_ycgMZ9UOgSjvUPSL5vEUkagquL2Bk-QXgI2_4ox5_hzbGiwf7D99vt1w7fOgzovGCAzMmYmjI60xGxJrcwvg6iBxrZp198cGm-2UaiFKU_fEWuZV9gGVIgD0OG16XWNUR9NRbeX9bJSlKsb4ZWnnCsCB0LJmOqmttydsbQMUrG5Wyk3ZgbYRDIcWv3-NS7hjvG0FVRmS6m_b-2XB7mgtDHXbPfDz8kqA2ZV4U6AEnuw==.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_03385879375f6ba0016af8b9c88e2087d1a05d4a8996daf053",
+              "index": 1
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "**Analyzing subway routes**\n\nI'm considering the subway routes involving City Hall and the J Chambers label station near Fulton. The Brown J line runs from Bowery to Chambers St, continuing to Fulton St. I see that I could potentially walk between transfers based on what's marked on the map. There's a shared connection at Delancey with the F and M lines. I'm trying to figure out the best way to transfer, weighing the options available, especially at Chambers and Fulton stations.**Exploring subway options**\n\nI'm working through the subway routes for getting to Chambers. I see that I can take the F ride to W4 and then transfer to the C downtown and finally to the 1. There's also a direct connection from F to A/C at W4, but I'm not sure about a transfer from F to 1 being efficient through Broadway Lafayette. I keep thinking about minimizing service transitions, aiming for the fewest changes possible along the way.",
+              "format": "openai-responses-v1",
+              "index": 2
+            },
+            {
+              "type": "reasoning.encrypted",
+              "data": "gAAAAABq-LnUgrzFCR0SnTAse7MlsmDH44367O_wrdD8Tu_HlTmSfzsOLZWedZEwUan1y3YiZhTu37-zZ6r1fH3-FgisRrRLCyUuMPCGN25xvjtbHv-YDiAeIJpKCs9EQykiMAT5BEk9gvjoKPh0G7Fzoqi6PNm9k4gFxDLhykYHbZwfkzhL49PfYCXKBXe5PaIIHRTx4Dvmbpm06wz7bxqBuv4F-VPdLcrMpe1ozm44hYwGbzmsg0ORQPkpHMgbloJL7sCXIxWj3kWDsmGt6-3qsaP-Hs5E9KgQ2YEzosTNzlZ6e3AKphSi3Atz8jBr7pRxT69_BRMqjzJFBADnqbdhtfVp9bbqR3RzIZaCva6uc-4pjRxr46en1djsmGE0pbmZvy0ZLKgWoJSdfVCX9DO9St5Sg5aHI9Q0ha-R94XKBOUncLG3NiasW3dHFECxEHj21PO2_sBv8BzD7vjbVs5mCVC4T_LP3BwXg9YBAJuLpmPmeQYGz_zfy1I1Woiw8kdkUAD6cKVsqMXm1nAAqcQuvdaROcmWjz6oyysJe-AjwnnAxNmbb1c2pxFd-89-kPuBFW-tjFLGAlDqWmcFbbV-TEWfjhWtexWs7syEqHnajlcDXo04Yn_88L8K95dCKqxdgNDAnbgyP-gTTPYpR76KDPur7xTDND-KWAJswWuY13GGuhIfZGsG1iGs8HIf9ChHY5RCjdK2CyJ2wfCpv6qy0YLWkNnOJOb8HRL8xyZc-4gy5pzWIMnI656YPkPHzGCG6LYnL-avUSUN3yG26uYUKaipiJc1MpAjROjEQeS0ig2Qct71_AaFBG3J-_hQlVDvfz_he2teqApQG2EYx-Ac9KxfN3BmXItRrqBc5RPNnNvsQa4xXujrtrbmB4jKpPmVtq-Zwx1WtR3WoTAc3VnJdp1xiejCtDKtW3TKnfSUvwtPfhwA9gpcOw-VbJ5hQalpdPgi4JHotBM9hT7iCLZgucSJ4YRZKpEYFnIszlS2qJ6exSGA_oVeyUOkmzFGyaVdyaMSCVZErlQsMp8CorpAYYhGkE6Qg5sCYvs681XUJxqa-T2yukjV2lX5Zo8WyESXuyXhQUR1lwcbvXPzh6tDS-CyBkK-w79SDWr3ZZUKBOGghFd1fkDau-BZY29vU-6fymyuvkz6nSkWckS2Qfwi6aBGFQKyKWoRabXO594VmXlG83u8-Bqb9dKiEHI1eJomwhyKeLGGq_Su7Gw_miweJdHJavQU7Sf0DUuBw30DmqX7MJWyfSHqaw5GZyCFSdn__Qln6M58hds89GWdTMdSvhv32j96PF0k2vtXNb9GX9RoaOFw_nf_dlIpbYue0EMmgRemMFsh1hmFEDw0p6oWqbQVg-_ry64VjYbgJ0JVZ4OPKyDWpSnpwGEWb8KBK50WvkLxQvf-h5MlJTcu5C-pKC-BKd7_JMIgSqSToei7UesaU1TDYzT9LIsvpHOgslTebOqchUcLTVU1tPrp7rVVh76Siq5nh0CBFZv-F8XOOyuVB1BwUzWzq4nKz0lUn5vLZEGoePcPq1rVwC1OuAp2Ax9QUgBi2SD_PPFvYveVFycbNifoWGwfVMpcy62PmGdkFMNSx14umi495MdAGp45Z1ljXXMCPtLf96IeAVWxcsHOBYM-5nYCnC_V_xYdeid-EJxj6lPf9L5LacYnNXHzx-Fi7RlwDyMvNdCpxBPNFjre5aEu44cpzSysISNewtD9evDrYxKy1itNqx0h1sVU92WuLv2iyEbTv5nfIh1CwV8thLtQwuiP9ntyQvsfNeTDruGx2ShHhkzCp27pZtSXsrakPBkqVO7k4ffBLdHmJWOJa7wJYoOjN0c2ZtOdXX20ktqbujVFC8ODzTRX4QcCfjFaLd_2HYeDfUMR3N4hBySLvtto7_o77qqfITu4Tdny8hmg0RsYNGLvwnDU6cRr5MbWF36dSNGJ8swp9fgGD2kvL4wmLe1hIIBy9p80GrIlvrwuI9XnznFXOINBFleZ6K_164gx0hBeNkuh2NjSffkEf4Sggo4oiF_nTYP6IDxPms8llN8_K311ZjpQBlckwmx53jdiWr6TrXI5b45KS-MPJjvkqghIjvc1flyv6xeERbuQBaJktgZVG27SouG0EoZspLvUkL_R0vI9nao80CCHTiU19L7olXoGCvdZQGo4PFsXC-rleSFZ5VJeQksiPRXsm2Vj5iwfafEQfnt_Y7Wwyv2ZhlFhGrhMM8ebCjTLHpxbTQIaXS-tZhkCtxP1w04-M-d1qv8izNF2f1y9-zbk2l4zJFhku9wB9A__8Yrpy4ymkk7D7BUBoYtlTDtEzVFLL0Ijyyh793LpYxxe_I32i7Z-k2hSQ2SEAkHT1ZqjtZ8-RJ6Bd8F_cx55y7Lb_THcSNLhF62SnUVsqBdnHQ0MbWqvrmV-nBftt2M-lic30gYjuZanrYHg4Lbyjkys6WhG_uLGharAihW5XsQBUGMIc6MfnR-8kbhlt_lFDPF7oBywtHfeNg8BJSIzK4HQnlTwAvL2V1LVXQZXjv8oetp21RF_XRTpiMsDbN3xpzZ8LlAaev_XVCx5v4U-lYI_ExkmCBiAzmFtsWZdwPWzoiO0zVvDB1XXC_e6S4tHeWdqpdKBDZEIrpJg4AJ22pGnQCJir1sCVgzlmNwwLE-tvIpnAtfqvCTmcD5oH7vIJdsuGujvA1OoHJSmawxDaxlPvvXHtZFLobDlk5gPBb67zjOaKVBY4hu2ZnU0DaVUJR7Bv4KuRUbNzC2Z_Koa1MnyayOzZGntDyNSFNtK1ITBwog-ZANQON6xHitT_t9qweZxSEXhG70saxh_GyPiARSHrOJ6k80jcfqXcNlGHTJkL3nnt-hcf-MMVYEFKp1OozM__TgPOecdsRp3zRZn9_vfVQvmCedEQ2ERGucC036ePbrYYA7Lay5kQsBFMKoSFmlp6h4EHYfeJyZRLZqh-WinLhRAa1qTsBZajc4TaqzOIru6n5CCDgPQ5r_ghjtgy8Nfltpl4U1VGqoQ4ozzFcEHyu5h5edgecfAoNV7SSOnfpOzKqJCZdcAhGHsi15x5mGeYiNwKLGrJbZRJwCsgDr1VOXuwWKufCDHvqniXW_w6b-LBYVw41TP_2SrAhNRId5TIG06sHSuFKY9TGu6hu1v1O2Yqy6ffhx6y4Yz5y-YbRzVDYvcu6wftoes8-2O4BjICAUXae18pPPeIricfO8TFAIKzs5kgHr7JPe1QeAEQXknlcn_8DCRy9_Ab8E7deOqklOANGSBIhnd87UUCyITdn76551LEIhHgveLUez1__KGaImuYm9eohfT6Vs75dc5kZ_6uOyPKU2NmVcSqnXoNiiHG3gk9rZxuCJb_6y5t4TuCRtDDh3OTngYvxDMZJhBn687Mn2kGVhU_8CHF5-l8-Eq108PmpuMlNVOg91-qb48GqptZwxya8DJBVccrjXXcnARtuG-2M32L9fDdkuInqYmAtN88SZSPXz8rJ36Zlln1mzBDzqBRBq9l_ZAdsUUpaYBZS24zuBbcYFeaTUZOG3sze4Esjt1UrZlsvbrmSQ3aqRvY94pMAB24QC22luxCR9infF1jnGJZw5dpv_7Afb92Y5gi20E_-jtlWBLsX_0Gddsdv2N7aqDNQlEEb382XSHdSKkQyrHdq9yEIDs63o9SvNVH8jvdKnli_ucXWueoB1ltkEEluYYhiUAwFdcWCQGpRKJ_y2slfpa0qb0OQL0Macl8nFIpkI1_pzSBc4fXJ2j5T3RLxw28nwbYg0p7nCRlzTOl5kYQPNBGOV8pxIl3XPWisVPADP8Of6cPysFbQFVC2uVmbrGftJDltAtTTbNgSSPas3_jForJuQsuARBJ5QD31QhSy_ONp0dya2zgYIEqx_-5BnIg_d8n7rMFw8Anxhb2j-i4jhapsG_jTyBLKXypDs89ErEFg03jRzNynS282Id3HQNcyVtZsJG3SkVtiIU1H9OTS7ppL5lV6CqJE9aAnitUx1ijlZRoSZ0I_KC-6CGW9Ph4WKbff04HrhTSiSEQRa6x7WJPIVyPzMt0rh3PzIU50kBmxMyPTnhHeKWI4cS22JlV9Tej57mCQkKJp_w3OvA-m3pOR7KJkh7FrkAqRde9s44kfpBvX7MouIF83wM3MgG6BXqMiXgCCoOyEbeX0bw4geo54_6Dj-4xtp5buSRBiIjrwLrxwGyCabHf6t4kUD1PAtMPOA7jW6oo4vXLKF7VDrtAjZRjpkufLh7hatc4-yoqAqxr-5Aw9wt7whN3EpCHElWI4TwRP93FxNMqIefW19wx4LZP1cZ9BYl1tmtChr616hXQ6s3xkHAaJOL4m3dzx1kQjciHl5XFbCwX4W6pzlZ7zVKRIvB9kbBGqtRMEFl9KLUgdifTh-Q5909hd-QG0huwiK1El647_THs8mjYDcoxBscXUe3fYZZLJlG5nc-wVCyBXleCZr2ZCfTlIUEUesnd4GOgPwGS9ZI6bJEc9wbGzHRboytrmj0V6_JMcxnhoSk9Xgx6hzqAZ87gV4ZrgbNqydiBPtE3wS1zjA-Ut4k2WYDol2d9MPOCAdRzLvGR_WDYTI2oaIuxC47a44aFAQL4bXSVpTqgG2q7qXu-_kqoN3uDLcT0A38T-QhLtqoopDqF20GK5-TDmczBabJiKQiFga33ws4rxMVA_jZ1gsH7AvdtHnWSyY9eoiH-AtUibWOQyt2QHwZchbNyAKz5kuzlFDI5hExOt-E7Xd0znAZ9DA7mS7Ghino2RrjKzDA8zgemAf15s3v-SZeaoBoTI0KEm7HFU5aU5P-OV0RbQMJH_CYQyF9_JsM7Yw97LXFpZUc1VGUtV8dlYVX8SZinGHDMgt5eH9FiuMmal48oR6o8uGdvtrk5EuFhgkbJyr-olyQy5nekl4kalBwID2owUepYvkwOfujZ68Ib31I8TRVAXWeoKQldIzJWIGAQuODBZ9NwPXmkuVONisDXkcb2nM7Apac_iQHDoXi3V3_2DbB3UBSL2_1lSY_hRx5S4OifSXgTFfpA_SLPJ4=.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LWx1bmEtMjAyNjA5MjJ8b3BlbmFpIn0",
+              "format": "openai-responses-v1",
+              "id": "rs_03385879375f6ba0016af8b9d07a3087d19f7c47129287df49",
+              "index": 3
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 5214,
+      "completion_tokens": 831,
+      "total_tokens": 6045,
+      "cost": 0.00046791,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 5211,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00046791,
+        "upstream_inference_prompt_cost": 5.241e-05,
+        "upstream_inference_completions_cost": 0.0004155
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 812,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}
