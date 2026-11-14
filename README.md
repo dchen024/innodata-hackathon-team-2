@@ -168,7 +168,7 @@ Reasoning-effort sweep on the final 10 (Claude Haiku 5.5, temperature 0): **low 
 `scripts/haiku_effort_sweep.sh`; the effort is sent as `reasoning.effort` in `eval/openrouter.py` (`build_body`) and
 recorded in each folder's `run_config.json`.
 
-## Key findings
+## Our Key findings
 
 - Final accuracy at high reasoning: Haiku 5.5 5/10, GPT-6 Luna 8/10; all 40 replies in the reported runs complete
   (`finish_reason=stop`, no API errors). Cost of the reported run: $0.062.
