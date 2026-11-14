@@ -57,6 +57,68 @@ seed + spec ─► scenario: map window, weekend service change, origin/destinat
 Every question states the rules: walking between stations joined on the map counts as a transfer, and the trip ends
 when a train arrives at the destination itself.
 
+## Project structure
+
+```
+innodata-hackathon-team-2/
+├── README.md
+├── Dockerfile                    Python + Tesseract OCR + fixed fonts
+├── requirements.txt
+├── .env.example                  template for OPENROUTER_API_KEY (copy to .env, never committed)
+│
+├── configs/
+│   ├── pilot.json                pilot 1 spec (12 tasks)
+│   ├── pilot2.json               pilot 2 spec (12 tasks)
+│   ├── candidates.json, cand_pool.json   candidate pools for the final selection
+│   └── final.json                final spec: the 10 reported tasks (seeds, levels, types, styles)
+│
+├── data/
+│   ├── subway_graph.json         weekday service graph
+│   ├── subway_graph_saturday.json  weekend graph used by every task
+│   └── nyc_boroughs.geojson      NYC Open Data shorelines (land/water)
+│
+├── docs/maps/
+│   └── nyc_subway_full_system.pdf
+│
+├── generator/                    makes the maps and questions
+│   ├── base.py                   Family interface
+│   ├── build.py                  spec → tasks/<set>/
+│   └── families/subway/
+│       ├── build_graph.py        MTA GTFS → subway graph
+│       ├── layout.py             octilinear schematic layout
+│       ├── render.py             MTA-style map renderer + pixel audit
+│       └── family.py             question types and answers
+│
+├── validate/                     checks every task before it is used
+│   ├── run.py, schema.py         task-record and answer checks
+│   ├── families/subway.py        render-vs-data, OCR, label clearance
+│   └── review.py                 adversarial AI reviewer
+│
+├── eval/                         evaluates the models (the agents under test)
+│   ├── prompt.py                 prompt sent with each map
+│   ├── openrouter.py             API client with retries
+│   ├── extract.py                pulls out the FINAL ANSWER
+│   ├── score.py                  marks each answer right or wrong
+│   ├── run.py                    runs every model × task, writes results/
+│   └── tests/                    pytest suite (API faked)
+│
+├── factory/__main__.py           command line
+├── scripts/haiku_effort_sweep.sh exact commands for the reported runs
+├── tests/                        pytest suite: reproducibility, planner vs validator, render audit, format
+├── tasks/final/                  the 10 reported tasks (built in Docker); pilot1/, pilot2/, candidates/ too
+├── results/final/                reported run (both models, high); final_haiku_low/, final_haiku_medium/,
+│                                 pilot1/, pilot2/, cand_*/ (earlier rounds)
+├── slides/                       presentation
+└── tools/check_submission.py     organizers' format checker
+```
+
+How the pieces connect:
+
+```
+configs → generator → tasks/ → validate → eval → results/
+          (draw + ask)          (check)    (test models)
+```
+
 ## How the tasks were made hard and why the models failed
 
 - **Memory trap by construction.** A scenario is accepted only if the normal-service answer is different (stored as
@@ -81,13 +143,25 @@ Failure patterns in the final run (see the hand check below):
   59 St-Columbus Circle.
 - **Illegal transfer** — t03: Haiku low J → A → 1 (no free transfer from the A to the 1 on this map).
 
+### Pilot failure analysis (pilots 1 and 2)
+
+We sorted every wrong answer on a valid pilot task (13 in all: 5 Haiku, 8 GPT-6 Luna). For each one we compared the model's answer with alternative answers computed by code: the answer under normal service, and the answer without the accessibility constraint.
+
+| Failure type | Count | Examples |
+|---|---|---|
+| **Ignored a stated constraint.** The answer is exactly the code-computed answer for normal service or without the ♿ rule | 4 | p1_03 Haiku: `Times Sq-42 St`, the normal-service transfer, but the 7 is suspended. p2_04 GPT: `5` stops, the normal-service count (6 with the R suspended). p2_05 Haiku and p2_09 GPT: the route without the accessibility rule. |
+| **Misread which service runs where** | 4 | p1_07 Haiku: `["7","4"]`, but the 4 never reaches Lexington Av/63 St (correct: `["7","Q"]`). p2_05 GPT: `C` instead of `A` on a shared track. p2_01 Haiku: `7` instead of the `S` shuttle. |
+| **Answer not supported by the map at all** | 2 | p2_06 GPT: `Bergen St`, a Brooklyn station that is not on the map. p2_11 GPT: `["6"]`, a service that serves neither the origin nor the destination. |
+| **Wrong transfer station or label** | 2 | p2_10 Haiku: `42 St-Port Authority Bus Terminal`, the label at the other end of the Times Sq complex. p1_03 GPT: `34 St-Herald Sq`. |
+| **Stop count off** | 1 | p1_01 GPT: `5` instead of `4`. |
+
 ## Pilot results
 
 | Round | Generator | Tasks | Haiku 5.5 (high) | GPT-6 Luna (high) | Change made because of it |
 |---|---|---|---|---|---|
-| Pilot 1 | subway-0.1 | 12 (`tasks/pilot1`) | 10/12 (83%) | 9/12 (75%) | Both models solved every `count_stops`; the adversarial reviewer found an ambiguous walk-transfer. → dropped `count_stops` from the mix, required transfers inside one named station, added the `accessible_route` type, weekend (Saturday) timetable, MTA-style markers |
-| Pilot 2 | subway-0.2 | 11 valid of 12 (`tasks/pilot2`) | 8/11 (73%) | 5/11 (45%) | `accessible_route` hardest (1/3 each). Test audit found the planner did not follow the stated walking/arrival rules and the accessible memory trap compared against the wrong baseline → planner rewritten on (station, route, arrived-by-train) states, rules stated in every question, closed stations never used as endpoints, U-turn trips rejected, max 3 rides |
-| Final | subway-0.3 | 10 (`tasks/final`) | 5/10 (50%) | 8/10 (80%) | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
+| Pilot 1 | subway-0.2.0 | 12 (`tasks/pilot1`) | 10/12 (83%) | 9/12 (75%) | Both models solved every `count_stops`; the adversarial reviewer found an ambiguous walk-transfer. → dropped `count_stops` from the mix, required transfers inside one named station, added the `accessible_route` type, weekend (Saturday) timetable, MTA-style markers |
+| Pilot 2 | subway-0.2.0 | 11 evaluated of 12 (`tasks/pilot2`) | 8/11 (73%) | 5/11 (45%) | `accessible_route` hardest (1/3 each). Test audit found the planner did not follow the stated walking/arrival rules and the accessible memory trap compared against the wrong baseline → planner rewritten on (station, route, arrived-by-train) states, rules stated in every question, closed stations never used as endpoints, U-turn trips rejected, max 3 rides |
+| Final | subway-0.3.0 | 10 (`tasks/final`) | 5/10 (50%) | 8/10 (80%) | Hand check accepted all 10; equivalent services on the same legs accepted (e.g. A or C from 59 St to 42 St) |
 
 Reasoning-effort sweep on the final 10 (Claude Haiku 5.5, temperature 0): **low 4/10, medium 5/10, high 5/10**
 (`results/final_haiku_low`, `results/final_haiku_medium`, `results/final`). Exact commands:
@@ -250,6 +324,8 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 - A few stations in the densest areas (Downtown Brooklyn) can have a marker sitting on another line; tasks touching
   them are rejected by the validator rather than fixed in the renderer.
 - Part-time stops are inferred from trip counts (< 85% of both neighbours) and maps showing them are excluded.
+- `tasks/pilot1` and `tasks/pilot2` were rebuilt after their runs as the generator changed; `results/pilot1` and
+  `results/pilot2` reflect the builds that were evaluated (each raw response stores the exact prompt sent).
 - Service patterns are a typical Saturday daytime pattern from the October 2026 feed, not a specific date.
 - `temperature=0` may be ignored by the providers (see above); results are single runs.
 - Equivalent-service acceptance treats services stopping at both stations of a leg as equivalent even when one is
@@ -260,5 +336,5 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 | Member | Contribution |
 |---|---|
 | TODO (name) | Pipeline design, subway map renderer and task generator, validation, hand check of all 10 tasks |
-| Teammate (PR #1) | Evaluation module and tests (`eval/tests/`), README evaluation sections |
+| Teammate (PR #1) | Evaluation module and tests (`eval/tests/`), README project structure and pilot failure analysis |
 | TODO | Fill in the other team members |
