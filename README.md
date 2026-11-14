@@ -320,6 +320,14 @@ docker run --rm -e OPENROUTER_API_KEY -v "$PWD/out:/app/out" transport-factory f
 
 Outputs land in `./out/` on the host. The key is passed only at run time; no key or `.env` is copied into the image.
 
+Live demo: one task, both models at low, medium and high effort in parallel (about 1.5 minutes), then an HTML report
+(`out/demo/report.html`: map, notice, question, reference trip, automatic checks, each model's answer and reasoning).
+Use `--task t08` for a submitted task, or `--seed N --question-type ...` for a fresh one:
+
+```bash
+docker run --rm -e OPENROUTER_API_KEY -v "$PWD/out:/app/out" transport-factory demo --task t08 --out out/demo --no-open
+```
+
 ### Local runs and tests
 
 ```bash

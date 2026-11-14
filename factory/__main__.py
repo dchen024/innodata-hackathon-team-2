@@ -1,4 +1,4 @@
-"""Command line: python -m factory {build,validate,eval,reproduce,fresh} ..."""
+"""Command line: python -m factory {build,validate,eval,reproduce,fresh,demo} ..."""
 import argparse
 import json
 import sys
@@ -48,7 +48,26 @@ def main():
     f.add_argument("--max-tokens", type=int, default=32000)
     f.add_argument("--no-eval", action="store_true")
 
+    d = sub.add_parser("demo", help="one task, both models x low/medium/high, then an HTML report")
+    d.add_argument("--task", help="task id from --tasks (e.g. t08); omit to build a fresh one from --seed")
+    d.add_argument("--tasks", default="tasks/final")
+    d.add_argument("--family", default="subway")
+    d.add_argument("--seed", type=int)
+    d.add_argument("--level", type=int, default=3)
+    d.add_argument("--question-type", default="reroute_lines")
+    d.add_argument("--style", default="clean")
+    d.add_argument("--out", required=True)
+    d.add_argument("--models", default=DEFAULT_MODELS)
+    d.add_argument("--max-tokens", type=int, default=32000)
+    d.add_argument("--no-eval", action="store_true")
+    d.add_argument("--no-open", action="store_true", help="do not open the report in a browser")
+
     a = ap.parse_args()
+    if a.cmd == "demo":
+        if not a.task and a.seed is None:
+            ap.error("demo needs --task or --seed")
+        from factory.demo import run_demo
+        return run_demo(a)
     from generator.build import build_set
     from validate.run import validate_set
 
