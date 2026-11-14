@@ -1,0 +1,106 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task_id": "p1_03",
+  "time": "2026-11-14T16:46:08+00:00",
+  "request": {
+    "prompt": "A rider travels this weekend from 42 St-Bryant Pk to 23 St using only the services and free transfers shown on this map, with exactly one transfer and, among such trips, the fewest station stops. At which station do they transfer? Answer with the station name exactly as printed on the map.\n\nAnswer the question using the image. Think it through, then give the answer exactly as written on the map (just the name, nothing else).\nEnd your reply with a final line of the form:\nFINAL ANSWER: <answer>",
+    "image": "images/p1_03.png",
+    "temperature": 0,
+    "max_tokens": 32000,
+    "reasoning": {
+      "effort": "high"
+    },
+    "usage": {
+      "include": true
+    }
+  },
+  "content": "The trip goes 42 St-Bryant Pk → Times Sq-42 St → 23 St. The free transfer from 42 St-Bryant Pk to Times Sq-42 St is shown by the dashed connector, and Times Sq-42 St is served by the A, C and E lines. From there, the C/E line runs through 34 St-Penn Station to 23 St, where C and E stop.\n\nI didn't check every alternative route in detail, but the other transfer points I could see (34 St-Herald Sq, Grand Central-42 St) don't connect to the C/E line.\n\nFINAL ANSWER: Times Sq-42 St",
+  "finish_reason": "stop",
+  "native_finish_reason": "end_turn",
+  "parsed": "Times Sq-42 St",
+  "ref_answer": "7 Av",
+  "correct": 0,
+  "usage": {
+    "prompt_tokens": 4913,
+    "completion_tokens": 2536,
+    "total_tokens": 7449,
+    "cost": 0.0017593,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0017593,
+      "upstream_inference_prompt_cost": 0.0004913,
+      "upstream_inference_completions_cost": 0.001268
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2328,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost": 0.0017593,
+  "error": null,
+  "attempts": 1,
+  "retry_log": [],
+  "latency_s": 13.33,
+  "response": {
+    "id": "gen-1794674754-9YSjOtmlBa6NS6nhDFYI",
+    "object": "chat.completion",
+    "created": 1794674754,
+    "model": "anthropic/claude-haiku-5.5",
+    "provider": "Claude Platform on AWS",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "The trip goes 42 St-Bryant Pk → Times Sq-42 St → 23 St. The free transfer from 42 St-Bryant Pk to Times Sq-42 St is shown by the dashed connector, and Times Sq-42 St is served by the A, C and E lines. From there, the C/E line runs through 34 St-Penn Station to 23 St, where C and E stop.\n\nI didn't check every alternative route in detail, but the other transfer points I could see (34 St-Herald Sq, Grand Central-42 St) don't connect to the C/E line.\n\nFINAL ANSWER: Times Sq-42 St",
+          "refusal": null,
+          "reasoning": "I'm working out subway routes from 42 St-Bryant Pk to 23 St with exactly one transfer and the fewest stops. 42 St-Bryant Pk is served by the S shuttle and the D, F, and 7 lines, and I'm checking which of those connect toward 23 St.\n\nI'm checking which C or E line stations are near 23 St, and whether a transfer at Times Sq-42 St would get me there in a single hop with the fewest stops.\n\nI'm weighing whether the Times Sq-42 St connection gets me to a C or E line with just one transfer, since the 1, 2, and 3 lines don't stop at 23 St.\n\nI'm checking whether the S shuttle actually stops at 42 St-Bryant Pk, since the marker there sits on a dashed connection rather than a clear stop.\n\nI'm checking whether the S shuttle actually runs from the 42 St-Bryant Pk area to Times Sq, since the marker on the dashed connection there is ambiguous.\n\nI'm weighing whether 34 St-Herald Sq, reached by taking the D or F from 42 St-Bryant Pk, offers a cleaner single transfer toward the C or E line than going through Times Sq.\n\nI'm checking whether the D line from 42 St-Bryant Pk heading toward 59 St-Columbus Circle could offer a different transfer point toward the C or E line.\n\nI'm estimating the trip length for the Times Sq-42 St route: one hop to Times Sq, then two stops on the A/C/E line to 23 St, about three stops in total.\n\nI'm ruling out the other transfer options: 59 St-Columbus Circle isn't directly connected to 42 St, and 14 St and Grand Central don't have C or E service. That leaves Times Sq-42 St as the one transfer that gets me to the C or E line.\n\n",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "I'm working out subway routes from 42 St-Bryant Pk to 23 St with exactly one transfer and the fewest stops. 42 St-Bryant Pk is served by the S shuttle and the D, F, and 7 lines, and I'm checking which of those connect toward 23 St.\n\nI'm checking which C or E line stations are near 23 St, and whether a transfer at Times Sq-42 St would get me there in a single hop with the fewest stops.\n\nI'm weighing whether the Times Sq-42 St connection gets me to a C or E line with just one transfer, since the 1, 2, and 3 lines don't stop at 23 St.\n\nI'm checking whether the S shuttle actually stops at 42 St-Bryant Pk, since the marker there sits on a dashed connection rather than a clear stop.\n\nI'm checking whether the S shuttle actually runs from the 42 St-Bryant Pk area to Times Sq, since the marker on the dashed connection there is ambiguous.\n\nI'm weighing whether 34 St-Herald Sq, reached by taking the D or F from 42 St-Bryant Pk, offers a cleaner single transfer toward the C or E line than going through Times Sq.\n\nI'm checking whether the D line from 42 St-Bryant Pk heading toward 59 St-Columbus Circle could offer a different transfer point toward the C or E line.\n\nI'm estimating the trip length for the Times Sq-42 St route: one hop to Times Sq, then two stops on the A/C/E line to 23 St, about three stops in total.\n\nI'm ruling out the other transfer options: 59 St-Columbus Circle isn't directly connected to 42 St, and 14 St and Grand Central don't have C or E service. That leaves Times Sq-42 St as the one transfer that gets me to the C or E line.\n\n",
+              "format": "anthropic-claude-v1",
+              "index": 0,
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4913,
+      "completion_tokens": 2536,
+      "total_tokens": 7449,
+      "cost": 0.0017593,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0017593,
+        "upstream_inference_prompt_cost": 0.0004913,
+        "upstream_inference_completions_cost": 0.001268
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2328,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

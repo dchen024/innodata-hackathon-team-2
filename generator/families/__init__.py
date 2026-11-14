@@ -1,5 +1,7 @@
 """Registry of diagram families. Add each new family here."""
-FAMILIES = {}   # name -> Family instance, e.g. {"transit_map": TransitMapFamily()}
+from generator.families.subway.family import SubwayFamily
+
+FAMILIES = {f.name: f for f in (SubwayFamily(),)}
 
 
 def get_family(name):

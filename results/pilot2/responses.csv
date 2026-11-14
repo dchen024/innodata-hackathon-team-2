@@ -1,0 +1,117 @@
+model,task_id,status,parsed,question_type,response,ref_answer,correct,finish_reason,error
+anthropic/claude-haiku-5.5,p2_01,ok,"[""7"", ""Q""]",accessible_route,"The best option is two services with one transfer: the 7, then the Q.
+
+1. **Board the 7 at Grand Central-42 St** (accessible). The 7 runs west and stops at 5 Av before reaching 42 St-Port Authority Bus Terminal.
+2. **Transfer at 42 St-Port Authority Bus Terminal** (accessible) to the Q. The free transfer is shown in the station box, which includes both the 7 and the Q.
+3. **Ride the Q north** to 57 St-7 Av (accessible), then continue on the Q diagonal to Lexington Av/63 St (accessible).
+
+A zero-transfer trip isn't available. From Grand Central, the 4/5/6 reaches Lexington Av/59 St, which isn't accessible, and the 6's accessible stop at 51 St only connects to the E, which doesn't serve 63 St. Routing through 5 Av or Times Sq doesn't help, since 5 Av isn't accessible and the S doesn't reach the Q's line. The map doesn't mark the Q's stop at Lexington Av/63 St clearly, so that final stop is my reading of the diagram.
+
+FINAL ANSWER: [""7"", ""Q""]","[""S"", ""Q""]",0,stop,
+anthropic/claude-haiku-5.5,p2_02,ok,Chambers St,transfer_station,"To reach Park Place from South Ferry with one free transfer and the fewest stops, ride the 1 train north, then switch to the 2 or 3 at Chambers St.
+
+- **Leg 1 (1 train):** South Ferry → Rector St → WTC Cortlandt → Chambers St. The 1 train is the only service that serves South Ferry on this map.
+- **Transfer:** Chambers St, where the 1 meets the 2/3 line through the joined station.
+- **Leg 2 (2 or 3 train):** Chambers St → Park Place, one stop.
+
+Other transfer points don't work: WTC Cortlandt and Rector St are not on the 2/3 line, and a transfer further along the route would add stops.
+
+FINAL ANSWER: Chambers St",Chambers St,1,stop,
+anthropic/claude-haiku-5.5,p2_03,ok,"[""F"", ""7"", ""6""]",reroute_lines,"The fewest-transfer trip needs two transfers, since no single transfer reaches 51 St. The E and 6 are the only services that stop at 51 St, and F from 47-50 Sts doesn't share a station with either of them.
+
+The route is:
+1. **F** from 47-50 Sts-Rockefeller Ctr one stop south to Times Sq-42 St (the F 7 transfer station).
+2. **7** one stop east to Grand Central-42 St (the S 4 5 6 7 transfer station).
+3. **6** north, a direct run to 51 St with no intermediate stops.
+
+That is 2 transfers and 3 station stops. The alternative through 34 St-Herald Sq and the N/R line also takes 2 transfers but needs many more stops.
+
+FINAL ANSWER: [""F"", ""7"", ""6""]","[""F"", ""7"", ""6""]",1,stop,
+anthropic/claude-haiku-5.5,p2_04,ok,6,min_stops,"## Route
+
+Prince St is served by the N and R lines. The R line has no weekend service between Whitehall St-South Ferry and Prince St, so the N is the usable line into Prince St. The N stops at Canal St, and the only route into Prince St from the south is through Canal St, so the trip has to reach Canal St first.
+
+**Getting from Franklin St to the Canal St complex:**
+
+1. **1 train, Franklin St → Chambers St (1 stop).** The 1 line runs south from Franklin St to the Chambers St station at the 1/2/3 complex.
+2. **2/3 train, Chambers St → Park Place (2 stops) → Fulton St (3 stops).** The 2/3 runs south-east from Chambers St and stops at Park Place and Fulton St. Fulton St has a free transfer to the J and to the 4/5.
+3. **J train, Fulton St → Chambers St (4 stops) → Canal St (5 stops).** The J runs north from Fulton St, stopping at the Chambers St (J) station and then at the Canal St complex, where N and Q also stop.
+4. **N train, Canal St → Prince St (6 stops).** Free transfer at the Canal St complex, then one stop north to Prince St.
+
+An alternative via the 4/5 to Brooklyn Bridge-City Hall, then the 6 to Canal St, also takes six stops.
+
+I found no shorter option. The 1 line has no free transfer shown to the A/C/E or to the N/R/J/6 complexes, so every route must pass through the Fulton St area, and from there the best path is 3 more stops.
+
+**Count of stops after leaving Franklin St:** Chambers St, Park Place, Fulton St, Chambers St (J), Canal St, Prince St = **6**
+
+FINAL ANSWER: 6",6,1,stop,
+anthropic/claude-haiku-5.5,p2_05,ok,"[""E"", ""D""]",accessible_route,"**Route:** Take the E train west from 51 St to 7 Av, transfer within the station to the D, and ride the D to 59 St-Columbus Circle.
+
+**Why this works:**
+- No single service links 51 St and 59 St-Columbus Circle, so at least one transfer is needed.
+- The E and D share the outlined 7 Av station, which is a free in-station transfer. Both stations are marked accessible.
+- The E stops at 5 Av/53 St and then 7 Av. The D runs from 7 Av to 59 St with no intermediate stops shown, so the trip is three station stops (5 Av/53 St, 7 Av, 59 St).
+- The alternative of riding the E to 42 St-Port Authority and transferring to the 1 also needs one transfer but takes more stops.
+
+FINAL ANSWER: [""E"", ""D""]","[""E"", ""A""]",0,stop,
+anthropic/claude-haiku-5.5,p2_06,ok,Jay St-MetroTech,transfer_station,"The trip is Carroll St → Jay St-MetroTech (transfer from the F to the C) → Hoyt-Schermerhorn Sts.
+
+1. **F from Carroll St:** The F stops at Bergen St, then Hoyt St (unmarked, so not a stop), then reaches Jay St-MetroTech.
+2. **Transfer at Jay St-MetroTech:** The F and C both serve it, and the map shows a free transfer there.
+3. **C to Hoyt-Schermerhorn Sts:** The C runs directly to Hoyt-Schermerhorn Sts.
+
+Stops: Bergen St, Hoyt St, Jay St-MetroTech, Hoyt-Schermerhorn Sts, for 4 stops in total. The G is no alternative, since it cannot run north of Bergen St on the weekend, and I found no other single-transfer route with fewer stops.
+
+FINAL ANSWER: Jay St-MetroTech",Jay St-MetroTech,1,stop,
+anthropic/claude-haiku-5.5,p2_08,ok,3,min_stops,"The fewest stops is **3**, all on the 6 train.
+
+- **77 St** is served only by the 6 (green) line. Other green-line trains (4 and 5) pass through it without stopping.
+- **The 6 runs local up the green line:** 77 St → 86 St → 96 St → 103 St → 110 St. Since 103 St is closed, the 6 runs through it without stopping.
+- **Stops after leaving 77 St:** 86 St, 96 St, 110 St. That is 3.
+- **Transfers don't help.** The 4 and 5 express trains have no stop at 110 St. The 2 and 3 trains reach 110 St-Malcolm X Plaza, but the map shows no free transfer link between the green-line stations and the red-line stations, so there is no way to switch to them.
+
+FINAL ANSWER: 3",3,1,stop,
+anthropic/claude-haiku-5.5,p2_09,ok,"[""D"", ""A"", ""E""]",accessible_route,"The fewest-transfer route takes two transfers, and the A is the stop-minimizing choice for the middle leg.
+
+1. **D** from 47-50 Sts-Rockefeller Ctr to 59 St-Columbus Circle. The D is the only service leaving 47-50 Sts going north-west, and both ends are wheelchair-accessible. The F is no help here, since its northbound branch doesn't reach any line serving 51 St.
+2. **A** from 59 St-Columbus Circle to 42 St-Port Authority Bus Terminal. The A runs express past 50 St, so it makes no intermediate stops. Both stations are accessible and are joined within the station.
+3. **E** from 42 St-Port Authority Bus Terminal to 51 St. The E runs north past 50 St, 7 Av and 5 Av/53 St to 51 St, which is accessible.
+
+No single service links 47-50 Sts to 51 St, and the other two-transfer options (such as through Grand Central-42 St) need three transfers or more stops. The C could replace the A in the middle leg, but it stops at 50 St, so the A is the better choice.
+
+FINAL ANSWER: [""D"", ""A"", ""E""]","[""D"", ""A"", ""E""]",1,stop,
+anthropic/claude-haiku-5.5,p2_10,ok,42 St-Port Authority Bus Terminal,transfer_station,"**Route:** Board the 7 at 5 Av, which is the only line that stops there on this map. Ride it west to the 42 St hub, where the 7 connects with the N, Q and R. Transfer there and take the N, Q or R to 34 St-Herald Sq.
+
+**Why this station:** The 42 St hub is the outlined transfer complex on the 7 line, with N Q R service at the same complex, so it is the only place on this map that allows a single transfer from the 7 onto a line serving 34 St-Herald Sq. The D and F trains run through 42 St-Bryant Pk without stopping, so they can't be used for this transfer.
+
+**Caveat:** The label ""42 St-Port Authority Bus Terminal"" is printed at the west end of this complex, and the 42 St-Times Sq stop nearby is not drawn as a transfer station. I've taken the transfer point as the complex, so the answer is the station name printed at its west end.
+
+FINAL ANSWER: 42 St-Port Authority Bus Terminal",Times Sq-42 St,0,stop,
+anthropic/claude-haiku-5.5,p2_11,ok,"[""E"", ""6""]",reroute_lines,"**Route: E, then 6**
+
+1. **Starting point:** 23 St is served by the C and E lines on the blue line, and no single line from there reaches 59 St. So at least one transfer is needed.
+2. **One transfer is possible:** The E line runs north past 34 St-Penn Station, 42 St-Port Authority, 50 St and 7 Av to 5 Av/53 St and then 51 St. At 51 St there is a free transfer between the E and the 6. The 6 runs north on the green line from 51 St to 59 St.
+3. **Other one-transfer options fail:** The C line reaches 59 St-Columbus Circle, which is a different station from 59 St, and the 1 line does not reach 59 St. The E line does not connect directly to the N, Q, R or F lines that serve 59 St.
+4. **Fewest stops:** Riding the E from 23 St to 51 St passes five intermediate stations. Taking the 6 from 51 St to 59 St adds one more stop, which is the minimum for this one-transfer route.
+
+FINAL ANSWER: [""E"", ""6""]","[""E"", ""6""]",1,stop,
+anthropic/claude-haiku-5.5,p2_12,ok,3,min_stops,"The fewest possible is 3 stops, via Times Sq-42 St and 42 St-Port Authority Bus Terminal.
+
+1. **Board the F** at 47-50 Sts-Rockefeller Ctr. The D is excluded by the weekend change, so only F serves this station on this map. Heading south, the F's first stop is **Times Sq-42 St** (stop 1).
+2. **Switch to the 7** at Times Sq-42 St. The 7 runs west and stops at **42 St-Port Authority Bus Terminal** (stop 2). The purple line passes 42 St-Bryant Pk without a 7 marker there, so it doesn't stop.
+3. **Switch to the A** at 42 St-Port Authority. The A runs north without stopping at 50 St (only C and E stop there), so it reaches **59 St-Columbus Circle** directly (stop 3).
+
+No two-stop option exists. The F's northbound and southbound first stops (57 St and Times Sq-42 St) have no connection to A, C, or 1 that reaches 59 St in one more stop.
+
+FINAL ANSWER: 3",3,1,stop,
+openai/gpt-6-luna,p2_01,ok,"[""S"", ""Q""]",accessible_route,"FINAL ANSWER: [""S"", ""Q""]","[""S"", ""Q""]",1,stop,
+openai/gpt-6-luna,p2_02,ok,Chambers St,transfer_station,FINAL ANSWER: Chambers St,Chambers St,1,stop,
+openai/gpt-6-luna,p2_03,ok,"[""E"", ""6""]",reroute_lines,"FINAL ANSWER: [""E"", ""6""]","[""F"", ""7"", ""6""]",0,stop,
+openai/gpt-6-luna,p2_04,ok,5,min_stops,FINAL ANSWER: 5,6,0,stop,
+openai/gpt-6-luna,p2_05,ok,"[""E"", ""C""]",accessible_route,"FINAL ANSWER: [""E"", ""C""]","[""E"", ""A""]",0,stop,
+openai/gpt-6-luna,p2_06,ok,Bergen St,transfer_station,FINAL ANSWER: Bergen St,Jay St-MetroTech,0,stop,
+openai/gpt-6-luna,p2_08,ok,3,min_stops,FINAL ANSWER: 3,3,1,stop,
+openai/gpt-6-luna,p2_09,ok,"[""F"", ""6""]",accessible_route,"FINAL ANSWER: [""F"", ""6""]","[""D"", ""A"", ""E""]",0,stop,
+openai/gpt-6-luna,p2_10,ok,Times Sq-42 St,transfer_station,FINAL ANSWER: Times Sq-42 St,Times Sq-42 St,1,stop,
+openai/gpt-6-luna,p2_11,ok,"[""6""]",reroute_lines,"FINAL ANSWER: [""6""]","[""E"", ""6""]",0,stop,
+openai/gpt-6-luna,p2_12,ok,3,min_stops,FINAL ANSWER: 3,3,1,stop,
